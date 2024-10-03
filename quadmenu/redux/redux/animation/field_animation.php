@@ -1,195 +1,201 @@
 <?php
 
-if (!defined('ABSPATH')) {
-  exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-if (!class_exists('ReduxFramework_animation')) {
+if ( ! class_exists( 'ReduxFramework_animation' ) ) {
 
-  class ReduxFramework_animation {
-     
-    public $parent;
-    public $field;
-    public $value;
+	class ReduxFramework_animation {
 
-    public $_extension_url;
-    public $_extension_dir;
+		public $parent;
+		public $field;
+		public $value;
 
-    function __construct($field = array(), $value = '', $parent=null) {
-      $this->parent = $parent;
-      $this->field = $field;
-      $this->value = $value;
+		public $_extension_url;
+		public $_extension_dir;
 
-      if (empty(self::$_extension_dir)) {
-        $this->_extension_dir = trailingslashit(str_replace('\\', '/', dirname(__FILE__)));
-        $this->_extension_url = plugin_dir_url( __FILE__ );
-      }
+		function __construct( $field = array(), $value = '', $parent = null ) {
+			$this->parent = $parent;
+			$this->field  = $field;
+			$this->value  = $value;
 
-      // No errors please
-      $defaults = array(
-          'speed' => false,
-          'action' => false,
-          'options' => '',
-          'mode' => array(
-              'speed' => false,
-              'action' => false,
-          ),
-      );
+			if ( empty( self::$_extension_dir ) ) {
+				$this->_extension_dir = trailingslashit( str_replace( '\\', '/', __DIR__ ) );
+				$this->_extension_url = plugin_dir_url( __FILE__ );
+			}
 
-      $this->field = wp_parse_args($this->field, $defaults);
+			// No errors please
+			$defaults = array(
+				'speed'   => false,
+				'action'  => false,
+				'options' => '',
+				'mode'    => array(
+					'speed'  => false,
+					'action' => false,
+				),
+			);
 
-      $defaults = array(
-          'speed' => '',
-          'action' => '',
-          'options' => ''
-      );
+			$this->field = wp_parse_args( $this->field, $defaults );
 
-      $this->value = wp_parse_args($this->value, $defaults);
-    }
+			$defaults = array(
+				'speed'   => '',
+				'action'  => '',
+				'options' => '',
+			);
 
-    function render() {
+			$this->value = wp_parse_args( $this->value, $defaults );
+		}
 
-      echo '<fieldset id="' . $this->field['id'] . '" class="redux-animation-container" data-id="' . $this->field['id'] . '">';
+		function render() {
 
-      if (isset($this->field['select2'])) {
+			echo '<fieldset id="' . $this->field['id'] . '" class="redux-animation-container" data-id="' . $this->field['id'] . '">';
 
-        $select2_params = json_encode($this->field['select2']);
+			if ( isset( $this->field['select2'] ) ) {
 
-        $select2_params = htmlspecialchars($select2_params, ENT_QUOTES);
+				$select2_params = json_encode( $this->field['select2'] );
 
-        echo '<input type="hidden" class="select2_params" value="' . $select2_params . '">';
-      }
+				$select2_params = htmlspecialchars( $select2_params, ENT_QUOTES );
 
-      //echo '<input id="' . $this->field['id'] . '" name="' . $this->field['name'] . '" type="text" value="' . $this->value . '">';
+				echo '<input type="hidden" class="select2_params" value="' . $select2_params . '">';
+			}
 
-      if (isset($this->field['options']) && is_array($this->field['options'])) {
+			// echo '<input id="' . $this->field['id'] . '" name="' . $this->field['name'] . '" type="text" value="' . $this->value . '">';
 
-        echo '<input name="' . $this->field['name'] . '[options]' . '" type="hidden" class="field-options" value="' . $this->value['options'] . '">';
+			if ( isset( $this->field['options'] ) && is_array( $this->field['options'] ) ) {
 
-        echo '<div class="select_wrapper animation-options" original-title="' . __('options', 'quadmenu') . '">';
+				echo '<input name="' . $this->field['name'] . '[options]' . '" type="hidden" class="field-options" value="' . $this->value['options'] . '">';
 
-        echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __('options', 'quadmenu') . '" class="redux-animation redux-animation-options select ' . $this->field['class'] . '" original-title="' . __('options', 'quadmenu') . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[options]' . '">';
+				echo '<div class="select_wrapper animation-options" original-title="' . __( 'options', 'quadmenu' ) . '">';
 
-        if (isset($this->field['options']) && is_array($this->field['options'])) {
+				echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __( 'options', 'quadmenu' ) . '" class="redux-animation redux-animation-options select ' . $this->field['class'] . '" original-title="' . __( 'options', 'quadmenu' ) . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[options]' . '">';
 
-          foreach ($this->field['options'] as $animation => $name) {
-            echo '<option value="' . $animation . '" ' . selected($this->value['options'], $animation, false) . '>' . $name . '</option>';
-          }
-        }
+				if ( isset( $this->field['options'] ) && is_array( $this->field['options'] ) ) {
 
-        echo '</select>';
-        echo '</div>';
-      };
+					foreach ( $this->field['options'] as $animation => $name ) {
+						echo '<option value="' . $animation . '" ' . selected( $this->value['options'], $animation, false ) . '>' . $name . '</option>';
+					}
+				}
 
-      if (isset($this->field['action']) && is_array($this->field['action'])) {
+				echo '</select>';
+				echo '</div>';
+			}
 
-        echo '<input name="' . $this->field['name'] . '[action]' . '" type="hidden" class="field-action" value="' . $this->value['action'] . '">';
+			if ( isset( $this->field['action'] ) && is_array( $this->field['action'] ) ) {
 
-        echo '<div class="select_wrapper animation-action" original-title="' . __('action', 'quadmenu') . '">';
+				echo '<input name="' . $this->field['name'] . '[action]' . '" type="hidden" class="field-action" value="' . $this->value['action'] . '">';
 
-        echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __('action', 'quadmenu') . '" class="redux-animation redux-animation-action select ' . $this->field['class'] . '" original-title="' . __('action', 'quadmenu') . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[action]' . '">';
+				echo '<div class="select_wrapper animation-action" original-title="' . __( 'action', 'quadmenu' ) . '">';
 
-        if (isset($this->field['action']) && is_array($this->field['action'])) {
+				echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __( 'action', 'quadmenu' ) . '" class="redux-animation redux-animation-action select ' . $this->field['class'] . '" original-title="' . __( 'action', 'quadmenu' ) . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[action]' . '">';
 
-          foreach ($this->field['action'] as $action => $name) {
-            echo '<option value="' . $action . '" ' . selected($this->value['action'], $action, false) . '>' . $name . '</option>';
-          }
-        }
+				if ( isset( $this->field['action'] ) && is_array( $this->field['action'] ) ) {
 
-        echo '</select>';
-        echo '</div>';
-      };
+					foreach ( $this->field['action'] as $action => $name ) {
+						echo '<option value="' . $action . '" ' . selected( $this->value['action'], $action, false ) . '>' . $name . '</option>';
+					}
+				}
 
-      if (isset($this->field['speed']) && is_array($this->field['speed'])) {
+				echo '</select>';
+				echo '</div>';
+			}
 
-        echo '<input name="' . $this->field['name'] . '[speed]' . '" type="hidden" class="field-speed" value="' . $this->value['speed'] . '">';
+			if ( isset( $this->field['speed'] ) && is_array( $this->field['speed'] ) ) {
 
-        echo '<div class="select_wrapper animation-speed" original-title="' . __('speed', 'quadmenu') . '">';
+				echo '<input name="' . $this->field['name'] . '[speed]' . '" type="hidden" class="field-speed" value="' . $this->value['speed'] . '">';
 
-        echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __('speed', 'quadmenu') . '" class="redux-animation redux-animation-speed select ' . $this->field['class'] . '" original-title="' . __('speed', 'quadmenu') . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[speed]' . '">';
+				echo '<div class="select_wrapper animation-speed" original-title="' . __( 'speed', 'quadmenu' ) . '">';
 
-        if (isset($this->field['speed']) && is_array($this->field['speed'])) {
+				echo '<select data-key="' . $this->field['name'] . '" data-id="' . $this->field['id'] . '" data-placeholder="' . __( 'speed', 'quadmenu' ) . '" class="redux-animation redux-animation-speed select ' . $this->field['class'] . '" original-title="' . __( 'speed', 'quadmenu' ) . '" name="' . $this->field['name'] . $this->field['name_suffix'] . '[speed]' . '">';
 
-          foreach ($this->field['speed'] as $speed => $name) {
-            echo '<option value="' . $speed . '" ' . selected($this->value['speed'], $speed, false) . '>' . $name . '</option>';
-          }
-        }
+				if ( isset( $this->field['speed'] ) && is_array( $this->field['speed'] ) ) {
 
-        echo '</select>';
-        echo '</div>';
-      };
+					foreach ( $this->field['speed'] as $speed => $name ) {
+						echo '<option value="' . $speed . '" ' . selected( $this->value['speed'], $speed, false ) . '>' . $name . '</option>';
+					}
+				}
 
-      echo "</fieldset>";
-    }
+				echo '</select>';
+				echo '</div>';
+			}
 
-    function enqueue() {
-      wp_enqueue_style('select2-css');
+			echo '</fieldset>';
+		}
 
-      wp_enqueue_style(
-              'redux-field-animation-css', $this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.css', array(), time(), 'all'
-      );
+		function enqueue() {
+			wp_enqueue_style( 'select2-css' );
 
-      wp_enqueue_script(
-              'redux-field-animation-js', $this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.js', array('jquery', 'select2-js', 'redux-js'), time(), true
-      );
-    }
+			wp_enqueue_style(
+				'redux-field-animation-css',
+				$this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.css',
+				array(),
+				time(),
+				'all'
+			);
 
-    public function output() {
+			wp_enqueue_script(
+				'redux-field-animation-js',
+				$this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.js',
+				array( 'jquery', 'select2-js', 'redux-js' ),
+				time(),
+				true
+			);
+		}
 
-      // if field options has a value and IS an array, then evaluate as needed.
-      if (isset($this->field['options']) && !is_array($this->field['options'])) {
+		public function output() {
 
-        //if options fields has a value but options value does not then make options value the field value
-        if (isset($this->field['options']) && !isset($this->value['options']) || $this->field['options'] == false) {
-          $this->value['options'] = $this->field['options'];
+			// if field options has a value and IS an array, then evaluate as needed.
+			if ( isset( $this->field['options'] ) && ! is_array( $this->field['options'] ) ) {
 
-          // If options field does NOT have a value and options value does NOT have a value, set both to blank (default?)
-        } else if (!isset($this->field['options']) && !isset($this->value['options'])) {
-          $this->field['options'] = 'px';
-          $this->value['options'] = 'px';
+				// if options fields has a value but options value does not then make options value the field value
+				if ( isset( $this->field['options'] ) && ! isset( $this->value['options'] ) || $this->field['options'] == false ) {
+					$this->value['options'] = $this->field['options'];
 
-          // If options field has NO value but options value does, then set unit field to value field
-        } else if (!isset($this->field['options']) && isset($this->value['options'])) {
-          $this->field['options'] = $this->value['options'];
+					// If options field does NOT have a value and options value does NOT have a value, set both to blank (default?)
+				} elseif ( ! isset( $this->field['options'] ) && ! isset( $this->value['options'] ) ) {
+					$this->field['options'] = 'px';
+					$this->value['options'] = 'px';
 
-          // if unit value is set and unit value doesn't equal unit field (coz who knows why)
-          // then set unit value to unit field
-        } elseif (isset($this->value['options']) && $this->value['options'] !== $this->field['options']) {
-          $this->value['options'] = $this->field['options'];
-        }
+					// If options field has NO value but options value does, then set unit field to value field
+				} elseif ( ! isset( $this->field['options'] ) && isset( $this->value['options'] ) ) {
+					$this->field['options'] = $this->value['options'];
 
-        // do stuff based on unit field NOT set as an array
-      } elseif (isset($this->field['options']) && is_array($this->field['options'])) {
-        // nothing to do here, but I'm leaving the construct just in case I have to debug this again.
-      }
+					// if unit value is set and unit value doesn't equal unit field (coz who knows why)
+					// then set unit value to unit field
+				} elseif ( isset( $this->value['options'] ) && $this->value['options'] !== $this->field['options'] ) {
+					$this->value['options'] = $this->field['options'];
+				}
 
-      $options = isset($this->value['options']) ? $this->value['options'] : "";
-      $action = isset($this->value['action']) ? $this->value['action'] : "";
-      $speed = isset($this->value['speed']) ? $this->value['speed'] : "";
+				// do stuff based on unit field NOT set as an array
+			} elseif ( isset( $this->field['options'] ) && is_array( $this->field['options'] ) ) {
+				// nothing to do here, but I'm leaving the construct just in case I have to debug this again.
+			}
 
+			$options = isset( $this->value['options'] ) ? $this->value['options'] : '';
+			$action  = isset( $this->value['action'] ) ? $this->value['action'] : '';
+			$speed   = isset( $this->value['speed'] ) ? $this->value['speed'] : '';
 
-      $style = "";
+			$style = '';
 
-      foreach ($cleanValue as $key => $value) {
-        // Output if it's a numeric entry
-        if (isset($value) && is_numeric($value)) {
-          $style .= $key . ':' . $value . $options . ';';
-        }
-      }
+			foreach ( $cleanValue as $key => $value ) {
+				// Output if it's a numeric entry
+				if ( isset( $value ) && is_numeric( $value ) ) {
+					$style .= $key . ':' . $value . $options . ';';
+				}
+			}
 
-      if (!empty($style)) {
-        if (!empty($this->field['output']) && is_array($this->field['output'])) {
-          $keys = implode(",", $this->field['output']);
-          $this->parent->outputCSS .= $keys . "{" . $style . '}';
-        }
+			if ( ! empty( $style ) ) {
+				if ( ! empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+					$keys                     = implode( ',', $this->field['output'] );
+					$this->parent->outputCSS .= $keys . '{' . $style . '}';
+				}
 
-        if (!empty($this->field['compiler']) && is_array($this->field['compiler'])) {
-          $keys = implode(",", $this->field['compiler']);
-          $this->parent->compilerCSS .= $keys . "{" . $style . '}';
-        }
-      }
-    }
-
-  }
+				if ( ! empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+					$keys                       = implode( ',', $this->field['compiler'] );
+					$this->parent->compilerCSS .= $keys . '{' . $style . '}';
+				}
+			}
+		}
+	}
 
 }

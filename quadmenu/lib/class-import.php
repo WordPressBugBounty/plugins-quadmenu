@@ -1,7 +1,7 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 add_filter( 'wp_import_post_data_raw', 'quadmenu_import_meta', 10, 1 );

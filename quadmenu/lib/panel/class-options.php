@@ -45,6 +45,4 @@ class Options extends Panel {
 		}
 		return self::$instance;
 	}
-
 }
-

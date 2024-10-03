@@ -50,7 +50,6 @@ class QuadMenu_Item_Column extends QuadMenu_Item {
 	}
 
 	function get_title() {
-
 	}
 
 	function add_item_dropdown_classes() {
@@ -60,5 +59,4 @@ class QuadMenu_Item_Column extends QuadMenu_Item {
 	function add_item_dropdown_ul_classes() {
 		return false;
 	}
-
 }

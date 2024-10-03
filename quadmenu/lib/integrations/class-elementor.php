@@ -82,7 +82,6 @@ class Elementor {
 		});
 	</script>
 		<?php
-
 	}
 
 	public static function instance() {
@@ -91,6 +90,5 @@ class Elementor {
 		}
 		return self::$instance;
 	}
-
 }
 

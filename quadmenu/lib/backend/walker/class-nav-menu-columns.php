@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Backend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 use QuadLayers\QuadMenu\Backend\Settings;
@@ -339,6 +339,5 @@ class Nav_Menu_Columns extends Settings {
 		}
 		return self::$instance;
 	}
-
 }
 

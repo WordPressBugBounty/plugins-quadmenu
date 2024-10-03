@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 global $submenu;
 
 if ( isset( $submenu[ QuadMenu_Panel::$panel_slug ] ) ) {
-  $welcome_menu_items = $submenu[ QuadMenu_Panel::$panel_slug ];
+	$welcome_menu_items = $submenu[ QuadMenu_Panel::$panel_slug ];
 }
 
 if ( is_array( $welcome_menu_items ) ) {

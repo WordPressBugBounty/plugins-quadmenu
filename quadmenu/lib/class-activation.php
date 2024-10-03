@@ -81,4 +81,3 @@ class Activation {
 		return self::$instance;
 	}
 }
-

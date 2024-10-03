@@ -458,5 +458,4 @@ class Nav_Menu_Widgets extends Settings {
 		}
 		return self::$instance;
 	}
-
 }

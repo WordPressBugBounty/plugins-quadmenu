@@ -22,7 +22,6 @@ class Module extends \FLBuilderModule {
 		);
 
 		add_action( 'pre_get_posts', __CLASS__ . '::set_pre_get_posts_query', 10, 2 );
-
 	}
 
 	public static function get_attachment_data( $id ) {
@@ -42,7 +41,7 @@ class Module extends \FLBuilderModule {
 				'hide_empty' => true,
 			)
 		);
-		$fields  = array(
+		$fields    = array(
 			'type'   => 'select',
 			'label'  => __( 'Menu', 'quadmenu' ),
 			'helper' => __( 'Select a WordPress menu that you created in the admin under Appearance > Menus.', 'quadmenu' ),
@@ -101,7 +100,7 @@ class Module extends \FLBuilderModule {
 						'general' => array(// Section
 							'title'  => '', // Section Title
 							'fields' => array(// Section Fields
-								'menu'   => Module::_get_menus(),
+								'menu'   => self::_get_menus(),
 								'layout' => array(
 									'type'    => 'select',
 									'label'   => __( 'Layout', 'quadmenu' ),
@@ -125,7 +124,7 @@ class Module extends \FLBuilderModule {
 						'layout'  => array(
 							'title'  => __( 'Layout', 'quadmenu' ),
 							'fields' => array(
-								'navbar_logo'                 => array(
+								'navbar_logo'        => array(
 									'type'        => 'photo',
 									'label'       => esc_html__( 'Logo', 'quadmenu' ),
 									'connections' => array( 'photo' ),
@@ -142,7 +141,7 @@ class Module extends \FLBuilderModule {
 									),
 									'default' => QUADMENU_PLUGIN_URL . 'assets/frontend/images/logo.png'
 								),*/
-								'layout_align'                => array(
+								'layout_align'       => array(
 									'customizer' => true,
 									'transport'  => 'selective',
 									'id'         => 'layout_align',
@@ -161,7 +160,7 @@ class Module extends \FLBuilderModule {
 								),
 								// Behaviour
 								// ---------------------------------------------------------
-								'layout_breakpoint'           => array(
+								'layout_breakpoint'  => array(
 									'type'        => 'text',
 									'label'       => esc_html__( 'Breakpoint', 'quadmenu' ),
 									'default'     => '768',
@@ -175,7 +174,7 @@ class Module extends \FLBuilderModule {
 										'unit' => 'px',
 									),
 								),
-								'layout_width'                => array(
+								'layout_width'       => array(
 									'type'        => 'select',
 									'label'       => esc_html__( 'Width', 'quadmenu' ),
 									'description' => esc_html__( 'Try to force menu width to fit screen.', 'quadmenu' ),
@@ -188,7 +187,7 @@ class Module extends \FLBuilderModule {
 									),
 									'default'     => 'false',
 								),
-								'layout_width_inner'          => array(
+								'layout_width_inner' => array(
 									'type'     => 'select',
 									'label'    => esc_html__( 'Inner', 'quadmenu' ),
 									'options'  => array(
@@ -212,7 +211,7 @@ class Module extends \FLBuilderModule {
 										array( 'layout_width_inner', '=', 1 ),
 									),
 								),
-								'layout_lazyload'             => array(
+								'layout_lazyload'    => array(
 									'type'        => 'select',
 									'label'       => esc_html__( 'Lazyload', 'quadmenu' ),
 									'options'     => array(
@@ -222,7 +221,7 @@ class Module extends \FLBuilderModule {
 									'default'     => 'false',
 									'description' => esc_html__( 'This is a beta function, please test it carefully.', 'quadmenu' ),
 								),
-								'layout_current'              => array(
+								'layout_current'     => array(
 									'type'        => 'select',
 									'label'       => esc_html__( 'Open', 'quadmenu' ),
 									'options'     => array(
@@ -232,7 +231,7 @@ class Module extends \FLBuilderModule {
 									'default'     => 'false',
 									'description' => esc_html__( 'Open dropdown if is current page.', 'quadmenu' ),
 								),
-								'layout_divider'              => array(
+								'layout_divider'     => array(
 									'type'        => 'select',
 									'label'       => esc_html__( 'Divider', 'quadmenu' ),
 									'description' => esc_html__( 'Show a small divider bar between each menu item.', 'quadmenu' ),
@@ -245,7 +244,7 @@ class Module extends \FLBuilderModule {
 									),
 									'default'     => 'hide',
 								),
-								'layout_caret'                => array(
+								'layout_caret'       => array(
 									'type'        => 'select',
 									'label'       => esc_html__( 'Caret', 'quadmenu' ),
 									'description' => esc_html__( 'Show carets on items with dropdown menus.', 'quadmenu' ),
@@ -258,7 +257,7 @@ class Module extends \FLBuilderModule {
 									),
 									'default'     => 'hide',
 								),
-								'layout_classes'              => array(
+								'layout_classes'     => array(
 									'type'    => 'text',
 									'label'   => esc_html__( 'Classes', 'quadmenu' ),
 									'default' => '',
@@ -275,7 +274,7 @@ class Module extends \FLBuilderModule {
 						'general_style' => array(
 							'title'  => '',
 							'fields' => array(
-								'layout_trigger'            => array(
+								'layout_trigger' => array(
 									'type'     => 'select',
 									'label'    => esc_html__( 'Trigger', 'quadmenu' ),
 									'options'  => array(
@@ -309,4 +308,3 @@ class Module extends \FLBuilderModule {
 		);
 	}
 }
-

@@ -95,7 +95,7 @@ function quadmenu_lazyload( $nav_menu, $args ) {
 
 	$lazy_menu = preg_replace_callback(
 		'/<img .*?>/',
-		function( $matches ) {
+		function ( $matches ) {
 		return preg_replace( array( '/\bsrc\s*=\s*[\'"](.*?)[\'"]/', '/\bsrcset\s*=\s*[\'"](.*?)[\'"]/' ), array( 'data-src="$1"', 'data-srcset="$1"' ), $matches[0] );
 		},
 		$nav_menu
@@ -138,7 +138,7 @@ function quadmenu_get_nav_menu_args( $args = array() ) {
 
 	$args['fallback_cb'] = 'QuadMenuWalker::fallback';
 
-	$instance++;
+	++$instance;
 
 	return apply_filters( 'quadmenu_get_nav_menu_args', $args );
 }
@@ -169,7 +169,7 @@ function quadmenu_add_nav_menu_theme_options( $args ) {
 	$opts['layout_width_inner_selector'] = $opts['layout_width_inner'] ? $opts['layout_width_inner_selector'] : '';
 
 	if ( $opts['layout_sticky'] > 0 ) {
-		$sticky++;
+		++$sticky;
 	}
 
 	$opts['layout_sticky'] = (int) $sticky > 1 ? 0 : $opts['layout_sticky'];

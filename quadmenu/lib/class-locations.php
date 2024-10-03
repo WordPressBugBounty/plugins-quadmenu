@@ -3,7 +3,7 @@
 namespace QuadLayers\QuadMenu;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 /**
  * Locations Class ex QuadMenu_Locations
@@ -82,6 +82,4 @@ class Locations {
 		}
 		return self::$instance;
 	}
-
 }
-

@@ -2,7 +2,6 @@
 
 namespace QuadLayers\QuadMenu;
 
-
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }

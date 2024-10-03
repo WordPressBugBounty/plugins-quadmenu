@@ -147,7 +147,7 @@ class Ajax extends Settings {
 
 			foreach ( $post_types as $post_type ) {
 				$item = new \stdClass();
-				$loop_index++;
+				++$loop_index;
 
 				$item->object_id        = $loop_index;
 				$item->db_id            = 0;
@@ -584,5 +584,4 @@ class Ajax extends Settings {
 		}
 		return self::$instance;
 	}
-
 }

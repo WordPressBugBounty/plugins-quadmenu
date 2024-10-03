@@ -56,7 +56,6 @@ final class Plugin {
 
 	private function config() {
 		Configuration::instance();
-
 	}
 
 	private function compatibility() {
@@ -69,7 +68,7 @@ final class Plugin {
 		Divi::instance();
 		add_action(
 			'widgets_init',
-			function() {
+			function () {
 				register_widget( '\\QuadLayers\\QuadMenu\\Widget' );
 			}
 		);
@@ -148,7 +147,7 @@ final class Plugin {
 
 
 	/*
-	   function selected_icons() {
+		function selected_icons() {
 
 	global $quadmenu;
 
@@ -344,7 +343,6 @@ final class Plugin {
 		Frontend::instance();
 		require_once QUADMENU_PLUGIN_DIR . 'lib/frontend/class-integration.php';
 		Items::instance();
-
 	}
 
 	public function setup_nav_menu_item_options( $item ) {

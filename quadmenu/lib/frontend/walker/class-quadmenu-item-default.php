@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Frontend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 use QuadLayers\QuadMenu\Frontend\Walker\QuadMenu_Item;
 
@@ -39,5 +39,4 @@ class QuadMenu_Item_Default extends QuadMenu_Item {
 
 		return $item_output;
 	}
-
 }

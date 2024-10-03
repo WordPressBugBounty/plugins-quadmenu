@@ -102,7 +102,6 @@ class ET_Builder_Module_QuadMenu extends \ET_Builder_Module {
 	);
 		return sprintf( '<div class="et_pb_row et_pb_fullwidth_menu clearfix">%1$s</div>', $this->props['content'] );
 	}
-
 }
 
 new ET_Builder_Module_QuadMenu();

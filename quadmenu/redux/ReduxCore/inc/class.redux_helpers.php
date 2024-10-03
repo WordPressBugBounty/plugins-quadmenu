@@ -23,7 +23,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				}
 
 				if ( isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
-					if ( Redux_Helpers::recursive_array_search( $field, $section['fields'] ) ) {
+					if ( self::recursive_array_search( $field, $section['fields'] ) ) {
 						return $k;
 						continue;
 					}
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		public static function get_auth_key_secret_key() {
-			$key = "";
+			$key  = '';
 			$key .= defined( 'AUTH_KEY' ) ? AUTH_KEY : get_site_url();
 			$key .= defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : get_site_url();
 
@@ -56,7 +56,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				}
 
 				if ( isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
-					if ( Redux_Helpers::recursive_array_search( $field, $section['fields'] ) ) {
+					if ( self::recursive_array_search( $field, $section['fields'] ) ) {
 						return true;
 						continue;
 					}
@@ -139,15 +139,19 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				}
 			}
 
-
 			$version = explode( '.', PHP_VERSION );
 			$version = array(
 				'major'   => $version[0],
 				'minor'   => $version[0] . '.' . $version[1],
-				'release' => PHP_VERSION
+				'release' => PHP_VERSION,
 			);
 
-			$user_query     = new WP_User_Query( array( 'blog_id' => $blog_id, 'count_total' => true, ) );
+			$user_query     = new WP_User_Query(
+				array(
+					'blog_id'     => $blog_id,
+					'count_total' => true,
+				)
+			);
 			$comments_query = new WP_Comment_Query();
 
 			$data = array(
@@ -168,7 +172,12 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 					'total'    => $comments_count->total_comments,
 					'approved' => $comments_count->approved,
 					'spam'     => $comments_count->spam,
-					'pings'    => $comments_query->query( array( 'count' => true, 'type' => 'pingback' ) ),
+					'pings'    => $comments_query->query(
+						array(
+							'count' => true,
+							'type'  => 'pingback',
+						)
+					),
 				),
 				'options'   => apply_filters( 'redux/tracking/options', array() ),
 				'theme'     => $theme,
@@ -184,25 +193,25 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 			$parts    = explode( ' ', $_SERVER['SERVER_SOFTWARE'] );
 			$software = array();
 			foreach ( $parts as $part ) {
-				if ( $part[0] == "(" ) {
+				if ( $part[0] == '(' ) {
 					continue;
 				}
 				if ( strpos( $part, '/' ) !== false ) {
-					$chunk                               = explode( "/", $part );
+					$chunk                               = explode( '/', $part );
 					$software[ strtolower( $chunk[0] ) ] = $chunk[1];
 				}
 			}
 			$software['full']             = $_SERVER['SERVER_SOFTWARE'];
 			$data['environment']          = $software;
 			$data['environment']['mysql'] = $wpdb->db_version();
-//                if ( function_exists( 'mysqli_get_server_info' ) ) {
-//                    $link = mysqli_connect() or die( "Error " . mysqli_error( $link ) );
-//                    $data['environment']['mysql'] = mysqli_get_server_info( $link );
-//                } else if ( class_exists( 'PDO' ) && method_exists( 'PDO', 'getAttribute' ) ) {
-//                    $data['environment']['mysql'] = PDO::getAttribute( PDO::ATTR_SERVER_VERSION );
-//                } else {
-//                    $data['environment']['mysql'] = mysql_get_server_info();
-//                }
+// if ( function_exists( 'mysqli_get_server_info' ) ) {
+// $link = mysqli_connect() or die( "Error " . mysqli_error( $link ) );
+// $data['environment']['mysql'] = mysqli_get_server_info( $link );
+// } else if ( class_exists( 'PDO' ) && method_exists( 'PDO', 'getAttribute' ) ) {
+// $data['environment']['mysql'] = PDO::getAttribute( PDO::ATTR_SERVER_VERSION );
+// } else {
+// $data['environment']['mysql'] = mysql_get_server_info();
+// }
 
 			if ( empty( $data['developer'] ) ) {
 				unset( $data['developer'] );
@@ -219,7 +228,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 					'body' => array(
 						'hash' => $_GET['action'],
 						'site' => esc_url( home_url( '/' ) ),
-					)
+					),
 				)
 			);
 
@@ -229,7 +238,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				die();
 			}
 
-			return Redux_Helpers::getTrackingObject();
+			return self::getTrackingObject();
 		}
 
 		public static function isParentTheme( $file ) {
@@ -274,27 +283,27 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		public static function array_in_array( $needle, $haystack ) {
-			//Make sure $needle is an array for foreach
+			// Make sure $needle is an array for foreach
 			if ( ! is_array( $needle ) ) {
 				$needle = array( $needle );
 			}
-			//For each value in $needle, return TRUE if in $haystack
-			foreach ( $needle as $pin ) //echo 'needle' . $pin;
-			{
+			// For each value in $needle, return TRUE if in $haystack
+			foreach ( $needle as $pin ) {
 				if ( in_array( $pin, $haystack ) ) {
 					return true;
 				}
 			}
 
-			//Return FALSE if none of the values from $needle are found in $haystack
+			// Return FALSE if none of the values from $needle are found in $haystack
 			return false;
 		}
 
 		public static function recursive_array_search( $needle, $haystack ) {
 			foreach ( $haystack as $key => $value ) {
 				if ( $needle === $value || ( is_array( $value ) && self::recursive_array_search(
-							$needle, $value
-						) !== false ) ) {
+					$needle,
+					$value
+				) !== false ) ) {
 					return true;
 				}
 			}
@@ -307,10 +316,10 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		 *
 		 * @since    3.1.7
 		 *
-		 * @param     string     $path
+		 * @param     string $path
 		 */
 		public static function cleanFilePath( $path ) {
-			$path = str_replace( '', '', str_replace( array( "\\", "\\\\" ), '/', $path ) );
+			$path = str_replace( '', '', str_replace( array( '\\', '\\\\' ), '/', $path ) );
 
 			if ( $path[ strlen( $path ) - 1 ] === '/' ) {
 				$path = rtrim( $path, '/' );
@@ -324,17 +333,17 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		 *
 		 * @since    3.3.3
 		 *
-		 * @param     string     $path
+		 * @param     string $path
 		 */
 		public static function rmdir( $dir ) {
 			if ( is_dir( $dir ) ) {
 				$objects = scandir( $dir );
 				foreach ( $objects as $object ) {
-					if ( $object != "." && $object != ".." ) {
-						if ( filetype( $dir . "/" . $object ) == "dir" ) {
-							rrmdir( $dir . "/" . $object );
+					if ( $object != '.' && $object != '..' ) {
+						if ( filetype( $dir . '/' . $object ) == 'dir' ) {
+							rrmdir( $dir . '/' . $object );
 						} else {
-							unlink( $dir . "/" . $object );
+							unlink( $dir . '/' . $object );
 						}
 					}
 				}
@@ -350,7 +359,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		 * @since ReduxFramework 3.0.4
 		 */
 		public static function hex2rgba( $hex, $alpha = '' ) {
-			$hex = str_replace( "#", "", $hex );
+			$hex = str_replace( '#', '', $hex );
 			if ( strlen( $hex ) == 3 ) {
 				$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
 				$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
@@ -385,7 +394,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 			$redux            = ReduxFrameworkInstances::get_instance( $localize['args']['opt_name'] );
 			$nonce            = wp_create_nonce( 'redux-ads-nonce' );
 			$base             = admin_url( 'admin-ajax.php' ) . '?action=redux_p&nonce=' . $nonce . '&url=';
-			$localize['rAds'] = Redux_Helpers::rURL_fix( $base, $redux->args['opt_name'] );
+			$localize['rAds'] = self::rURL_fix( $base, $redux->args['opt_name'] );
 
 			return $localize;
 		}
@@ -420,19 +429,19 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				$blog_page_id  = get_option( 'page_for_posts' );
 
 				$sysinfo['front_page'] = $front_page_id != 0 ? get_the_title(
-																   $front_page_id
-															   ) . ' (#' . $front_page_id . ')' : 'Unset';
+					$front_page_id
+				) . ' (#' . $front_page_id . ')' : 'Unset';
 				$sysinfo['posts_page'] = $blog_page_id != 0 ? get_the_title(
-																  $blog_page_id
-															  ) . ' (#' . $blog_page_id . ')' : 'Unset';
+					$blog_page_id
+				) . ' (#' . $blog_page_id . ')' : 'Unset';
 			}
 
 			$sysinfo['wp_mem_limit']['raw']  = self::let_to_num( WP_MEMORY_LIMIT );
 			$sysinfo['wp_mem_limit']['size'] = size_format( $sysinfo['wp_mem_limit']['raw'] );
 
 			$sysinfo['db_table_prefix'] = 'Length: ' . strlen( $wpdb->prefix ) . ' - Status: ' . ( strlen(
-																									   $wpdb->prefix
-																								   ) > 16 ? 'ERROR: Too long' : 'Acceptable' );
+				$wpdb->prefix
+			) > 16 ? 'ERROR: Too long' : 'Acceptable' );
 
 			$sysinfo['wp_debug'] = 'false';
 			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
@@ -452,7 +461,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				'browser'  => $browser->getBrowser(),
 				'version'  => $browser->getVersion(),
 				'platform' => $browser->getPlatform(),
-				//'mobile'   => $browser->isMobile() ? 'true' : 'false',
+				// 'mobile'   => $browser->isMobile() ? 'true' : 'false',
 			);
 
 			$sysinfo['server_info'] = esc_html( $_SERVER['SERVER_SOFTWARE'] );
@@ -484,36 +493,37 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				$sysinfo['fsockopen_curl'] = 'true';
 			}
 
-			//$sysinfo['soap_client'] = 'false';
-			//if ( class_exists( 'SoapClient' ) ) {
-			//    $sysinfo['soap_client'] = 'true';
-			//}
+			// $sysinfo['soap_client'] = 'false';
+			// if ( class_exists( 'SoapClient' ) ) {
+			// $sysinfo['soap_client'] = 'true';
+			// }
 			//
-			//$sysinfo['dom_document'] = 'false';
-			//if ( class_exists( 'DOMDocument' ) ) {
-			//    $sysinfo['dom_document'] = 'true';
-			//}
+			// $sysinfo['dom_document'] = 'false';
+			// if ( class_exists( 'DOMDocument' ) ) {
+			// $sysinfo['dom_document'] = 'true';
+			// }
 
-			//$sysinfo['gzip'] = 'false';
-			//if ( is_callable( 'gzopen' ) ) {
-			//    $sysinfo['gzip'] = 'true';
-			//}
+			// $sysinfo['gzip'] = 'false';
+			// if ( is_callable( 'gzopen' ) ) {
+			// $sysinfo['gzip'] = 'true';
+			// }
 
 			if ( $remote_checks == true ) {
 				$response = wp_remote_post(
-					'https://www.paypal.com/cgi-bin/webscr', array(
-					'sslverify'  => false,
-					'timeout'    => 60,
-					'user-agent' => 'ReduxFramework/' . ReduxFramework::$_version,
-					'body'       => array(
-						'cmd' => '_notify-validate'
+					'https://www.paypal.com/cgi-bin/webscr',
+					array(
+						'sslverify'  => false,
+						'timeout'    => 60,
+						'user-agent' => 'ReduxFramework/' . ReduxFramework::$_version,
+						'body'       => array(
+							'cmd' => '_notify-validate',
+						),
 					)
-				)
 				);
 
 				if ( ! is_wp_error(
-						$response
-					) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+					$response
+				) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
 					$sysinfo['wp_remote_post']       = 'true';
 					$sysinfo['wp_remote_post_error'] = '';
 				} else {
@@ -526,8 +536,8 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				);
 
 				if ( ! is_wp_error(
-						$response
-					) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
+					$response
+				) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) {
 					$sysinfo['wp_remote_get']       = 'true';
 					$sysinfo['wp_remote_get_error'] = '';
 				} elseif ( is_wp_error( $response ) ) {
@@ -572,12 +582,11 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 								if ( isset( $field['validate_callback'] ) ) {
 									unset( $sysinfo['redux_instances'][ $inst ]['sections'][ $sKey ]['fields'][ $fKey ]['validate_callback'] );
 								}
-								if ( $field['type'] == "js_button" ) {
+								if ( $field['type'] == 'js_button' ) {
 									if ( isset( $field['script'] ) && isset( $field['script']['ver'] ) ) {
 										unset( $sysinfo['redux_instances'][ $inst ]['sections'][ $sKey ]['fields'][ $fKey ]['script']['ver'] );
 									}
 								}
-
 							}
 						}
 					}
@@ -612,12 +621,12 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				$sysinfo['theme']['parent_author_uri'] = $parent_theme->{'Author URI'};
 			}
 
-			//if ( $json_output ) {
-			//    $sysinfo = json_encode( $sysinfo );
-			//}
+			// if ( $json_output ) {
+			// $sysinfo = json_encode( $sysinfo );
+			// }
 
-			//print_r($sysinfo);
-			//exit();
+			// print_r($sysinfo);
+			// exit();
 
 			return $sysinfo;
 		}
@@ -647,24 +656,31 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 						$theme_version = self::get_template_version( $theme_file );
 
 						if ( $core_version && ( empty( $theme_version ) || version_compare(
-									$theme_version, $core_version, '<'
-								) ) ) {
+							$theme_version,
+							$core_version,
+							'<'
+						) ) ) {
 							if ( ! $outdated_templates ) {
 								$outdated_templates = true;
 							}
 
 							$found_files[ $plugin_name ][] = sprintf(
 								__(
-									'<code>%s</code> version <strong style="color:red">%s</strong> is out of date. The core version is %s',
+									'<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s',
 									'redux-framework'
-								), str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ),
-								$theme_version ? $theme_version : '-', $core_version
+								),
+								str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ),
+								$theme_version ? $theme_version : '-',
+								$core_version
 							);
 						} else {
 							$found_files[ $plugin_name ][] = sprintf(
-								'<code>%s</code>', str_replace(
-								WP_CONTENT_DIR . '/themes/', '', $theme_file
-							)
+								'<code>%s</code>',
+								str_replace(
+									WP_CONTENT_DIR . '/themes/',
+									'',
+									$theme_file
+								)
 							);
 						}
 					}
@@ -676,8 +692,8 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 
 		public static function rURL_fix( $base, $opt_name ) {
 			$url = $base . urlencode( 'http://look.redux.io/api/index.php?js&g&1&v=2' ) . '&proxy=' . urlencode(
-					$base
-				) . '';
+				$base
+			) . '';
 
 			return Redux_Functions::tru( $url, $opt_name );
 		}
@@ -688,7 +704,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 
 			if ( $files ) {
 				foreach ( $files as $key => $value ) {
-					if ( ! in_array( $value, array( ".", ".." ) ) ) {
+					if ( ! in_array( $value, array( '.', '..' ) ) ) {
 						if ( is_dir( $template_path . DIRECTORY_SEPARATOR . $value ) ) {
 							$sub_files = redux_scan_template_files( $template_path . DIRECTORY_SEPARATOR . $value );
 							foreach ( $sub_files as $sub_file ) {
@@ -712,14 +728,14 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				return '';
 			}
 			//
-			//// We don't need to write to the file, so just open for reading.
-			//$fp = fopen( $file, 'r' );
+			// We don't need to write to the file, so just open for reading.
+			// $fp = fopen( $file, 'r' );
 			//
-			//// Pull only the first 8kiB of the file in.
-			//$file_data = fread( $fp, 8192 );
+			// Pull only the first 8kiB of the file in.
+			// $file_data = fread( $fp, 8192 );
 			//
-			//// PHP will close file handle, but we are good citizens.
-			//fclose( $fp );
+			// PHP will close file handle, but we are good citizens.
+			// fclose( $fp );
 			//
 			// Make sure we catch CR-only line endings.
 
@@ -733,8 +749,10 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				$version   = '';
 
 				if ( preg_match(
-						 '/^[ \t\/*#@]*' . preg_quote( '@version', '/' ) . '(.*)$/mi', $file_data, $match
-					 ) && $match[1] ) {
+					'/^[ \t\/*#@]*' . preg_quote( '@version', '/' ) . '(.*)$/mi',
+					$file_data,
+					$match
+				) && $match[1] ) {
 					$version = _cleanup_header_comment( $match[1] );
 				}
 
@@ -767,7 +785,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		public static function get_extension_url( $dir ) {
-			$ext_dir = Redux_Helpers::get_extension_dir( $dir );
+			$ext_dir = self::get_extension_dir( $dir );
 			$ext_url = str_replace( wp_normalize_path( WP_CONTENT_DIR ), WP_CONTENT_URL, $ext_dir );
 
 			return $ext_url;

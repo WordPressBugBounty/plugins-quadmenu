@@ -41,7 +41,6 @@ function quadmenu_vc() {
 				return quadmenu( $args );
 			}
 		}
-
 	}
 
 	if ( ! function_exists( 'vc_map' ) ) {

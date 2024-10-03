@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Frontend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 use QuadLayers\QuadMenu\Frontend\Walker\QuadMenu_Item;
 
@@ -78,5 +78,4 @@ class QuadMenu_Item_Post_Type extends QuadMenu_Item {
 	function add_item_classes_post_type() {
 		$this->item_classes[] = 'quadmenu-item-type-post_type';
 	}
-
 }

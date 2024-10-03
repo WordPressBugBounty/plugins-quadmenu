@@ -37,6 +37,4 @@ class Premium extends Panel {
 		}
 		return self::$instance;
 	}
-
 }
-

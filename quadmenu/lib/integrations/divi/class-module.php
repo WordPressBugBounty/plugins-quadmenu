@@ -62,4 +62,3 @@ class Module extends \DiviExtension {
 		return self::$instance;
 	}
 }
-

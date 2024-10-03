@@ -148,5 +148,4 @@ class Widget extends \WP_Widget {
 		}
 		return self::$instance;
 	}
-
 }

@@ -31,7 +31,7 @@ class Beaver {
 	function module() {
 		if ( class_exists( '\\FLBuilderModule' ) ) {
 			Module::instance();
-		  require_once 'beaver/module.php';
+			require_once 'beaver/module.php';
 		}
 	}
 
@@ -63,7 +63,6 @@ class Beaver {
 		});
 		</script>
 		<?php
-
 	}
 
 	public static function instance() {

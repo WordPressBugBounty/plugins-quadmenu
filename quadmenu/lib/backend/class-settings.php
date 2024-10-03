@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Backend;
 
 use QuadLayers\QuadMenu\Plugin;
-use QuadLayers\QuadMenu\Configuration as Configuration;
+use QuadLayers\QuadMenu\Configuration;
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }

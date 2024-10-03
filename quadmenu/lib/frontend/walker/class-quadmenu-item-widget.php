@@ -90,5 +90,4 @@ class QuadMenu_Item_Widget extends QuadMenu_Item {
 			}
 		}
 	}
-
 }

@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
-  exit;
+	exit;
 }
 
 if ( ! class_exists( 'ReduxFramework_icons' ) ) {
@@ -8,7 +8,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 	add_action( 'admin_footer', array( 'ReduxFramework_icons', 'modal' ) );
 
 	class ReduxFramework_icons {
-     
+
 		public $parent;
 		public $field;
 		public $value;
@@ -22,7 +22,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 			$this->value  = $value;
 
 			if ( empty( self::$_extension_dir ) ) {
-				$this->_extension_dir = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
+				$this->_extension_dir = trailingslashit( str_replace( '\\', '/', __DIR__ ) );
 				$this->_extension_url = plugin_dir_url( __FILE__ );
 			}
 		}
@@ -187,7 +187,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 					// echo '<input type="text" name="' . $this->field['name'] . '[' . $x . '][key]' . $this->field['name_suffix'] . '" id="' . $this->field['id'] . '-key_' . $x . '" value="' . esc_attr($slide['key'] ? $slide['key'] : $this->field['id'] . '-key_' . $x ) . '">';
 					echo '<li><a href="javascript:void(0);" class="button deletion redux-icons-remove">' . __( 'Delete', 'redux-framework' ) . '</a></li>';
 					echo '</ul></div></fieldset></div>';
-					$x ++;
+					++$x;
 				}
 			}
 
@@ -231,7 +231,6 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 				true
 			);
 		}
-
 	}
 
 }

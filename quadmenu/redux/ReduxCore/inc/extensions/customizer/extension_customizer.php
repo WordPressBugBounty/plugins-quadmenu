@@ -84,7 +84,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			}
 
 			if ( empty( $this->_extension_dir ) ) {
-				$this->_extension_dir = apply_filters( 'redux/extension/customizer/dir', trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) ) );
+				$this->_extension_dir = apply_filters( 'redux/extension/customizer/dir', trailingslashit( str_replace( '\\', '/', __DIR__ ) ) );
 				$this->_extension_url = apply_filters( 'redux/extension/customizer/url', plugin_dir_url( __FILE__ ) );
 			}
 
@@ -160,7 +160,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		}
 
 		function enqueue_panel_css() {
-
 		}
 
 		function remove_core_customizer_class( $path ) {
@@ -264,23 +263,23 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		public function _register_customizer_controls( $wp_customize ) {
 
 			if ( ! class_exists( 'Redux_Customizer_Section' ) ) {
-				require_once dirname( __FILE__ ) . '/inc/customizer_section.php';
+				require_once __DIR__ . '/inc/customizer_section.php';
 				if ( method_exists( $wp_customize, 'register_section_type' ) ) {
 					$wp_customize->register_section_type( 'Redux_Customizer_Section' );
 				}
 			}
 			if ( ! class_exists( 'Redux_Customizer_Panel' ) ) {
-				require_once dirname( __FILE__ ) . '/inc/customizer_panel.php';
+				require_once __DIR__ . '/inc/customizer_panel.php';
 				if ( method_exists( $wp_customize, 'register_panel_type' ) ) {
 					$wp_customize->register_panel_type( 'Redux_Customizer_Panel' );
 				}
 			}
 			if ( ! class_exists( 'Redux_Customizer_Control' ) ) {
-				require_once dirname( __FILE__ ) . '/inc/customizer_control.php';
+				require_once __DIR__ . '/inc/customizer_control.php';
 			}
 
-			require_once dirname( __FILE__ ) . '/inc/customizer_fields.php';
-			require_once dirname( __FILE__ ) . '/inc/customizer_devs.php';
+			require_once __DIR__ . '/inc/customizer_fields.php';
+			require_once __DIR__ . '/inc/customizer_devs.php';
 
 			do_action( 'redux/extension/customizer/control/includes' );
 
@@ -408,7 +407,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				// Let's set a default priority
 				if ( empty( $section['priority'] ) ) {
 					$section['priority'] = $order['heading'];
-					$order['heading'] ++;
+					++$order['heading'];
 				}
 
 				// print_r($section);
@@ -499,7 +498,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 					// Change the item priority if not set
 					if ( $option['type'] != 'heading' && ! isset( $option['priority'] ) ) {
 						$option['priority'] = $order['option'];
-						$order['option'] ++;
+						++$order['option'];
 					}
 
 					if ( ! empty( $this->options_defaults[ $option['id'] ] ) ) {
@@ -601,7 +600,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 				}
 			}
-
 		}
 
 		public function add_section( $id, $args = array(), $wp_customize ) {
@@ -615,7 +613,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			}
 
 			$wp_customize->add_section( $section, $args );
-
 		}
 
 		/**
@@ -692,7 +689,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 					do_action( "redux/options/{$this->args['opt_name']}/compiler/advanced", $this->parent );
 				}
 			}
-
 		}
 
 		/**
@@ -795,7 +791,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		 * @return      void
 		 */
 		public function _register_setting() {
-
 		}
 
 		/**
@@ -825,7 +820,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		 * @return      void
 		 */
 		public function _customizer_html_output() {
-
 		}
 	} // class
 	function redux_customizer_custom_validation( $field ) {

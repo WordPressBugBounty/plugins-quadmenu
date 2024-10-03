@@ -3,7 +3,7 @@
 namespace QuadLayers\QuadMenu\Integrations\Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 class Module extends \Elementor\Widget_Base {
@@ -107,8 +107,8 @@ class Module extends \Elementor\Widget_Base {
 		)
 	);
 
-	  /*
-	 $this->add_control('navbar_logo_height', array(
+		/*
+	$this->add_control('navbar_logo_height', array(
 		'type' => Controls_Manager::SLIDER,
 		'label' => __('Height', 'quadmenu'),
 		'default' => array(
@@ -354,11 +354,8 @@ class Module extends \Elementor\Widget_Base {
 	}
 
 	protected function content_template() {
-
 	}
 
 	public function render_plain_content( $instance = array() ) {
-
 	}
-
 }

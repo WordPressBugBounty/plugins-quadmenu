@@ -15,7 +15,6 @@ class QuadMenu_Walker extends \Walker_Nav_Menu {
 	var $auto_child = '';
 
 	function __construct() {
-
 	}
 
 	function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
@@ -151,5 +150,4 @@ class QuadMenu_Walker extends \Walker_Nav_Menu {
 
 		return quadmenu_layout( $nav_menu, (object) $args );
 	}
-
 }

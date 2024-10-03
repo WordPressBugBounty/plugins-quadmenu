@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-use QuadLayers\QuadMenu\Plugin as Plugin;
+use QuadLayers\QuadMenu\Plugin;
 
 /**
  * Options Class ex QuadMenu_Options
@@ -1311,12 +1311,12 @@ class Options {
 					// Mobile
 					// ---------------------------------------------------------
 					/*
-					 array(
+					array(
 						'id' => $key . '_mobile',
 						'type' => 'section',
 						'title' => esc_html__('Mobile', 'quadmenu'),
 						'indent' => true
-					  ), */
+						), */
 					array(
 						'customizer' => true,
 						'transport'  => 'selective',
@@ -1535,7 +1535,7 @@ class Options {
 						'default'     => $this->defaults[ $key . '_dropdown_link_bg_hover' ],
 					),
 					/*
-					 array(
+					array(
 						'compiler' => true,
 						'customizer' => false,
 						'transport' => 'postMessage',
@@ -1547,7 +1547,7 @@ class Options {
 						'style' => false,
 						'color' => false,
 						'default' => $this->defaults[$key . '_dropdown_link_padding']
-					  ), */
+						), */
 					array(
 						'compiler'   => true,
 						'customizer' => true,
@@ -1726,7 +1726,7 @@ class Options {
 						'default'     => $this->defaults[ $key . '_dropdown_button_bg_hover' ],
 					),
 					/*
-					 array(
+					array(
 						'compiler' => true,
 						'customizer' => true,
 						'transport' => 'postMessage',
@@ -1738,8 +1738,8 @@ class Options {
 						'style' => false,
 						'color' => false,
 						'default' => $this->validate_border($this->defaults[$key . '_dropdown_button_radius'])
-					  ),
-					  */
+						),
+					 */
 					// Tab
 					// ---------------------------------------------------------
 					array(
@@ -2312,5 +2312,4 @@ class Options {
 		}
 		return self::$instance;
 	}
-
 }

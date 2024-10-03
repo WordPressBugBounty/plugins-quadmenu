@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-use QuadLayers\QuadMenu\Plugin as Plugin;
+use QuadLayers\QuadMenu\Plugin;
 /**
  * Admin Class ex QuadMenu_Admin
  */
@@ -23,7 +23,6 @@ class Admin {
 		add_action( 'admin_notices', array( $this, 'notices' ) );
 
 		add_action( 'admin_footer', array( $this, 'icons' ) );
-
 	}
 
 	public function register() {

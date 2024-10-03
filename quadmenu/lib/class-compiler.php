@@ -275,4 +275,3 @@ class Compiler {
 		return $return_array;
 	}
 }
-

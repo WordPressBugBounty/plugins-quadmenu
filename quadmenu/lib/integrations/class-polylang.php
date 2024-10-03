@@ -62,5 +62,4 @@ class Polylang {
 		}
 		return self::$instance;
 	}
-
 }

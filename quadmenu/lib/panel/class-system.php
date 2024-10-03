@@ -5,7 +5,7 @@ namespace QuadLayers\QuadMenu\Panel;
 use QuadLayers\QuadMenu\Panel;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 /**
@@ -545,5 +545,4 @@ class System extends Panel {
 		}
 		return self::$instance;
 	}
-
 }

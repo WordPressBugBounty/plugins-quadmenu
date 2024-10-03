@@ -6,42 +6,42 @@ class FLQuadMenuModule extends FLBuilderModule {
 
 	public function __construct() {
 
-        parent::__construct(
-            array(
-                'name'            => __( 'QuadMenu', 'quadmenu' ),
-                'description'     => __( 'Renders a WordPress menu.', 'quadmenu' ),
-                'category'        => __( 'Actions', 'quadmenu' ),
-                'partial_refresh' => true,
-                'editor_export'   => false,
-                'icon'            => 'hamburger-menu.svg',
-            )
-        );
+		parent::__construct(
+			array(
+				'name'            => __( 'QuadMenu', 'quadmenu' ),
+				'description'     => __( 'Renders a WordPress menu.', 'quadmenu' ),
+				'category'        => __( 'Actions', 'quadmenu' ),
+				'partial_refresh' => true,
+				'editor_export'   => false,
+				'icon'            => 'hamburger-menu.svg',
+			)
+		);
 
-	  add_action( 'pre_get_posts', __CLASS__ . '::set_pre_get_posts_query', 10, 2 );
+		add_action( 'pre_get_posts', __CLASS__ . '::set_pre_get_posts_query', 10, 2 );
 	}
 
 	public static function get_attachment_data( $id ) {
-	  $data = wp_prepare_attachment_for_js( $id );
+		$data = wp_prepare_attachment_for_js( $id );
 
 		if ( gettype( $data ) == 'array' ) {
-		  return json_decode( json_encode( $data ) );
+			return json_decode( json_encode( $data ) );
 		}
 
-	  return $data;
+		return $data;
 	}
 
 	public static function _get_menus() {
-	$get_menus = get_terms(
+	$get_menus  = get_terms(
 		'nav_menu',
 		array(
 			'hide_empty' => true,
 		)
 	);
-	  $fields  = array(
-		  'type'   => 'select',
-		  'label'  => __( 'Menu', 'quadmenu' ),
-		  'helper' => __( 'Select a WordPress menu that you created in the admin under Appearance > Menus.', 'quadmenu' ),
-	  );
+		$fields = array(
+			'type'   => 'select',
+			'label'  => __( 'Menu', 'quadmenu' ),
+			'helper' => __( 'Select a WordPress menu that you created in the admin under Appearance > Menus.', 'quadmenu' ),
+		);
 
 		if ( $get_menus ) {
 
@@ -51,17 +51,17 @@ class FLQuadMenuModule extends FLBuilderModule {
 					$fields['default'] = $menu->name;
 				}
 
-			  $menus[ $menu->slug ] = $menu->name;
+				$menus[ $menu->slug ] = $menu->name;
 			}
 
-		  $fields['options'] = $menus;
+			$fields['options'] = $menus;
 		} else {
-		  $fields['options'] = array(
-			  '' => __( 'No Menus Found', 'quadmenu' ),
-		  );
+			$fields['options'] = array(
+				'' => __( 'No Menus Found', 'quadmenu' ),
+			);
 		}
 
-	  return $fields;
+		return $fields;
 	}
 
 	public static function set_pre_get_posts_query( $query ) {
@@ -69,16 +69,15 @@ class FLQuadMenuModule extends FLBuilderModule {
 
 			if ( $query->queried_object_id ) {
 
-			  self::$fl_builder_page_id = $query->queried_object_id;
+				self::$fl_builder_page_id = $query->queried_object_id;
 
-			  // Fix when menu module is rendered via hook
+				// Fix when menu module is rendered via hook
 			} elseif ( isset( $query->query_vars['page_id'] ) && 0 != $query->query_vars['page_id'] ) {
 
-			  self::$fl_builder_page_id = $query->query_vars['page_id'];
+				self::$fl_builder_page_id = $query->query_vars['page_id'];
 			}
 		}
 	}
-
 }
 
 FLBuilder::register_module(

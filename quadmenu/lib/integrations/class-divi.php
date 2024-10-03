@@ -29,6 +29,4 @@ class Divi {
 		}
 		return self::$instance;
 	}
-
 }
-

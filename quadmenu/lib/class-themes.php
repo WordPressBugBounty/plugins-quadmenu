@@ -207,5 +207,4 @@ class Themes {
 		}
 		return self::$instance;
 	}
-
 }

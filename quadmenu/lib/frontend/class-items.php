@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Frontend;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 
 /**
@@ -65,7 +65,6 @@ class Items {
 		}
 		return self::$instance;
 	}
-
 }
 
 // new QuadMenu_Items();

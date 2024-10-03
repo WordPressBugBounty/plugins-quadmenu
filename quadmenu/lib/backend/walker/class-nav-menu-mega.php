@@ -3,7 +3,7 @@
 namespace QuadLayers\QuadMenu\Backend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 use QuadLayers\QuadMenu\Backend\Walker\Nav_Menu_Columns;
 
@@ -46,6 +46,5 @@ class Nav_Menu_Mega extends Nav_Menu_Columns {
 		}
 		return self::$instance;
 	}
-
 }
 

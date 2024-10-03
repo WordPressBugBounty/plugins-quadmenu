@@ -44,5 +44,4 @@ class WooCommerce {
 		}
 		return self::$instance;
 	}
-
 }

@@ -86,24 +86,25 @@
 	</div>
 	<hr/>
 	<div class="quadmenu-admin-box-text quadmenu-admin-box-three">
-		<h3><?php esc_html_e( 'Personal', 'quadmenu' ); ?></h3>
-		<p>
-			<?php printf( __( 'The single or personal license allows you to install %s in one site, receive the premium support for six month and lifetime updates.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
-		</p>
-		<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
-	</div>
-	<div class="quadmenu-admin-box-text quadmenu-admin-box-three">
-		<h3><?php esc_html_e( 'Agency', 'quadmenu' ); ?></h3>
-		<p>
-			<?php printf( __( 'The single or personal license allows you to install %s in one site, receive the premium support for six month and lifetime updates.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
-		</p>
-		<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
-	</div>
-	<div class="quadmenu-admin-box-text quadmenu-admin-box-three quadmenu-admin-box-last">
-		<h3><?php esc_html_e( 'Developer', 'quadmenu' ); ?></h3>
-		<p>
-			<?php printf( __( 'The single or personal license allows you to install %s in one site, receive the premium support for six month and lifetime updates.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
-		</p>
-		<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
-	</div>
+	<h3><?php esc_html_e( 'Personal', 'quadmenu' ); ?></h3>
+	<p>
+		<?php printf( __( 'The personal license offers annual or lifetime options. It allows you to activate %s on one site with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
+	</p>
+	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+</div>
+<div class="quadmenu-admin-box-text quadmenu-admin-box-three">
+	<h3><?php esc_html_e( 'Agency', 'quadmenu' ); ?></h3>
+	<p>
+		<?php printf( __( 'The agency license offers annual or lifetime options. It allows you to activate %s on up to five sites with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
+	</p>
+	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+</div>
+<div class="quadmenu-admin-box-text quadmenu-admin-box-three quadmenu-admin-box-last">
+	<h3><?php esc_html_e( 'Developer', 'quadmenu' ); ?></h3>
+	<p>
+		<?php printf( __( 'The developer license offers annual or lifetime options. It allows you to activate %s on unlimited sites with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
+	</p>
+	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+</div>
+
 </div>

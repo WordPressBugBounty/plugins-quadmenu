@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Frontend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 use QuadLayers\QuadMenu\Frontend\Walker\QuadMenu_Item_Default;
 
@@ -27,5 +27,4 @@ class QuadMenu_Item_Icon extends QuadMenu_Item_Default {
 
 		return ob_get_clean();
 	}
-
 }

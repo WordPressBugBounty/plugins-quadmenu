@@ -2,7 +2,7 @@
 namespace QuadLayers\QuadMenu\Frontend\Walker;
 
 if ( ! defined( 'ABSPATH' ) ) {
-  die( '-1' );
+	die( '-1' );
 }
 use QuadLayers\QuadMenu\Frontend\Walker\QuadMenu_Item;
 
@@ -132,5 +132,4 @@ class QuadMenu_Item_Cart extends QuadMenu_Item {
 		<span class="quadmenu-empty-icon quadmenu-icon <?php echo esc_attr( $this->item->icon ); ?>"></span>
 		<?php
 	}
-
 }

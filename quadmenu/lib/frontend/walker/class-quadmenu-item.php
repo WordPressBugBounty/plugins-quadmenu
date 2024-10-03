@@ -134,7 +134,6 @@ abstract class QuadMenu_Item {
 	}
 
 	function init() {
-
 	}
 
 	function add_item_classes() {
@@ -422,7 +421,6 @@ abstract class QuadMenu_Item {
 	}
 
 	function add_item_dropdown_ul_classes() {
-
 	}
 
 	function get_dropdown_ul_style() {
@@ -442,7 +440,6 @@ abstract class QuadMenu_Item {
 	}
 
 	function get_dropdown_ul_data() {
-
 	}
 
 	function get_dropdown_wrap_start() {
@@ -485,5 +482,4 @@ abstract class QuadMenu_Item {
 
 		return $content;
 	}
-
 }
