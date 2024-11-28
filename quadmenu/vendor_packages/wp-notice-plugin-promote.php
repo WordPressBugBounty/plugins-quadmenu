@@ -14,7 +14,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 	 */
 	define( 'QUADMENU_PROMOTE_PREMIUM_SELL_SLUG', 'quadmenu-pro' );
 	define( 'QUADMENU_PROMOTE_PREMIUM_SELL_NAME', 'Perfect WooCommerce Brands PRO' );
-	define( 'QUADMENU_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/product/quadmenu/?utm_source=qlxxx_admin' );
+	define( 'QUADMENU_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/quadmenu/?utm_source=qlxxx_admin' );
 	define( 'QUADMENU_PROMOTE_PREMIUM_SELL_URL', QUADMENU_PREMIUM_SELL_URL );
 	/**
 	 * Notice cross sell 1
@@ -30,7 +30,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_SLUG', 'wp-whatsapp-chat' );
 	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_NAME', 'Social Chat' );
 	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_DESCRIPTION', esc_html__( 'Social Chat allows your users to start a conversation from your website directly to your WhatsApp phone number with one click.', 'quadmenu' ) );
-	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/product/whatsapp-chat/?utm_source=qlttf_admin' );
+	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/whatsapp-chat/?utm_source=qlttf_admin' );
 	define( 'QUADMENU_PROMOTE_CROSS_INSTALL_2_LOGO_SRC', plugins_url( '/assets/backend/img/wp-whatsapp-chat.jpeg', QUADMENU_PLUGIN_FILE ) );
 
 	new \QuadLayers\WP_Notice_Plugin_Promote\Load(
@@ -38,21 +38,15 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		array(
 			array(
 				'type'               => 'ranking',
-				'notice_delay'       => MONTH_IN_SECONDS,
+				'notice_delay'       => 0,
 				'notice_logo'        => QUADMENU_PROMOTE_LOGO_SRC,
-				'notice_title'       => sprintf(
-					esc_html__(
-						'Hello! Thank you for choosing the %s plugin!',
-						'quadmenu'
-					),
-					QUADMENU_PLUGIN_NAME
+				'notice_description' => sprintf(
+								esc_html__( 'Hello! %2$s We\'ve spent countless hours developing this free plugin for you and would really appreciate it if you could drop us a quick rating. Your feedback is extremely valuable to us. %3$s It helps us to get better. Thanks for using %1$s.', 'quadmenu' ),
+								'<b>'.QUADMENU_PLUGIN_NAME.'</b>',
+								'<span style="font-size: 16px;">🙂</span>',
+								'<br>'
 				),
-				'notice_description' => esc_html__( 'Could you please give it a 5-star rating on WordPress? Your feedback boosts our motivation, helps us promote, and continues to improve this product. Your support matters!', 'quadmenu' ),
 				'notice_link'        => QUADMENU_PROMOTE_REVIEW_URL,
-				'notice_link_label'  => esc_html__(
-					'Yes, of course!',
-					'quadmenu'
-				),
 				'notice_more_link'   => QUADMENU_SUPPORT_URL,
 				'notice_more_label'  => esc_html__(
 					'Report a bug',
@@ -66,7 +60,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 					'Purchase Now',
 					'quadmenu'
 				),
-				'notice_delay'       => MONTH_IN_SECONDS,
+				'notice_delay'       => WEEK_IN_SECONDS,
 				'notice_logo'        => QUADMENU_PROMOTE_LOGO_SRC,
 				'notice_title'       => esc_html__(
 					'Hello! We have a special gift!',
@@ -82,14 +76,10 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 					QUADMENU_PROMOTE_PREMIUM_SELL_NAME
 				),
 				'notice_more_link'   => QUADMENU_PROMOTE_PREMIUM_SELL_URL,
-				'notice_more_label'  => esc_html__(
-					'More info!',
-					'quadmenu'
-				),
 			),
 			array(
 				'plugin_slug'        => QUADMENU_PROMOTE_CROSS_INSTALL_1_SLUG,
-				'notice_delay'       => MONTH_IN_SECONDS * 4,
+				'notice_delay'       => MONTH_IN_SECONDS * 3,
 				'notice_logo'        => QUADMENU_PROMOTE_CROSS_INSTALL_1_LOGO_SRC,
 				'notice_title'       => sprintf(
 					esc_html__(
@@ -99,11 +89,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 					QUADMENU_PROMOTE_CROSS_INSTALL_1_NAME
 				),
 				'notice_description' => QUADMENU_PROMOTE_CROSS_INSTALL_1_DESCRIPTION,
-				'notice_more_link'   => QUADMENU_PROMOTE_CROSS_INSTALL_1_URL,
-				'notice_more_label'  => esc_html__(
-					'More info!',
-					'quadmenu'
-				),
+				'notice_more_link'   => QUADMENU_PROMOTE_CROSS_INSTALL_1_URL
 			),
 			array(
 				'plugin_slug'        => QUADMENU_PROMOTE_CROSS_INSTALL_2_SLUG,
@@ -117,11 +103,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 					QUADMENU_PROMOTE_CROSS_INSTALL_2_NAME
 				),
 				'notice_description' => QUADMENU_PROMOTE_CROSS_INSTALL_2_DESCRIPTION,
-				'notice_more_link'   => QUADMENU_PROMOTE_CROSS_INSTALL_2_URL,
-				'notice_more_label'  => esc_html__(
-					'More info!',
-					'quadmenu'
-				),
+				'notice_more_link'   => QUADMENU_PROMOTE_CROSS_INSTALL_2_URL
 			),
 		)
 	);
