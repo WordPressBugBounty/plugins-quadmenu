@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'reduxNewsflash' ) ) {
-	class reduxNewsflash {
+if ( ! class_exists( 'reduxLegacyNewsflash' ) ) {
+	class reduxLegacyNewsflash {
 		private $parent      = null;
 		private $notice_data = '';
 		private $server_file = '';
@@ -28,8 +28,8 @@ if ( ! class_exists( 'reduxNewsflash' ) ) {
 
 			$this->notice_data = get_option( 'r_notice_data', '' );
 
-			$fname = Redux_Functions::bub( 'get_notice_json', $parent->args['opt_name'] );
-			$mname = Redux_Functions::yo( 'display_message', $parent->args['opt_name'] );
+			$fname = ReduxLegacy_Functions::bub( 'get_notice_json', $parent->args['opt_name'] );
+			$mname = ReduxLegacy_Functions::yo( 'display_message', $parent->args['opt_name'] );
 
 			// if notice data is empty
 			if ( empty( $this->notice_data ) ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'reduxNewsflash' ) ) {
 					if ( ! empty( $this->notice_data ) ) {
 						if ( strcmp( $data, $this->notice_data ) == 0 ) {
 							// set new cookie for interval value
-							Redux_Functions::setCookie( $this->cookie_id, time(), time() + ( 86400 * $this->interval ), '/' );
+							ReduxLegacy_Functions::setCookie( $this->cookie_id, time(), time() + ( 86400 * $this->interval ), '/' );
 
 							// bail out
 							return;
@@ -118,7 +118,7 @@ if ( ! class_exists( 'reduxNewsflash' ) ) {
 						'color'   => $data['color'],
 					);
 
-					Redux_Admin_Notices::set_notice( $notice_data );
+					ReduxLegacy_Admin_Notices::set_notice( $notice_data );
 				}
 			}
 		}

@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_rgba' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_rgba' ) ) {
 
-	class ReduxFramework_rgba {
+	class ReduxFrameworkLegacy_rgba {
 
 		public $parent;
 		public $field;
@@ -22,11 +22,11 @@ if ( ! class_exists( 'ReduxFramework_rgba' ) ) {
 			$this->value  = $value;
 
 			if ( isset( $this->value['color'] ) && isset( $this->value['alpha'] ) ) {
-				$this->value = Redux_Helpers::hex2rgba( $this->value['color'], $this->value['alpha'] );
+				$this->value = ReduxLegacy_Helpers::hex2rgba( $this->value['color'], $this->value['alpha'] );
 			}
 
 			if ( isset( $this->field['default']['color'] ) && isset( $this->field['default']['alpha'] ) ) {
-				$this->field['default'] = Redux_Helpers::hex2rgba( $this->field['default']['color'], $this->field['default']['alpha'] );
+				$this->field['default'] = ReduxLegacy_Helpers::hex2rgba( $this->field['default']['color'], $this->field['default']['alpha'] );
 			}
 
 			if ( empty( self::$_extension_dir ) ) {
@@ -56,7 +56,7 @@ if ( ! class_exists( 'ReduxFramework_rgba' ) ) {
 
 			wp_enqueue_style( 'wp-color-picker' );
 
-			wp_register_script( 'wp-color-picker-alpha', $this->_extension_url . 'wp-color-picker-alpha' . Redux_Functions::isMin() . '.js', array( 'jquery', 'wp-color-picker' ) );
+			wp_register_script( 'wp-color-picker-alpha', $this->_extension_url . 'wp-color-picker-alpha' . ReduxLegacy_Functions::isMin() . '.js', array( 'jquery', 'wp-color-picker' ) );
 
 			wp_localize_script(
 				'wp-color-picker-alpha',
@@ -82,7 +82,7 @@ if ( ! class_exists( 'ReduxFramework_rgba' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-rgba-js',
-				$this->_extension_url . 'field_rgba' . Redux_Functions::isMin() . '.js',
+				$this->_extension_url . 'field_rgba' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'wp-color-picker-alpha', 'redux-js' ),
 				time(),
 				true
@@ -98,12 +98,12 @@ if ( ! class_exists( 'ReduxFramework_rgba' ) ) {
 				$style .= $mode . ':' . $this->value . ';';
 
 				if ( ! empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
-					$css                      = Redux_Functions::parseCSS( $this->field['output'], $style, $this->value );
+					$css                      = ReduxLegacy_Functions::parseCSS( $this->field['output'], $style, $this->value );
 					$this->parent->outputCSS .= $css;
 				}
 
 				if ( ! empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
-					$css                        = Redux_Functions::parseCSS( $this->field['compiler'], $style, $this->value );
+					$css                        = ReduxLegacy_Functions::parseCSS( $this->field['compiler'], $style, $this->value );
 					$this->parent->compilerCSS .= $css;
 				}
 			}

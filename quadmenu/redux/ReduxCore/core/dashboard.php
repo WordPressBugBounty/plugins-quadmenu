@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'reduxDashboardWidget' ) ) {
-	class reduxDashboardWidget {
+if ( ! class_exists( 'reduxLegacyDashboardWidget' ) ) {
+	class reduxLegacyDashboardWidget {
 
 		public function __construct( $parent ) {
-			$fname = Redux_Functions::dat( 'add_redux_dashboard', $parent->args['opt_name'] );
+			$fname = ReduxLegacy_Functions::dat( 'add_redux_dashboard', $parent->args['opt_name'] );
 
 			add_action( 'wp_dashboard_setup', array( $this, $fname ) );
 		}
@@ -25,7 +25,7 @@ if ( ! class_exists( 'reduxDashboardWidget' ) ) {
 			echo '<div class="rss-widget">';
 			wp_widget_rss_output(
 				array(
-					'url'          => 'http://reduxframework.com/feed/',
+					'url'          => 'http://ReduxFrameworkLegacy.com/feed/',
 					'title'        => 'REDUX_NEWS',
 					'items'        => 3,
 					'show_summary' => 1,

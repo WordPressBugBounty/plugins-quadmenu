@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	// Don't duplicate me!
-if ( ! class_exists( 'Redux_Admin_Notices' ) ) {
+if ( ! class_exists( 'ReduxLegacy_Admin_Notices' ) ) {
 
 	/**
 	 * Redux API Class
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Redux_Admin_Notices' ) ) {
 	 *
 	 * @since       1.0.0
 	 */
-	class Redux_Admin_Notices {
+	class ReduxLegacy_Admin_Notices {
 
 		public static $_parent;
 
@@ -32,7 +32,7 @@ if ( ! class_exists( 'Redux_Admin_Notices' ) ) {
 			add_action(
 				'wp_ajax_redux_hide_admin_notice',
 				array(
-					'Redux_Admin_Notices',
+					'ReduxLegacy_Admin_Notices',
 					'dismissAdminNoticeAJAX',
 				)
 			);
@@ -198,5 +198,5 @@ if ( ! class_exists( 'Redux_Admin_Notices' ) ) {
 		}
 	}
 
-	Redux_Admin_Notices::load();
+	ReduxLegacy_Admin_Notices::load();
 }

@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Media
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_media' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_media' ) ) {
 
 	/**
-	 * Main ReduxFramework_media class
+	 * Main ReduxFrameworkLegacy_media class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_media {
+	class ReduxFrameworkLegacy_media {
 
 		public $parent;
 		public $field;
@@ -236,7 +236,7 @@ if ( ! class_exists( 'ReduxFramework_media' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-media-js',
-				ReduxFramework::$_url . 'assets/js/media/media' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/media/media' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true

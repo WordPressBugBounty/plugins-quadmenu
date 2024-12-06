@@ -1,7 +1,7 @@
 <?php
 
-if ( ! class_exists( 'Redux_Validation_no_special_chars' ) ) {
-	class Redux_Validation_no_special_chars {
+if ( ! class_exists( 'ReduxLegacy_Validation_no_special_chars' ) ) {
+	class ReduxLegacy_Validation_no_special_chars {
 		public $parent;
 		public $field;
 		public $value;
@@ -10,7 +10,7 @@ if ( ! class_exists( 'Redux_Validation_no_special_chars' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $parent, $field, $value, $current ) {
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'Redux_Validation_no_special_chars' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and validates them
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function validate() {
 

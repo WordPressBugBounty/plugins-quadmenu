@@ -12,7 +12,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @author      Kevin Provance (kprovance)
 	 * @version     4.0.0
 	 */
@@ -23,15 +23,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_Extension_options_object' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_Extension_options_object' ) ) {
 
 
 	/**
-	 * Main ReduxFramework options_object extension class
+	 * Main ReduxFrameworkLegacy options_object extension class
 	 *
 	 * @since       3.1.6
 	 */
-	class ReduxFramework_Extension_options_object {
+	class ReduxFrameworkLegacy_Extension_options_object {
 
 		// Protected vars
 		protected $parent;
@@ -64,7 +64,7 @@ if ( ! class_exists( 'ReduxFramework_Extension_options_object' ) ) {
 
 			self::$theInstance = $this;
 
-			$this->is_field = Redux_Helpers::isFieldInUse( $parent, 'options_object' );
+			$this->is_field = ReduxLegacy_Helpers::isFieldInUse( $parent, 'options_object' );
 
 			if ( ! $this->is_field && $this->parent->args['dev_mode'] && $this->parent->args['show_options_object'] ) {
 				$this->add_section();

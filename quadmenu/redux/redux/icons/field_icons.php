@@ -3,11 +3,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_icons' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_icons' ) ) {
 
-	add_action( 'admin_footer', array( 'ReduxFramework_icons', 'modal' ) );
+	add_action( 'admin_footer', array( 'ReduxFrameworkLegacy_icons', 'modal' ) );
 
-	class ReduxFramework_icons {
+	class ReduxFrameworkLegacy_icons {
 
 		public $parent;
 		public $field;
@@ -209,7 +209,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 
 			wp_enqueue_style(
 				'redux-field-icons-css',
-				$this->_extension_url . 'field_icons' . Redux_Functions::isMin() . '.css',
+				$this->_extension_url . 'field_icons' . ReduxLegacy_Functions::isMin() . '.css',
 				array(),
 				time(),
 				'all'
@@ -217,7 +217,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-media-js',
-				ReduxFramework::$_url . 'assets/js/media/media' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/media/media' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true
@@ -225,7 +225,7 @@ if ( ! class_exists( 'ReduxFramework_icons' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-icons-js',
-				$this->_extension_url . 'field_icons' . Redux_Functions::isMin() . '.js',
+				$this->_extension_url . 'field_icons' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-sortable', 'redux-field-media-js' ),
 				time(),
 				true

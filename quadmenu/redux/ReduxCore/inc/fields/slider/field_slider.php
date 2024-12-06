@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Slider
  * @author      Kevin Provance (kprovance)
  * @version     2.0.0
@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_slider' ) ) {
-	class ReduxFramework_slider {
+if ( ! class_exists( 'ReduxFrameworkLegacy_slider' ) ) {
+	class ReduxFrameworkLegacy_slider {
 
 		public $parent;
 		public $field;
@@ -34,7 +34,7 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 3.1.8
+		 * @since ReduxFrameworkLegacy 3.1.8
 		 */
 		private $display_none   = 0;
 		private $display_label  = 1;
@@ -215,17 +215,17 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 3.1.8
+		 * @since ReduxFrameworkLegacy 3.1.8
 		 */
 		function enqueue() {
 
-			$min = Redux_Functions::isMin();
+			$min = ReduxLegacy_Functions::isMin();
 
 			wp_enqueue_style( 'select2-css' );
 
 			wp_enqueue_style(
 				'redux-nouislider-css',
-				ReduxFramework::$_url . 'inc/fields/slider/vendor/nouislider/redux.jquery.nouislider.css',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/slider/vendor/nouislider/redux.jquery.nouislider.css',
 				array(),
 				'5.0.0',
 				'all'
@@ -233,7 +233,7 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 
 			wp_register_script(
 				'redux-nouislider-js',
-				ReduxFramework::$_url . 'inc/fields/slider/vendor/nouislider/redux.jquery.nouislider' . $min . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/slider/vendor/nouislider/redux.jquery.nouislider' . $min . '.js',
 				array( 'jquery' ),
 				'5.0.0',
 				true
@@ -241,7 +241,7 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-slider-js',
-				ReduxFramework::$_url . 'inc/fields/slider/field_slider' . $min . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/slider/field_slider' . $min . '.js',
 				array( 'jquery', 'redux-nouislider-js', 'redux-js', 'select2-js' ),
 				time(),
 				true
@@ -250,7 +250,7 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-slider-css',
-					ReduxFramework::$_url . 'inc/fields/slider/field_slider.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/slider/field_slider.css',
 					array(),
 					time(),
 					'all'
@@ -264,7 +264,7 @@ if ( ! class_exists( 'ReduxFramework_slider' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 0.0.4
+		 * @since ReduxFrameworkLegacy 0.0.4
 		 */
 		function render() {
 

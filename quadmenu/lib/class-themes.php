@@ -3,7 +3,7 @@
 namespace QuadLayers\QuadMenu;
 
 use QuadLayers\QuadMenu\Compiler;
-use QuadLayers\QuadMenu\Redux;
+use QuadLayers\QuadMenu\Redux_Legacy;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
@@ -104,7 +104,7 @@ class Themes {
 
 			Compiler::do_compiler( true );
 
-			Redux::add_notification( 'blue', sprintf( esc_html__( 'New theme created. Your options panel will be reloaded to include their options. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
+			Redux_Legacy::add_notification( 'blue', sprintf( esc_html__( 'New theme created. Your options panel will be reloaded to include their options. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
 
 			Plugin::send_json_success( Plugin::taburl( 'quadmenu_theme_' . $next_key ) );
 		} else {
@@ -138,7 +138,7 @@ class Themes {
 
 				Compiler::do_compiler( true );
 
-				Redux::add_notification( 'blue', sprintf( esc_html__( 'Theme deleted. Your options panel will be reloaded to remove their options. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
+				Redux_Legacy::add_notification( 'blue', sprintf( esc_html__( 'Theme deleted. Your options panel will be reloaded to remove their options. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
 
 				Plugin::send_json_success( Plugin::taburl( 'quadmenu_theme_' . $prev_key ) );
 			} else {
@@ -153,7 +153,7 @@ class Themes {
 
 		if ( ! empty( $_REQUEST['data'] ) && wp_verify_nonce( $_REQUEST['nonce'], 'redux_ajax_nonce' . QUADMENU_DB_OPTIONS ) ) {
 
-			$redux = \ReduxFrameworkInstances::get_instance( QUADMENU_DB_OPTIONS );
+			$redux = \ReduxFrameworkInstancesLegacy::get_instance( QUADMENU_DB_OPTIONS );
 
 			$values = array();
 
@@ -192,7 +192,7 @@ class Themes {
 			}
 
 			if ( $update && update_option( QUADMENU_DB_THEMES, $saved_themes ) ) {
-				Redux::add_notification( 'blue', esc_html__( 'Theme name changed.', 'quadmenu' ) );
+				Redux_Legacy::add_notification( 'blue', esc_html__( 'Theme name changed.', 'quadmenu' ) );
 			}
 		}
 	}

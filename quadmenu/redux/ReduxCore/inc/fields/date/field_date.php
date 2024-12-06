@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Date
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_date' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_date' ) ) {
 
 	/**
-	 * Main ReduxFramework_date class
+	 * Main ReduxFrameworkLegacy_date class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_date {
+	class ReduxFrameworkLegacy_date {
 
 		/**
 		 * Field Constructor.
@@ -76,7 +76,7 @@ if ( ! class_exists( 'ReduxFramework_date' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-date-css',
-					ReduxFramework::$_url . 'inc/fields/date/field_date.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/date/field_date.css',
 					array(),
 					time(),
 					'all'
@@ -85,7 +85,7 @@ if ( ! class_exists( 'ReduxFramework_date' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-date-js',
-				ReduxFramework::$_url . 'inc/fields/date/field_date' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/date/field_date' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'redux-js' ),
 				time(),
 				true

@@ -4,7 +4,7 @@
  * Field Select Image
  *
  * @package     WordPress
- * @subpackage  ReduxFramework
+ * @subpackage  ReduxFrameworkLegacy
  * @since       3.1.2
  * @author      Kevin Provance <kprovance>
  */
@@ -14,14 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_select_image' ) ) {
-	class ReduxFramework_select_image {
+if ( ! class_exists( 'ReduxFrameworkLegacy_select_image' ) ) {
+	class ReduxFrameworkLegacy_select_image {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -33,7 +33,7 @@ if ( ! class_exists( 'ReduxFramework_select_image' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 
@@ -139,14 +139,14 @@ if ( ! class_exists( 'ReduxFramework_select_image' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function enqueue() {
 			wp_enqueue_style( 'select2-css' );
 
 			wp_enqueue_script(
 				'field-select-image-js',
-				ReduxFramework::$_url . 'inc/fields/select_image/field_select_image' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/select_image/field_select_image' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'select2-js', 'redux-js' ),
 				time(),
 				true
@@ -155,7 +155,7 @@ if ( ! class_exists( 'ReduxFramework_select_image' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-select-image-css',
-					ReduxFramework::$_url . 'inc/fields/select_image/field_select_image.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/select_image/field_select_image.css',
 					array(),
 					time(),
 					'all'

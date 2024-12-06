@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Palette
  * @author      Kevin Provance (kprovance)
  * @version     3.5.4
@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_palette' ) ) {
-	class ReduxFramework_palette {
+if ( ! class_exists( 'ReduxFrameworkLegacy_palette' ) ) {
+	class ReduxFrameworkLegacy_palette {
 
 		/**
 		 * Field Constructor.
@@ -81,11 +81,11 @@ if ( ! class_exists( 'ReduxFramework_palette' ) ) {
 		 * @return      void
 		 */
 		public function enqueue() {
-			$min = Redux_Functions::isMin();
+			$min = ReduxLegacy_Functions::isMin();
 
 			wp_enqueue_script(
 				'redux-field-palette-js',
-				ReduxFramework::$_url . 'inc/fields/palette/field_palette' . $min . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/palette/field_palette' . $min . '.js',
 				array( 'jquery', 'redux-js', 'jquery-ui-button', 'jquery-ui-core' ),
 				time(),
 				true
@@ -94,7 +94,7 @@ if ( ! class_exists( 'ReduxFramework_palette' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-palette-css',
-					ReduxFramework::$_url . 'inc/fields/palette/field_palette.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/palette/field_palette.css',
 					array(),
 					time(),
 					'all'

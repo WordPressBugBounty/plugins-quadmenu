@@ -13,11 +13,11 @@
  * - getSubsets()
  * - getVariants()
  * Classes list:
- * - ReduxFramework_typography
+ * - ReduxFrameworkLegacy_typography
  */
 
-if ( ! class_exists( 'ReduxFramework_typography' ) ) {
-	class ReduxFramework_typography {
+if ( ! class_exists( 'ReduxFrameworkLegacy_typography' ) ) {
+	class ReduxFrameworkLegacy_typography {
 
 		public $parent;
 		public $field;
@@ -49,7 +49,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -139,7 +139,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 			// Since fonts declared is CSS (@font-face) are not rendered in the preview,
@@ -536,7 +536,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function enqueue() {
 			if ( ! wp_style_is( 'select2-css' ) ) {
@@ -550,7 +550,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 			if ( ! wp_script_is( 'redux-field-typography-js' ) ) {
 				wp_enqueue_script(
 					'redux-field-typography-js',
-					ReduxFramework::$_url . 'inc/fields/typography/field_typography' . Redux_Functions::isMin() . '.js',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/typography/field_typography' . ReduxLegacy_Functions::isMin() . '.js',
 					array( 'jquery', 'wp-color-picker', 'select2-js', 'redux-js' ),
 					time(),
 					true
@@ -571,7 +571,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 				if ( ! wp_style_is( 'redux-field-typography-css' ) ) {
 					wp_enqueue_style(
 						'redux-field-typography-css',
-						ReduxFramework::$_url . 'inc/fields/typography/field_typography.css',
+						ReduxFrameworkLegacy::$_url . 'inc/fields/typography/field_typography.css',
 						array(),
 						time(),
 						'all'
@@ -584,7 +584,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * makeGoogleWebfontLink Function.
 		 * Creates the google fonts link.
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function makeGoogleWebfontLink( $fonts ) {
 			$link    = '';
@@ -625,7 +625,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * makeGoogleWebfontString Function.
 		 * Creates the google fonts link.
 		 *
-		 * @since ReduxFramework 3.1.8
+		 * @since ReduxFrameworkLegacy 3.1.8
 		 */
 		function makeGoogleWebfontString( $fonts ) {
 			$link    = '';
@@ -1037,7 +1037,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * getSubsets Function.
 		 * Clean up the Google Webfonts subsets to be human readable
 		 *
-		 * @since ReduxFramework 0.2.0
+		 * @since ReduxFrameworkLegacy 0.2.0
 		 */
 		private function getSubsets( $var ) {
 			$result = array();
@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'ReduxFramework_typography' ) ) {
 		 * getVariants Function.
 		 * Clean up the Google Webfonts variants to be human readable
 		 *
-		 * @since ReduxFramework 0.2.0
+		 * @since ReduxFrameworkLegacy 0.2.0
 		 */
 		private function getVariants( $var ) {
 			$result = array();

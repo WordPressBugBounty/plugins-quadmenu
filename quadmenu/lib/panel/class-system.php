@@ -128,13 +128,13 @@ class System extends Panel {
 
 		// Redux version
 		if ( class_exists( 'ReduxFramework' ) ) {
-			if ( version_compare( \ReduxFramework::$_version, '3.6.5' ) < 0 ) {
+			if ( version_compare( \ReduxFrameworkLegacy::$_version, '3.6.5' ) < 0 ) {
 			$this->add(
 				'Plugin config',
 				array(
 					'check_name' => 'Redux version',
 					'tooltip'    => '',
-					'value'      => sprintf( '%1$s - <span class="quadmenu-status-small-text">%2$s <a href="%3$s" target="_blank">%4$s</a></span>', \ReduxFramework::$_version, esc_html__( 'Your Redux version is outdated: ', 'quadmenu' ), 'https://es.wordpress.org/plugins/redux-framework/', esc_html__( 'Please install it as a plugin', 'quadmenu' ) ),
+					'value'      => sprintf( '%1$s - <span class="quadmenu-status-small-text">%2$s <a href="%3$s" target="_blank">%4$s</a></span>', \ReduxFrameworkLegacy::$_version, esc_html__( 'Your Redux version is outdated: ', 'quadmenu' ), 'https://es.wordpress.org/plugins/redux-framework/', esc_html__( 'Please install it as a plugin', 'quadmenu' ) ),
 					'status'     => 'red',
 				)
 			);
@@ -144,7 +144,7 @@ class System extends Panel {
 				array(
 					'check_name' => 'Redux version',
 					'tooltip'    => '',
-					'value'      => \ReduxFramework::$_version,
+					'value'      => \ReduxFrameworkLegacy::$_version,
 					'status'     => 'green',
 				)
 			);

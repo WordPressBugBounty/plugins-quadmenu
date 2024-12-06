@@ -1,13 +1,13 @@
 <?php
 
-class Redux_Full_Package implements themecheck {
+class ReduxLegacy_Full_Package implements themecheck {
 	protected $error = array();
 
 	function check( $php_files, $css_files, $other_files ) {
 
 		$ret = true;
 
-		$check = Redux_ThemeCheck::get_instance();
+		$check = ReduxLegacy_ThemeCheck::get_instance();
 		$redux = $check::get_redux_details( $php_files );
 
 		if ( $redux ) {
@@ -54,4 +54,4 @@ class Redux_Full_Package implements themecheck {
 
 	$themechecks = array();
 
-	$themechecks[] = new Redux_Full_Package();
+	$themechecks[] = new ReduxLegacy_Full_Package();

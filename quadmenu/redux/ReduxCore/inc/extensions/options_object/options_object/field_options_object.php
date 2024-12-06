@@ -11,7 +11,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @author      Kevin Provance (kprovance)
 	 * @version     3.5.4
 	 */
@@ -22,14 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_options_object' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_options_object' ) ) {
 
 	/**
-	 * Main ReduxFramework_options_object class
+	 * Main ReduxFrameworkLegacy_options_object class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_options_object {
+	class ReduxFrameworkLegacy_options_object {
 
 		/**
 		 * Field Constructor.
@@ -46,8 +46,8 @@ if ( ! class_exists( 'ReduxFramework_options_object' ) ) {
 			$this->value    = $value;
 			$this->is_field = $this->parent->extensions['options_object']->is_field;
 
-			$this->extension_dir = ReduxFramework::$_dir . 'inc/extensions/options_object/';
-			$this->extension_url = ReduxFramework::$_url . 'inc/extensions/options_object/';
+			$this->extension_dir = ReduxFrameworkLegacy::$_dir . 'inc/extensions/options_object/';
+			$this->extension_url = ReduxFrameworkLegacy::$_url . 'inc/extensions/options_object/';
 
 			// Set default args for this field to avoid bad indexes. Change this to anything you use.
 			$defaults    = array(
@@ -131,9 +131,9 @@ if ( ! class_exists( 'ReduxFramework_options_object' ) ) {
 
 			wp_enqueue_script(
 				'redux-options-object',
-				$this->extension_url . 'options_object/field_options_object' . Redux_Functions::isMin() . '.js',
+				$this->extension_url . 'options_object/field_options_object' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery' ),
-				ReduxFramework_extension_options_object::$version,
+				ReduxFrameworkLegacy_extension_options_object::$version,
 				true
 			);
 

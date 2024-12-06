@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Link_Color
  * @author      Luciano "WebCaos" Ubertini
  * @author      Daniel J Griffiths (Ghost1227)
@@ -27,14 +27,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_link_color' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_link_color' ) ) {
 
 	/**
-	 * Main ReduxFramework_link_color class
+	 * Main ReduxFrameworkLegacy_link_color class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_link_color {
+	class ReduxFrameworkLegacy_link_color {
 
 		/**
 		 * Field Constructor.
@@ -120,7 +120,7 @@ if ( ! class_exists( 'ReduxFramework_link_color' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-link-color-js',
-				ReduxFramework::$_url . 'inc/fields/link_color/field_link_color' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/link_color/field_link_color' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'wp-color-picker', 'redux-js' ),
 				time(),
 				true
@@ -131,7 +131,7 @@ if ( ! class_exists( 'ReduxFramework_link_color' ) ) {
 
 				wp_enqueue_style(
 					'redux-field-link_color-js',
-					ReduxFramework::$_url . 'inc/fields/link_color/field_link_color.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/link_color/field_link_color.css',
 					array(),
 					time(),
 					'all'

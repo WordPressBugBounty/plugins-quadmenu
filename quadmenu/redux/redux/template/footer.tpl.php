@@ -4,7 +4,7 @@
  * Override this template by specifying the path where it is stored (templates_path) in your Redux config.
  *
  * @author        Redux Framework
- * @package       ReduxFramework/Templates
+ * @package       ReduxFrameworkLegacy/Templates
  * @version:      3.5.8.3
  */
 ?>
@@ -53,9 +53,9 @@
 	<?php } ?>
 
 	<div class="redux-action_bar">
-		<span class="spinner"></span>   
-		<a id="quadmenu_delete_theme" style="color: #D0011B;" href="#"><?php esc_html_e( 'Delete this theme', 'quadmenu' ); ?></a>            
-		<a id="quadmenu_add_theme" class="button button-secondary" href="#"><?php esc_html_e( 'Create Theme', 'quadmenu' ); ?></a>  
+		<span class="spinner"></span>
+		<a id="quadmenu_delete_theme" style="color: #D0011B;" href="#"><?php esc_html_e( 'Delete this theme', 'quadmenu' ); ?></a>
+		<a id="quadmenu_add_theme" class="button button-secondary" href="#"><?php esc_html_e( 'Create Theme', 'quadmenu' ); ?></a>
 		<?php
 		if ( false === $this->parent->args['hide_save'] ) {
 			submit_button( __( 'Save', 'quadmenu' ), 'primary', 'redux_save', false );

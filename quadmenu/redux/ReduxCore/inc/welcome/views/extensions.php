@@ -61,8 +61,8 @@
 
 <?php
 foreach ( $colors as $key => $color ) {
-	echo '.theme-browser .theme.color' . esc_html( $key ) . ' .theme-screenshot{background-color:' . esc_html( Redux_Helpers::hex2rgba( $color, .45 ) ) . ';}';
-	echo '.theme-browser .theme.color' . esc_html( $key ) . ':hover .theme-screenshot{background-color:' . esc_html( Redux_Helpers::hex2rgba( $color, .75 ) ) . ';}';
+	echo '.theme-browser .theme.color' . esc_html( $key ) . ' .theme-screenshot{background-color:' . esc_html( ReduxLegacy_Helpers::hex2rgba( $color, .45 ) ) . ';}';
+	echo '.theme-browser .theme.color' . esc_html( $key ) . ':hover .theme-screenshot{background-color:' . esc_html( ReduxLegacy_Helpers::hex2rgba( $color, .75 ) ) . ';}';
 
 }
 	echo '</style>';
@@ -78,7 +78,7 @@ foreach ( $colors as $key => $color ) {
 	<div class="redux-badge">
 		<i class="el el-redux"></i>
 		<span>
-			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFramework::$_version ) ); ?>
+			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFrameworkLegacy::$_version ) ); ?>
 		</span>
 	</div>
 
@@ -95,7 +95,7 @@ foreach ( $colors as $key => $color ) {
 			$data = get_transient( 'redux-extensions-fetch' );
 
 if ( empty( $data ) ) {
-	$data = @wp_remote_retrieve_body( @wp_remote_get( 'http://reduxframework.com/wp-admin/admin-ajax.php?action=get_redux_extensions' ) );
+	$data = @wp_remote_retrieve_body( @wp_remote_get( 'http://ReduxFrameworkLegacy.com/wp-admin/admin-ajax.php?action=get_redux_extensions' ) );
 
 	if ( ! empty( $data ) ) {
 		$data = json_decode( $data, true );
@@ -138,7 +138,7 @@ if ( ! empty( $data ) ) {
 						<div class="theme-actions">
 							<a class="button button-primary button-install-demo"
 								data-demo-id="<?php echo esc_attr( $key ); ?>"
-								href="<?php echo esc_url( $extension['url'] ); ?>" 
+								href="<?php echo esc_url( $extension['url'] ); ?>"
 								target="_blank">Learn More
 							</a>
 						</div>

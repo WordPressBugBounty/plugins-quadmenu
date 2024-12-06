@@ -7,7 +7,7 @@
 	<div class="redux-badge">
 		<i class="el el-redux"></i>
 		<span>
-			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFramework::$_version ) ); ?>
+			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFrameworkLegacy::$_version ) ); ?>
 		</span>
 	</div>
 
@@ -15,7 +15,7 @@
 	<?php $this->tabs(); ?>
 
 	<p class="about-description">
-		<?php printf( __( 'Redux is created by a community of developers world wide. Want to have your name listed too? <a href="%d" target="_blank">Contribute to Redux</a>.', 'redux-framework' ), 'https://github.com/reduxframework/redux-framework/blob/master/CONTRIBUTING.md' ); ?>
+		<?php printf( __( 'Redux is created by a community of developers world wide. Want to have your name listed too? <a href="%d" target="_blank">Contribute to Redux</a>.', 'redux-framework' ), 'https://github.com/ReduxFrameworkLegacy/redux-framework/blob/master/CONTRIBUTING.md' ); ?>
 	</p>
 
 	<?php echo wp_kses_post( $this->contributors() ); ?>

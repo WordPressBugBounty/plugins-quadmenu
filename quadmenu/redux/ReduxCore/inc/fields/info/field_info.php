@@ -12,7 +12,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @subpackage  Field_Info
 	 * @author      Daniel J Griffiths (Ghost1227)
 	 * @author      Dovy Paukstys
@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_info' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_info' ) ) {
 
 	/**
-	 * Main ReduxFramework_info class
+	 * Main ReduxFrameworkLegacy_info class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_info {
+	class ReduxFrameworkLegacy_info {
 
 		public $parent;
 		public $field;
@@ -157,7 +157,7 @@ if ( ! class_exists( 'ReduxFramework_info' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-info-css',
-					ReduxFramework::$_url . 'inc/fields/info/field_info.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/info/field_info.css',
 					array(),
 					time(),
 					'all'

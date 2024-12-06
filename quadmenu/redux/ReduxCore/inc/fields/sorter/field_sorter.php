@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_sorter' ) ) {
-	class ReduxFramework_sorter {
+if ( ! class_exists( 'ReduxFrameworkLegacy_sorter' ) ) {
+	class ReduxFrameworkLegacy_sorter {
 
 		/**
 		 * Field Constructor.
@@ -183,7 +183,7 @@ if ( ! class_exists( 'ReduxFramework_sorter' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-sorder-css',
-					ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/sorter/field_sorter.css',
 					array(),
 					time(),
 					'all'
@@ -192,7 +192,7 @@ if ( ! class_exists( 'ReduxFramework_sorter' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-sorter-js',
-				ReduxFramework::$_url . 'inc/fields/sorter/field_sorter' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/sorter/field_sorter' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js', 'jquery-ui-sortable' ),
 				time(),
 				true

@@ -1,12 +1,12 @@
 <?php
-if ( ! class_exists( 'Redux_Validation_color_rgba' ) ) {
-	class Redux_Validation_color_rgba {
+if ( ! class_exists( 'ReduxLegacy_Validation_color_rgba' ) ) {
+	class ReduxLegacy_Validation_color_rgba {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 3.0.4
+		 * @since ReduxFrameworkLegacy 3.0.4
 		 */
 		function __construct( $parent, $field, $value, $current ) {
 			$this->parent       = $parent;
@@ -22,7 +22,7 @@ if ( ! class_exists( 'Redux_Validation_color_rgba' ) ) {
 		 * Validate Color to RGBA
 		 * Takes the user's input color value and returns it only if it's a valid color.
 		 *
-		 * @since ReduxFramework 3.0.3
+		 * @since ReduxFrameworkLegacy 3.0.3
 		 */
 		function validate_color_rgba( $color ) {
 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'Redux_Validation_color_rgba' ) ) {
 
 			return array(
 				'hex'  => $color,
-				'rgba' => Redux_Helpers::hex2rgba( $color ),
+				'rgba' => ReduxLegacy_Helpers::hex2rgba( $color ),
 			);
 		} //function
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Redux_Validation_color_rgba' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function validate() {
 

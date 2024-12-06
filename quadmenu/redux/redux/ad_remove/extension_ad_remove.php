@@ -26,16 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_extension_ad_remover' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_extension_ad_remover' ) ) {
 
 
 	/**
-	 * Main ReduxFramework_extension_ad_remove extension class
+	 * Main ReduxFrameworkLegacy_extension_ad_remove extension class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_extension_ad_remove {
-
+	class ReduxFrameworkLegacy_extension_ad_remove {
 		public static $version = '1.0.0';
 		// Protected vars
 		protected $parent;
@@ -56,9 +55,9 @@ if ( ! class_exists( 'ReduxFramework_extension_ad_remover' ) ) {
 		 * @return      void
 		 */
 		public function __construct( $parent ) {
+			// require_once QUADMENU_PLUGIN_DIR . 'redux\ReduxCore\framework.php';
 
-			$redux_ver = ReduxFramework::$_version;
-
+			$redux_ver = ReduxFrameworkLegacy::$_version;
 			// Set parent object
 			$this->parent = $parent;
 

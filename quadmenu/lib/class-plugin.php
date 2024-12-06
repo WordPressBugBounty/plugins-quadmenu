@@ -22,7 +22,7 @@ use QuadLayers\QuadMenu\Locations;
 
 use QuadLayers\QuadMenu\Themes;
 use QuadLayers\QuadMenu\Options;
-use QuadLayers\QuadMenu\Redux;
+use QuadLayers\QuadMenu\Redux_Legacy;
 use QuadLayers\QuadMenu\Icons;
 
 use QuadLayers\QuadMenu\Compiler;
@@ -227,7 +227,7 @@ final class Plugin {
 	public function init() {
 		Themes::instance();
 		Options::instance();
-		Redux::instance();
+		Redux_Legacy::instance();
 		Icons::instance();
 	}
 

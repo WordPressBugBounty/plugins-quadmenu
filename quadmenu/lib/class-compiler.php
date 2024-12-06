@@ -3,7 +3,7 @@
 namespace QuadLayers\QuadMenu;
 
 use QuadLayers\QuadMenu\Plugin;
-use QuadLayers\QuadMenu\Redux;
+use QuadLayers\QuadMenu\Redux_Legacy;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
@@ -96,12 +96,12 @@ class Compiler {
 		$return_array = array( 'status' => 'error' );
 
 		if ( ! isset( $_REQUEST['output']['imports'][0] ) ) {
-			Redux::add_notification( 'red', esc_html__( 'Imports is undefined.', 'quadmenu' ) );
+			Redux_Legacy::add_notification( 'red', esc_html__( 'Imports is undefined.', 'quadmenu' ) );
 			wp_die();
 		}
 
 		if ( ! isset( $_REQUEST['output']['css'] ) ) {
-			Redux::add_notification( 'red', esc_html__( 'CSS is undefined.', 'quadmenu' ) );
+			Redux_Legacy::add_notification( 'red', esc_html__( 'CSS is undefined.', 'quadmenu' ) );
 			wp_die();
 		}
 
@@ -123,7 +123,7 @@ class Compiler {
 
 		ob_start();
 
-		Redux::notification_bar();
+		Redux_Legacy::notification_bar();
 
 		$notification_bar = ob_get_contents();
 
@@ -155,7 +155,7 @@ class Compiler {
 
 		self::do_compiler( true );
 
-		Redux::add_notification( 'yellow', sprintf( esc_html__( 'Some style options have been changed. Your stylesheet will be compiled to reflect changes. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
+		Redux_Legacy::add_notification( 'yellow', sprintf( esc_html__( 'Some style options have been changed. Your stylesheet will be compiled to reflect changes. %s.', 'quadmenu' ), esc_html__( 'Please wait', 'quadmenu' ) ) );
 	}
 
 	public function save_file( $name = false, $dir = false, $content = false ) {
@@ -164,12 +164,12 @@ class Compiler {
 			return;
 		}
 
-		if ( ! class_exists( '\\ReduxFrameworkInstances' ) ) {
-			Redux::add_notification( 'error', esc_html__( 'ReduxFramework is not installed', 'quadmenu' ) );
+		if ( ! class_exists( '\\ReduxFrameworkInstancesLegacy' ) ) {
+			Redux_Legacy::add_notification( 'error', esc_html__( 'ReduxFramework is not installed', 'quadmenu' ) );
 			return;
 		}
 
-		$this->redux = \ReduxFrameworkInstances::get_instance( QUADMENU_DB_OPTIONS );
+		$this->redux = \ReduxFrameworkInstancesLegacy::get_instance( QUADMENU_DB_OPTIONS );
 
 		// Check if file exists ------------------------------------------------.
 		$is_file = is_file( trailingslashit( $dir ) . $name );
@@ -177,16 +177,16 @@ class Compiler {
 		// Create the folder ---------------------------------------------------.
 		if ( ! is_dir( $dir ) ) {
 			$this->redux->filesystem->execute( 'mkdir', $dir );
-			Redux::add_notification( 'yellow', sprintf( esc_html__( 'Folder created : %1$s', 'quadmenu' ), $dir ) );
+			Redux_Legacy::add_notification( 'yellow', sprintf( esc_html__( 'Folder created : %1$s', 'quadmenu' ), $dir ) );
 		}
 
 		// Write file ----------------------------------------------------------.
 		if ( $this->redux->filesystem->execute( 'put_contents', trailingslashit( $dir ) . $name, array( 'content' => $content ) ) ) {
-			Redux::add_notification( 'green', sprintf( esc_html__( 'File has been %2$s : %1$s', 'quadmenu' ), trailingslashit( $dir ) . $name, $is_file ? esc_html__( 'updated', 'quadmenu' ) : esc_html__( 'created', 'quadmenu' ) ) );
+			Redux_Legacy::add_notification( 'green', sprintf( esc_html__( 'File has been %2$s : %1$s', 'quadmenu' ), trailingslashit( $dir ) . $name, $is_file ? esc_html__( 'updated', 'quadmenu' ) : esc_html__( 'created', 'quadmenu' ) ) );
 			return;
 		}
 
-		Redux::add_notification( 'error', sprintf( esc_html__( 'File cant\'t been created : %1$s', 'quadmenu' ), trailingslashit( $dir ) . $name ) );
+		Redux_Legacy::add_notification( 'error', sprintf( esc_html__( 'File cant\'t been created : %1$s', 'quadmenu' ), trailingslashit( $dir ) . $name ) );
 	}
 
 	public static function less_variables( &$data, $header = '' ) {

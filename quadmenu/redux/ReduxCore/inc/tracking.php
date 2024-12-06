@@ -1,9 +1,9 @@
 <?php
 
 	/**
-	 * @package Redux_Tracking
+	 * @package ReduxLegacy_Tracking
 	 */
-if ( ! class_exists( 'ReduxFramework' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy' ) ) {
 	return;
 }
 
@@ -13,12 +13,12 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 	 * NOTE: this functionality is opt-in. Disabling the tracking in the settings or saying no when asked will cause
 	 * this file to not even be loaded.
 	 */
-if ( ! class_exists( 'Redux_Tracking' ) ) {
+if ( ! class_exists( 'ReduxLegacy_Tracking' ) ) {
 
 	/**
-	 * Class Redux_Tracking
+	 * class ReduxLegacy_Tracking
 	 */
-	class Redux_Tracking {
+	class ReduxLegacy_Tracking {
 
 		public $options = array();
 		public $parent;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 		/**
 		 * Creates or returns an instance of this class.
 		 *
-		 * @return Redux_Tracking A single instance of this class.
+		 * @return ReduxLegacy_Tracking A single instance of this class.
 		 */
 		public static function get_instance() {
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 		}
 
 		/**
-		 * @param ReduxFramework $parent
+		 * @param ReduxFrameworkLegacy $parent
 		 */
 		public function load( $parent ) {
 			$this->parent = $parent;
@@ -83,16 +83,16 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 			add_action( 'wp_ajax_nopriv_' . $hash, array( $this, 'tracking_arg' ) );
 			add_action( 'wp_ajax_' . $hash, array( $this, 'tracking_arg' ) );
 
-			$hash = md5( md5( Redux_Helpers::get_auth_key_secret_key() . '-redux' ) . '-support' );
+			$hash = md5( md5( ReduxLegacy_Helpers::get_auth_key_secret_key() . '-redux' ) . '-support' );
 			add_action( 'wp_ajax_nopriv_' . $hash, array( $this, 'support_args' ) );
 			add_action( 'wp_ajax_' . $hash, array( $this, 'support_args' ) );
 
 			if ( isset( $this->options['allow_tracking'] ) && $this->options['allow_tracking'] == 'yes' ) {
 				// The tracking checks daily, but only sends new data every 7 days.
-				if ( ! wp_next_scheduled( 'redux_tracking' ) ) {
-					wp_schedule_event( time(), 'daily', 'redux_tracking' );
+				if ( ! wp_next_scheduled( 'reduxlegacy_tracking' ) ) {
+					wp_schedule_event( time(), 'daily', 'reduxlegacy_tracking' );
 				}
-				add_action( 'redux_tracking', array( $this, 'tracking' ) );
+				add_action( 'reduxlegacy_tracking', array( $this, 'tracking' ) );
 			}
 		}
 
@@ -146,9 +146,9 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 			$nonce = wp_create_nonce( 'redux_activate_tracking' );
 
 			$content  = '<h3>' . esc_html__( 'Welcome to the Redux Demo Panel', 'redux-framework' ) . '</h3>';
-			$content .= '<p><strong>' . esc_html__( 'Getting Started', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'This panel demonstrates the many features of Redux.  Before digging in, we suggest you get up to speed by reviewing %1$s.', 'redux-framework' ), '<a href="' . 'http://' . 'docs.reduxframework.com/redux-framework/getting-started/" target="_blank">' . esc_html__( 'our documentation', 'redux-framework' ) . '</a>' );
-			$content .= '<p><strong>' . esc_html__( 'Redux Generator', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'Want to get a head start? Use the %1$s. It will create a customized boilerplate theme or a standalone admin folder complete with all things Redux (with the help of Underscores and TGM). Save yourself a headache and try it today.', 'redux-framework' ), '<a href="' . 'http://' . 'generate.reduxframework.com/" target="_blank">' . esc_html__( 'Redux Generator', 'redux-framework' ) . '</a>' );
-			$content .= '<p><strong>' . esc_html__( 'Redux Extensions', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'Did you know we have extensions, which greatly enhance the features of Redux?  Visit our %1$s to learn more!', 'redux-framework' ), '<a href="' . 'http://' . 'reduxframework.com/extensions/" target="_blank">' . esc_html__( 'extensions directory', 'redux-framework' ) . '</a>' );
+			$content .= '<p><strong>' . esc_html__( 'Getting Started', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'This panel demonstrates the many features of Redux.  Before digging in, we suggest you get up to speed by reviewing %1$s.', 'redux-framework' ), '<a href="' . 'http://' . 'docs.ReduxFrameworkLegacy.com/redux-framework/getting-started/" target="_blank">' . esc_html__( 'our documentation', 'redux-framework' ) . '</a>' );
+			$content .= '<p><strong>' . esc_html__( 'Redux Generator', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'Want to get a head start? Use the %1$s. It will create a customized boilerplate theme or a standalone admin folder complete with all things Redux (with the help of Underscores and TGM). Save yourself a headache and try it today.', 'redux-framework' ), '<a href="' . 'http://' . 'generate.ReduxFrameworkLegacy.com/" target="_blank">' . esc_html__( 'Redux Generator', 'redux-framework' ) . '</a>' );
+			$content .= '<p><strong>' . esc_html__( 'Redux Extensions', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'Did you know we have extensions, which greatly enhance the features of Redux?  Visit our %1$s to learn more!', 'redux-framework' ), '<a href="' . 'http://' . 'ReduxFrameworkLegacy.com/extensions/" target="_blank">' . esc_html__( 'extensions directory', 'redux-framework' ) . '</a>' );
 			$content .= '<p><strong>' . esc_html__( 'Like Redux?', 'redux-framework' ) . '</strong><br>' . sprintf( __( 'If so, please %1$s and consider making a %2$s to keep development of Redux moving forward.', 'redux-framework' ), '<a target="_blank" href="' . 'http://' . 'wordpress.org/support/view/plugin-reviews/redux-framework">' . esc_html__( 'leave us a favorable review on WordPress.org', 'redux-framework' ) . '</a>', '<a href="' . 'https://' . 'www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N5AD7TSH8YA5U" target="_blank">' . esc_html__( 'donation', 'redux-framework' ) . '</a>' );
 			$content .= '<p><strong>' . esc_html__( 'Newsletter', 'redux-framework' ) . '</strong><br>' . esc_html__( 'If you\'d like to keep up to with all things Redux, please subscribe to our newsletter', 'redux-framework' ) . ':</p>';
 			$content .= '<form action="http://news.redux.io/subscribe" method="POST" target="_blank" accept-charset="utf-8" class="validate">
@@ -196,13 +196,13 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 								var redux_pointer_options = <?php echo json_encode( $options ); ?>, setup;
 
 								function redux_store_answer( input, nonce ) {
-									var redux_tracking_data = {
+									var reduxlegacy_tracking_data = {
 										action: 'redux_allow_tracking',
 										allow_tracking: input,
 										nonce: nonce
 									}
 									jQuery.post(
-										ajaxurl, redux_tracking_data, function() {
+										ajaxurl, reduxlegacy_tracking_data, function() {
 											jQuery( '#wp-pointer-0' ).remove();
 										}
 									);
@@ -358,8 +358,8 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 				'options'   => apply_filters( 'redux/tracking/options', array() ),
 				'theme'     => $theme,
 				'redux'     => array(
-					'mode'      => ReduxFramework::$_is_plugin ? 'plugin' : 'theme',
-					'version'   => ReduxFramework::$_version,
+					'mode'      => ReduxFrameworkLegacy::$_is_plugin ? 'plugin' : 'theme',
+					'version'   => ReduxFrameworkLegacy::$_version,
 					'demo_mode' => get_option( 'ReduxFrameworkPlugin' ),
 				),
 				'developer' => apply_filters( 'redux/tracking/developer', array() ),
@@ -398,7 +398,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 			// Start of Metrics
 			global $blog_id, $wpdb;
 
-			$data = get_transient( 'redux_tracking_cache' );
+			$data = get_transient( 'reduxlegacy_tracking_cache' );
 			if ( ! $data ) {
 
 				$args = array(
@@ -408,12 +408,12 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 				$response = wp_remote_post( 'https://redux-tracking.herokuapp.com', $args );
 
 				// Store for a week, then push data again.
-				set_transient( 'redux_tracking_cache', true, WEEK_IN_SECONDS );
+				set_transient( 'reduxlegacy_tracking_cache', true, WEEK_IN_SECONDS );
 			}
 		}
 
 		function tracking_arg() {
-			echo md5( Redux_Helpers::get_auth_key_secret_key() . '-redux' );
+			echo md5( ReduxLegacy_Helpers::get_auth_key_secret_key() . '-redux' );
 			die();
 		}
 
@@ -424,7 +424,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 			header( 'Cache-Control: no-store, no-cache, must-revalidate' );
 			header( 'Cache-Control: post-check=0, pre-check=0', false );
 			header( 'Pragma: no-cache' );
-			$instances = ReduxFrameworkInstances::get_all_instances();
+			$instances = ReduxFrameworkInstancesLegacy::get_all_instances();
 
 			$array = array();
 
@@ -463,7 +463,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 						$array['instances'][] = $opt_name;
 					}
 				}
-				$array['key'] = md5( Redux_Helpers::get_auth_key_secret_key() );
+				$array['key'] = md5( ReduxLegacy_Helpers::get_auth_key_secret_key() );
 			}
 
 			echo @json_encode( $array, true );
@@ -471,7 +471,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 		}
 	}
 
-	Redux_Tracking::get_instance();
+	ReduxLegacy_Tracking::get_instance();
 
 	/**
 	 * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other ways.
@@ -480,7 +480,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 	 *
 	 * @return array
 	 */
-	function redux_tracking_additions( $options ) {
+	function reduxlegacy_tracking_additions( $options ) {
 		$opt = array();
 
 		$options['redux'] = array(
@@ -490,7 +490,7 @@ if ( ! class_exists( 'Redux_Tracking' ) ) {
 		return $options;
 	}
 
-	add_filter( 'redux/tracking/options', 'redux_tracking_additions' );
+	add_filter( 'redux/tracking/options', 'reduxlegacy_tracking_additions' );
 
 	function redux_allow_tracking_callback() {
 		// Verify that the incoming request is coming with the security nonce

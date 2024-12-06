@@ -1,13 +1,13 @@
 <?php
 
-if ( ! class_exists( 'Redux_Validation_unique_slug' ) ) {
-	class Redux_Validation_unique_slug {
+if ( ! class_exists( 'ReduxLegacy_Validation_unique_slug' ) ) {
+	class ReduxLegacy_Validation_unique_slug {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $parent, $field, $value, $current ) {
 

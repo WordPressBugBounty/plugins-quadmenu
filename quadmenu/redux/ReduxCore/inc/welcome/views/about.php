@@ -5,7 +5,7 @@
 		class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Redux Framework %s is a huge step forward in Redux Development. Look at all that\'s new.', 'redux-framework' ), $this->display_version ); ?></div>
 	<div
 		class="redux-badge"><i
-			class="el el-redux"></i><span><?php printf( __( 'Version %s', 'redux-framework' ), ReduxFramework::$_version ); ?></span>
+			class="el el-redux"></i><span><?php printf( __( 'Version %s', 'redux-framework' ), ReduxFrameworkLegacy::$_version ); ?></span>
 	</div>
 
 	<?php $this->actions(); ?>
@@ -25,7 +25,7 @@
 		</p>
 
 		<p class="submit">
-			<a class="button-primary" href="<?php echo 'http://'; ?>reduxframework.com"
+			<a class="button-primary" href="<?php echo 'http://'; ?>ReduxFrameworkLegacy.com"
 				target="_blank"><?php _e( 'Learn More', 'redux-framework' ); ?></a>
 		</p>
 	</div>
@@ -49,7 +49,7 @@
 
 					<p>We've gone back to the drawing boards and made Redux the <strong>simplest</strong> framework to
 						use. Introducing the Redux API. Easily add fields, extensions, templates, and more without every
-						having to define a class! <a href="<?php echo 'http://'; ?>docs.reduxframework.com/core/redux-api/" target="_blank">Learn More</a></p>
+						having to define a class! <a href="<?php echo 'http://'; ?>docs.ReduxFrameworkLegacy.com/core/redux-api/" target="_blank">Learn More</a></p>
 				</div>
 				<div class="last-feature">
 					<h4>Security Improvments</h4>
@@ -66,7 +66,7 @@
 					<h4>Panel Templates</h4>
 
 					<p>Now developers can easily customize the Redux panel by declaring a templates location path. We've
-						also made use of template versioning so if we change anything, you will know. <br /><a href="<?php echo 'http://'; ?>docs.reduxframework.com/core/templates/" target="_blank">Learn More</a></p>
+						also made use of template versioning so if we change anything, you will know. <br /><a href="<?php echo 'http://'; ?>docs.ReduxFrameworkLegacy.com/core/templates/" target="_blank">Learn More</a></p>
 				</div>
 				<div>
 					<h4>Full Width for ANY Field</h4>

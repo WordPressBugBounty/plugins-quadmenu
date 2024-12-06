@@ -98,7 +98,7 @@ class ComposerStaticInitbc68521166e23e0e643a362225ccc0cc
         'QuadLayers\\QuadMenu\\Panel\\System' => __DIR__ . '/../..' . '/lib/panel/class-system.php',
         'QuadLayers\\QuadMenu\\Panel\\Welcome' => __DIR__ . '/../..' . '/lib/panel/class-welcome.php',
         'QuadLayers\\QuadMenu\\Plugin' => __DIR__ . '/../..' . '/lib/class-plugin.php',
-        'QuadLayers\\QuadMenu\\Redux' => __DIR__ . '/../..' . '/lib/class-redux.php',
+        'QuadLayers\\QuadMenu\\Redux_Legacy' => __DIR__ . '/../..' . '/lib/class-redux-legacy.php',
         'QuadLayers\\QuadMenu\\Themes' => __DIR__ . '/../..' . '/lib/class-themes.php',
         'QuadLayers\\QuadMenu\\Widget' => __DIR__ . '/../..' . '/lib/class-widget.php',
         'QuadLayers\\WP_Dashboard_Widget_News\\Load' => __DIR__ . '/../..' . '/jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php',

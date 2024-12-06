@@ -1,6 +1,6 @@
 <?php
 
-class Redux_P {
+class ReduxLegacy_P {
 
 	public function __construct() {
 
@@ -291,4 +291,4 @@ class Redux_P {
 	}
 }
 
-	new Redux_P();
+	new ReduxLegacy_P();

@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_switch' ) ) {
-	class ReduxFramework_switch {
+if ( ! class_exists( 'ReduxFrameworkLegacy_switch' ) ) {
+	class ReduxFrameworkLegacy_switch {
 
 		public $parent;
 		public $field;
@@ -16,7 +16,7 @@ if ( ! class_exists( 'ReduxFramework_switch' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 0.0.4
+		 * @since ReduxFrameworkLegacy 0.0.4
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ReduxFramework_switch' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 0.0.4
+		 * @since ReduxFrameworkLegacy 0.0.4
 		 */
 		function render() {
 
@@ -58,12 +58,12 @@ if ( ! class_exists( 'ReduxFramework_switch' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 0.0.4
+		 * @since ReduxFrameworkLegacy 0.0.4
 		 */
 		function enqueue() {
 			wp_enqueue_script(
 				'redux-field-switch-js',
-				ReduxFramework::$_url . 'inc/fields/switch/field_switch' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/switch/field_switch' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true
@@ -72,7 +72,7 @@ if ( ! class_exists( 'ReduxFramework_switch' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-switch-css',
-					ReduxFramework::$_url . 'inc/fields/switch/field_switch.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/switch/field_switch.css',
 					array(),
 					time(),
 					'all'

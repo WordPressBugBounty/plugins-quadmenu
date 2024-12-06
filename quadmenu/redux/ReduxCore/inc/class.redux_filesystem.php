@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Redux_Filesystem' ) ) {
-	class Redux_Filesystem {
+if ( ! class_exists( 'ReduxLegacy_Filesystem' ) ) {
+	class ReduxLegacy_Filesystem {
 
 		/**
 		 * Instance of this class.
@@ -47,7 +47,7 @@ if ( ! class_exists( 'Redux_Filesystem' ) ) {
 		public function ftp_form() {
 			if ( isset( $this->parent->ftp_form ) && ! empty( $this->parent->ftp_form ) ) {
 				echo '<div class="wrap"><div class="error"><p>';
-				echo '<strong>' . __( 'File Permission Issues', 'redux-framework' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'redux-framework' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
+				echo '<strong>' . __( 'File Permission Issues', 'redux-framework' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'redux-framework' ), ReduxLegacy_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
 				echo '</p></div><h2></h2>' . '</div>';
 			}
 		}
@@ -124,11 +124,11 @@ if ( ! class_exists( 'Redux_Filesystem' ) ) {
 
 			$this->filesystem_init( $url, 'direct', dirname( $file ) );
 
-			if ( ! file_exists( ReduxFramework::$_upload_dir ) ) {
-				$this->do_action( 'mkdir', ReduxFramework::$_upload_dir );
+			if ( ! file_exists( ReduxFrameworkLegacy::$_upload_dir ) ) {
+				$this->do_action( 'mkdir', ReduxFrameworkLegacy::$_upload_dir );
 			}
 
-			$hash_path = trailingslashit( ReduxFramework::$_upload_dir ) . 'hash';
+			$hash_path = trailingslashit( ReduxFrameworkLegacy::$_upload_dir ) . 'hash';
 			if ( ! file_exists( $hash_path ) ) {
 				$this->do_action(
 					'put_contents',
@@ -138,18 +138,18 @@ if ( ! class_exists( 'Redux_Filesystem' ) ) {
 					)
 				);
 			}
-			$version_path = trailingslashit( ReduxFramework::$_upload_dir ) . 'version';
+			$version_path = trailingslashit( ReduxFrameworkLegacy::$_upload_dir ) . 'version';
 			if ( ! file_exists( $version_path ) ) {
 				$this->do_action(
 					'put_contents',
 					$version_path,
 					array(
-						'content' => ReduxFramework::$_version,
+						'content' => ReduxFrameworkLegacy::$_version,
 					)
 				);
 			}
 
-			$index_path = trailingslashit( ReduxFramework::$_upload_dir ) . 'index.php';
+			$index_path = trailingslashit( ReduxFrameworkLegacy::$_upload_dir ) . 'index.php';
 			if ( ! file_exists( $index_path ) ) {
 				$this->do_action(
 					'put_contents',
@@ -296,7 +296,7 @@ if ( ! class_exists( 'Redux_Filesystem' ) ) {
 
 				$this->killswitch = true;
 
-				$msg = '<strong>' . __( 'File Permission Issues', 'redux-framework' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'redux-framework' ), Redux_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
+				$msg = '<strong>' . __( 'File Permission Issues', 'redux-framework' ) . '</strong><br/>' . sprintf( __( 'We were unable to modify required files. Please ensure that <code>%1$1s</code> has the proper read-write permissions, or modify your wp-config.php file to contain your FTP login credentials as <a href="%2$2s" target="_blank">outlined here</a>.', 'redux-framework' ), ReduxLegacy_Helpers::cleanFilePath( trailingslashit( WP_CONTENT_DIR ) ) . '/uploads/', 'https://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants' );
 
 				$data = array(
 					'parent'  => self::$instance->parent,
@@ -306,12 +306,12 @@ if ( ! class_exists( 'Redux_Filesystem' ) ) {
 					'dismiss' => false,
 				);
 
-				Redux_Admin_Notices::set_notice( $data );
+				ReduxLegacy_Admin_Notices::set_notice( $data );
 			}
 
 			return $res;
 		}
 	}
 
-	Redux_Filesystem::get_instance();
+	ReduxLegacy_Filesystem::get_instance();
 }

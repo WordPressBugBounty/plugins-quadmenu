@@ -12,7 +12,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @author      Dovy Paukstys (dovy)
 	 * @version     4.0.0
 	 */
@@ -23,15 +23,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_extension_import_export' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_extension_import_export' ) ) {
 
 
 	/**
-	 * Main ReduxFramework import_export extension class
+	 * Main ReduxFrameworkLegacy import_export extension class
 	 *
 	 * @since       3.1.6
 	 */
-	class ReduxFramework_extension_import_export {
+	class ReduxFrameworkLegacy_extension_import_export {
 
 		// Protected vars
 		protected $parent;
@@ -96,7 +96,7 @@ if ( ! class_exists( 'ReduxFramework_extension_import_export' ) ) {
 
 			do_action( "redux/options/{$this->parent->args['opt_name']}/import", array( $this, 'remove_cookie' ) );
 
-			$this->is_field = Redux_Helpers::isFieldInUse( $parent, 'import_export' );
+			$this->is_field = ReduxLegacy_Helpers::isFieldInUse( $parent, 'import_export' );
 
 			if ( ! $this->is_field && $this->parent->args['show_import_export'] ) {
 				$this->add_section();
@@ -152,7 +152,7 @@ if ( ! class_exists( 'ReduxFramework_extension_import_export' ) ) {
 		}
 
 		function link_options() {
-			if ( ! isset( $_GET['secret'] ) || $_GET['secret'] != md5( md5( Redux_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] ) ) {
+			if ( ! isset( $_GET['secret'] ) || $_GET['secret'] != md5( md5( ReduxLegacy_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] ) ) {
 				wp_die( 'Invalid Secret for options use' );
 				exit;
 			}
@@ -169,7 +169,7 @@ if ( ! class_exists( 'ReduxFramework_extension_import_export' ) ) {
 		}
 
 		public function download_options() {
-			if ( ! isset( $_GET['secret'] ) || $_GET['secret'] != md5( md5( Redux_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] ) ) {
+			if ( ! isset( $_GET['secret'] ) || $_GET['secret'] != md5( md5( ReduxLegacy_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] ) ) {
 				wp_die( 'Invalid Secret for options use' );
 				exit;
 			}

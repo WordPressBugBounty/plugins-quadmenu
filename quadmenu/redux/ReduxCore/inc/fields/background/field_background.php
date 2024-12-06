@@ -12,7 +12,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @subpackage  Field_Background
 	 * @author      Dovy Paukstys
 	 * @version     3.1.5
@@ -23,14 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_background' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_background' ) ) {
 
 	/**
-	 * Main ReduxFramework_background class
+	 * Main ReduxFrameworkLegacy_background class
 	 *
 	 * @since       3.1.5
 	 */
-	class ReduxFramework_background {
+	class ReduxFrameworkLegacy_background {
 
 		/**
 		 * Field Constructor.
@@ -364,7 +364,7 @@ if ( ! class_exists( 'ReduxFramework_background' ) ) {
 			if ( ! wp_script_is( 'redux-field-background-js' ) ) {
 				wp_enqueue_script(
 					'redux-field-background-js',
-					ReduxFramework::$_url . 'inc/fields/background/field_background' . Redux_Functions::isMin() . '.js',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/background/field_background' . ReduxLegacy_Functions::isMin() . '.js',
 					array( 'jquery', 'wp-color-picker', 'select2-js', 'redux-js' ),
 					time(),
 					true
@@ -375,7 +375,7 @@ if ( ! class_exists( 'ReduxFramework_background' ) ) {
 				if ( ! wp_style_is( 'redux-field-background-css' ) ) {
 					wp_enqueue_style(
 						'redux-field-background-css',
-						ReduxFramework::$_url . 'inc/fields/background/field_background.css',
+						ReduxFrameworkLegacy::$_url . 'inc/fields/background/field_background.css',
 						array(),
 						time(),
 						'all'

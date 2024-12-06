@@ -23,9 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_border' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_border' ) ) {
 
-	class ReduxFramework_border {
+	class ReduxFrameworkLegacy_border {
 
 		public $parent;
 		public $field;
@@ -35,7 +35,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 
@@ -205,10 +205,10 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function enqueue() {
-			$min = Redux_Functions::isMin();
+			$min = ReduxLegacy_Functions::isMin();
 
 			if ( ! wp_style_is( 'select2-css' ) ) {
 				wp_enqueue_style( 'select2-css' );
@@ -221,7 +221,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
 			if ( ! wp_script_is( 'redux-field-border-js' ) ) {
 				wp_enqueue_script(
 					'redux-field-border-js',
-					ReduxFramework::$_url . 'inc/fields/border/field_border' . $min . '.js',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/border/field_border' . $min . '.js',
 					array( 'jquery', 'select2-js', 'wp-color-picker', 'redux-js' ),
 					time(),
 					true
@@ -236,7 +236,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
 				if ( ! wp_style_is( 'redux-field-border-css' ) ) {
 					wp_enqueue_style(
 						'redux-field-border-css',
-						ReduxFramework::$_url . 'inc/fields/border/field_border.css',
+						ReduxFrameworkLegacy::$_url . 'inc/fields/border/field_border.css',
 						array(),
 						time(),
 						'all'

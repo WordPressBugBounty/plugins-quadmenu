@@ -5,14 +5,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_radio' ) ) {
-	class ReduxFramework_radio {
+if ( ! class_exists( 'ReduxFrameworkLegacy_radio' ) ) {
+	class ReduxFrameworkLegacy_radio {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -24,7 +24,7 @@ if ( ! class_exists( 'ReduxFramework_radio' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 

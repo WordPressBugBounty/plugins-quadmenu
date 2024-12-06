@@ -17,7 +17,7 @@ function redux_clean( $var ) {
 	return sanitize_text_field( $var );
 }
 
-	$sysinfo = Redux_Helpers::compileSystemStatus( false, true );
+	$sysinfo = ReduxLegacy_Helpers::compileSystemStatus( false, true );
 
 ?>
 <div class="wrap about-wrap redux-status">
@@ -30,7 +30,7 @@ function redux_clean( $var ) {
 	<div class="redux-badge">
 		<i class="el el-redux"></i>
 		<span>
-			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFramework::$_version ) ); ?>
+			<?php printf( __( 'Version %s', 'redux-framework' ), esc_html( ReduxFrameworkLegacy::$_version ) ); ?>
 		</span>
 	</div>
 
@@ -39,7 +39,7 @@ function redux_clean( $var ) {
 
 	<div class="updated redux-message">
 		<p>
-			<?php esc_html_e( 'Please copy and paste this information in your ticket when contacting support:', 'redux-framework' ); ?> 
+			<?php esc_html_e( 'Please copy and paste this information in your ticket when contacting support:', 'redux-framework' ); ?>
 		</p>
 
 		<p class="submit">
@@ -47,7 +47,7 @@ function redux_clean( $var ) {
 				<?php esc_html_e( 'Get System Report', 'redux-framework' ); ?>
 			</a>
 			<a class="skip button-primary"
-				href="http://docs.reduxframework.com/core/support/understanding-the-redux-framework-system-status-report/"
+				href="http://docs.ReduxFrameworkLegacy.com/core/support/understanding-the-redux-framework-system-status-report/"
 				target="_blank">
 					<?php esc_html_e( 'Understanding the Status Report', 'redux-framework' ); ?>
 			</a>
@@ -56,8 +56,8 @@ function redux_clean( $var ) {
 		<div id="debug-report">
 			<textarea readonly="readonly"></textarea>
 			<p class="submit">
-				<button id="copy-for-support" 
-						class="button-primary redux-hint-qtip" 
+				<button id="copy-for-support"
+						class="button-primary redux-hint-qtip"
 						href="#" qtip-content="<?php esc_html_e( 'Copied!', 'redux-framework' ); ?>">
 					<?php esc_html_e( 'Copy for Support', 'redux-framework' ); ?>
 				</button>
@@ -132,7 +132,7 @@ function redux_clean( $var ) {
 			<td>
 				<?php echo '<code>' . esc_url( $sysinfo['wp_content_url'] ) . '</code> '; ?>
 			</td>
-		</tr>        
+		</tr>
 		<tr>
 			<td data-export-label="WP Version">
 				<?php esc_html_e( 'WP Version', 'redux-framework' ); ?>:
@@ -355,7 +355,7 @@ if ( $sysinfo['localhost'] === 'true' ) {
 				<?php echo '<code>' . esc_html( $sysinfo['abspath'] ) . '</code>'; ?>
 			</td>
 		</tr>
-		
+
 		<?php if ( function_exists( 'ini_get' ) ) { ?>
 			<tr>
 				<td data-export-label="PHP Memory Limit"><?php esc_html_e( 'PHP Memory Limit', 'redux-framework' ); ?>:</td>
@@ -692,7 +692,7 @@ if ( $sysinfo['def_tz_is_utc'] === 'false' ) {
 						foreach ( $ext as $name => $arr ) {
 						$ver = $arr['version'];
 
-						echo '<a href="http://reduxframework.com/extensions/' . str_replace(
+						echo '<a href="http://ReduxFrameworkLegacy.com/extensions/' . str_replace(
 							array(
 								'_',
 							),

@@ -41,11 +41,10 @@ class Options {
 	// Comaptibility with old versions
 	// -------------------------------------------------------------------------
 	function compatibility( $options ) {
-
 		foreach ( $options as $key => $value ) {
 
 			if ( is_array( $value ) && isset( $value['color'] ) && isset( $value['alpha'] ) ) {
-				$options[ $key ] = \Redux_Helpers::hex2rgba( $value['color'], $value['alpha'] );
+				$options[ $key ] = \ReduxLegacy_Helpers::hex2rgba( $value['color'], $value['alpha'] );
 			}
 		}
 

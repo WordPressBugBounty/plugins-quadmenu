@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Redux_CDN' ) ) {
-	class Redux_CDN {
+if ( ! class_exists( 'ReduxLegacy_CDN' ) ) {
+	class ReduxLegacy_CDN {
 		public static $_parent;
 		private static $_set;
 
@@ -61,8 +61,8 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 				$cdn_response = @wp_remote_get( $prefix . $src_cdn );
 
 				if ( is_wp_error( $cdn_response ) || wp_remote_retrieve_response_code( $cdn_response ) != '200' ) {
-					if ( class_exists( 'Redux_VendorURL' ) ) {
-						$src = Redux_VendorURL::get_url( $handle );
+					if ( class_exists( 'ReduxLegacy_VendorURL' ) ) {
+						$src = ReduxLegacy_VendorURL::get_url( $handle );
 
 						if ( $register ) {
 							self::_register( $handle, $src, $deps, $ver, $footer_or_media, $is_script );
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 					} elseif ( ! self::is_enqueued( $handle, 'enqueued', $is_script ) ) {
 							$msg = __( 'Please wait a few minutes, then try refreshing the page. Unable to load some remotely hosted scripts.', 'redux-framework' );
 						if ( self::$_parent->args['dev_mode'] ) {
-							$msg = sprintf( __( 'If you are developing offline, please download and install the <a href="%s" target="_blank">Redux Vendor Support</a> plugin/extension to bypass the our CDN and avoid this warning', 'redux-framework' ), 'https://github.com/reduxframework/redux-vendor-support' );
+							$msg = sprintf( __( 'If you are developing offline, please download and install the <a href="%s" target="_blank">Redux Vendor Support</a> plugin/extension to bypass the our CDN and avoid this warning', 'redux-framework' ), 'https://github.com/ReduxFrameworkLegacy/redux-vendor-support' );
 						}
 
 							$msg = '<strong>' . __( 'Redux Framework Warning', 'redux-framework' ) . '</strong><br/>' . sprintf( __( '%s CDN unavailable.  Some controls may not render properly.', 'redux-framework' ), $handle ) . '  ' . $msg;
@@ -85,7 +85,7 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 								'dismiss' => false,
 							);
 
-							Redux_Admin_Notices::set_notice( $data );
+							ReduxLegacy_Admin_Notices::set_notice( $data );
 					}
 				} else {
 					set_transient( $handle . $tran_key, true, MINUTE_IN_SECONDS * self::$_parent->args['cdn_check_time'] );
@@ -100,8 +100,8 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 		}
 
 		private static function _vendor_plugin( $register, $handle, $src_cdn, $deps, $ver, $footer_or_media, $is_script = true ) {
-			if ( class_exists( 'Redux_VendorURL' ) ) {
-				$src = Redux_VendorURL::get_url( $handle );
+			if ( class_exists( 'ReduxLegacy_VendorURL' ) ) {
+				$src = ReduxLegacy_VendorURL::get_url( $handle );
 
 				if ( $register ) {
 					self::_register( $handle, $src, $deps, $ver, $footer_or_media, $is_script );
@@ -109,7 +109,7 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 					self::_enqueue( $handle, $src, $deps, $ver, $footer_or_media, $is_script );
 				}
 			} elseif ( ! self::$_set ) {
-					$msg = sprintf( __( 'The <a href="%1$s">Vendor Support plugin</a> (or extension) is either not installed or not activated and thus, some controls may not render properly.  Please ensure that it is installed and <a href="%2$s">activated</a>', 'redux-framework' ), 'https://github.com/reduxframework/redux-vendor-support', admin_url( 'plugins.php' ) );
+					$msg = sprintf( __( 'The <a href="%1$s">Vendor Support plugin</a> (or extension) is either not installed or not activated and thus, some controls may not render properly.  Please ensure that it is installed and <a href="%2$s">activated</a>', 'redux-framework' ), 'https://github.com/ReduxFrameworkLegacy/redux-vendor-support', admin_url( 'plugins.php' ) );
 
 					$data = array(
 						'parent'  => self::$_parent,
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Redux_CDN' ) ) {
 						'dismiss' => false,
 					);
 
-					Redux_Admin_Notices::set_notice( $data );
+					ReduxLegacy_Admin_Notices::set_notice( $data );
 
 					self::$_set = true;
 			}

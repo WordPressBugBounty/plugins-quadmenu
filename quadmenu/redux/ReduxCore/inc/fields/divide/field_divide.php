@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Divide
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_divide' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_divide' ) ) {
 
 	/**
-	 * Main ReduxFramework_divide class
+	 * Main ReduxFrameworkLegacy_divide class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_divide {
+	class ReduxFrameworkLegacy_divide {
 
 		/**
 		 * Field Constructor.
@@ -74,7 +74,7 @@ if ( ! class_exists( 'ReduxFramework_divide' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-divide',
-					ReduxFramework::$_url . 'inc/fields/divide/field_divide.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/divide/field_divide.css',
 					array(),
 					time(),
 					'all'

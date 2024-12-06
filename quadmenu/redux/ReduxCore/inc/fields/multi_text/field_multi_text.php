@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Multi_Text
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_multi_text' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_multi_text' ) ) {
 
 	/**
-	 * Main ReduxFramework_multi_text class
+	 * Main ReduxFrameworkLegacy_multi_text class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_multi_text {
+	class ReduxFrameworkLegacy_multi_text {
 
 		/**
 		 * Field Constructor.
@@ -107,7 +107,7 @@ if ( ! class_exists( 'ReduxFramework_multi_text' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-multi-text-js',
-				ReduxFramework::$_url . 'inc/fields/multi_text/field_multi_text' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/multi_text/field_multi_text' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true
@@ -116,7 +116,7 @@ if ( ! class_exists( 'ReduxFramework_multi_text' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-multi-text-css',
-					ReduxFramework::$_url . 'inc/fields/multi_text/field_multi_text.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/multi_text/field_multi_text.css',
 					array(),
 					time(),
 					'all'

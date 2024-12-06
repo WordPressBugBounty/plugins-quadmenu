@@ -54,7 +54,7 @@ return array(
     'QuadLayers\\QuadMenu\\Panel\\System' => $baseDir . '/lib/panel/class-system.php',
     'QuadLayers\\QuadMenu\\Panel\\Welcome' => $baseDir . '/lib/panel/class-welcome.php',
     'QuadLayers\\QuadMenu\\Plugin' => $baseDir . '/lib/class-plugin.php',
-    'QuadLayers\\QuadMenu\\Redux' => $baseDir . '/lib/class-redux.php',
+    'QuadLayers\\QuadMenu\\Redux_Legacy' => $baseDir . '/lib/class-redux-legacy.php',
     'QuadLayers\\QuadMenu\\Themes' => $baseDir . '/lib/class-themes.php',
     'QuadLayers\\QuadMenu\\Widget' => $baseDir . '/lib/class-widget.php',
     'QuadLayers\\WP_Dashboard_Widget_News\\Load' => $baseDir . '/jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php',

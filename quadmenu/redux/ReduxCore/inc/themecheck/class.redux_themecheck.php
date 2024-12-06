@@ -2,11 +2,11 @@
 	/**
 	 * Redux ThemeCheck
 	 *
-	 * @package   ReduxFramework
+	 * @package   ReduxFrameworkLegacy
 	 * @author    Dovy <dovy@redux.io>
 	 * @license   GPL-3.0+
 	 * @link      http://redux.op
-	 * @copyright 2015 ReduxFramework
+	 * @copyright 2015 ReduxFrameworkLegacy
 	 */
 
 	/**
@@ -16,8 +16,8 @@
 	 * @author  Dovy <dovy@redux.io>
 	 */
 	// Don't duplicate me!
-if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
-	class Redux_ThemeCheck {
+if ( ! class_exists( 'ReduxLegacy_ThemeCheck' ) ) {
+	class ReduxLegacy_ThemeCheck {
 
 		/**
 		 * Plugin version, used for cache-busting of style and script file references.
@@ -103,8 +103,8 @@ if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
 		public static function get_redux_instance() {
 
 			// If the single instance hasn't been set, set it now.
-			if ( null == self::$redux && ReduxFramework::$_as_plugin ) {
-				self::$redux = new ReduxFramework();
+			if ( null == self::$redux && ReduxFrameworkLegacy::$_as_plugin ) {
+				self::$redux = new ReduxFrameworkLegacy();
 				self::$redux->init();
 			}
 
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
 		public static function get_redux_details( $php_files = array() ) {
 			if ( self::$redux_details === null ) {
 				foreach ( $php_files as $php_key => $phpfile ) {
-					if ( strpos( $phpfile, 'class' . ' ReduxFramework {' ) !== false ) {
+					if ( strpos( $phpfile, 'class' . ' ReduxFrameworkLegacy {' ) !== false ) {
 						self::$redux_details               = array(
 							'filename' => strtolower( basename( $php_key ) ),
 							'path'     => $php_key,
@@ -190,7 +190,7 @@ if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
 		public function enqueue_admin_styles() {
 			$screen = get_current_screen();
 			if ( 'appearance_page_themecheck' == $screen->id ) {
-				wp_enqueue_style( $this->slug . '-admin-styles', ReduxFramework::$_url . 'inc/themecheck/css/admin.css', array(), $this->version );
+				wp_enqueue_style( $this->slug . '-admin-styles', ReduxFrameworkLegacy::$_url . 'inc/themecheck/css/admin.css', array(), $this->version );
 			}
 		}
 
@@ -204,7 +204,7 @@ if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
 			$screen = get_current_screen();
 
 			if ( 'appearance_page_themecheck' == $screen->id ) {
-				wp_enqueue_script( $this->slug . '-admin-script', ReduxFramework::$_url . 'inc/themecheck/js/admin.js', array( 'jquery' ), $this->version );
+				wp_enqueue_script( $this->slug . '-admin-script', ReduxFrameworkLegacy::$_url . 'inc/themecheck/js/admin.js', array( 'jquery' ), $this->version );
 
 				if ( ! isset( $_POST['themename'] ) ) {
 
@@ -221,5 +221,5 @@ if ( ! class_exists( 'Redux_ThemeCheck' ) ) {
 		}
 	}
 
-	Redux_ThemeCheck::get_instance();
+	ReduxLegacy_ThemeCheck::get_instance();
 }

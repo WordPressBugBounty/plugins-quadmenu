@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_slides
  * @author      Luciano "WebCaos" Ubertini
  * @author      Daniel J Griffiths (Ghost1227)
@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_slides' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_slides' ) ) {
 
 	/**
-	 * Main ReduxFramework_slides class
+	 * Main ReduxFrameworkLegacy_slides class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_slides {
+	class ReduxFrameworkLegacy_slides {
 
 		/**
 		 * Field Constructor.
@@ -242,7 +242,7 @@ if ( ! class_exists( 'ReduxFramework_slides' ) ) {
 
 				wp_enqueue_style(
 					'redux-field-slides-css',
-					ReduxFramework::$_url . 'inc/fields/slides/field_slides.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/slides/field_slides.css',
 					array(),
 					time(),
 					'all'
@@ -251,7 +251,7 @@ if ( ! class_exists( 'ReduxFramework_slides' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-media-js',
-				ReduxFramework::$_url . 'assets/js/media/media' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/media/media' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true
@@ -259,7 +259,7 @@ if ( ! class_exists( 'ReduxFramework_slides' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-slides-js',
-				ReduxFramework::$_url . 'inc/fields/slides/field_slides' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/slides/field_slides' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'jquery-ui-sortable', 'redux-field-media-js' ),
 				time(),
 				true

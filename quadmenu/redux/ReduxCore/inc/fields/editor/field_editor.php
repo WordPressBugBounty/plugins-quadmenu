@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Editor
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_editor' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_editor' ) ) {
 
 	/**
-	 * Main ReduxFramework_editor class
+	 * Main ReduxFrameworkLegacy_editor class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_editor {
+	class ReduxFrameworkLegacy_editor {
 
 		/**
 		 * Field Constructor.
@@ -96,7 +96,7 @@ if ( ! class_exists( 'ReduxFramework_editor' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-editor-css',
-					ReduxFramework::$_url . 'inc/fields/editor/field_editor.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/editor/field_editor.css',
 					array(),
 					time(),
 					'all'
@@ -105,7 +105,7 @@ if ( ! class_exists( 'ReduxFramework_editor' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-editor-js',
-				ReduxFramework::$_url . 'inc/fields/editor/field_editor' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/editor/field_editor' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true

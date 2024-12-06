@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_text' ) ) {
-	class ReduxFramework_text {
+if ( ! class_exists( 'ReduxFrameworkLegacy_text' ) ) {
+	class ReduxFrameworkLegacy_text {
 
 		public $parent;
 		public $field;
@@ -16,7 +16,7 @@ if ( ! class_exists( 'ReduxFramework_text' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ReduxFramework_text' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 			if ( ! empty( $this->field['data'] ) && empty( $this->field['options'] ) ) {
@@ -80,13 +80,13 @@ if ( ! class_exists( 'ReduxFramework_text' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function enqueue() {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-text-css',
-					ReduxFramework::$_url . 'inc/fields/text/field_text.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/text/field_text.css',
 					array(),
 					time(),
 					'all'

@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'reduxCorePanel' ) ) {
+if ( ! class_exists( 'reduxLegacyCorePanel' ) ) {
 	/**
-	 * Class reduxCorePanel
+	 * Class reduxLegacyCorePanel
 	 */
-	class reduxCorePanel {
+	class reduxLegacyCorePanel {
 		/**
 		 * @var null
 		 */
@@ -29,8 +29,8 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 		 */
 		public function __construct( $parent ) {
 			$this->parent             = $parent;
-			Redux_Functions::$_parent = $parent;
-			$this->template_path      = $this->original_path = ReduxFramework::$_dir . 'templates/panel/';
+			ReduxLegacy_Functions::$_parent = $parent;
+			$this->template_path      = $this->original_path = ReduxFrameworkLegacy::$_dir . 'templates/panel/';
 			if ( ! empty( $this->parent->args['templates_path'] ) ) {
 				$this->template_path = trailingslashit( $this->parent->args['templates_path'] );
 			}
@@ -77,7 +77,7 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 			/**
 			 * action 'redux/page/{opt_name}/form/before'
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux/page/{$this->parent->args['opt_name']}/form/before", $this );
 
@@ -93,7 +93,7 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 			/**
 			 * action 'redux/page/{opt_name}/form/after'
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux/page/{$this->parent->args['opt_name']}/form/after", $this );
 			echo '<div class="clear"></div>';
@@ -128,7 +128,7 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 					/**
 					 * action 'redux/options/{opt_name}/import'
 					 *
-					 * @param object $this ReduxFramework
+					 * @param object $this ReduxFrameworkLegacy
 					 */
 					do_action( "redux/options/{$this->parent->args['opt_name']}/import", $this, $this->parent->transients['changed_values'] );
 
@@ -143,7 +143,7 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 					/**
 					 * action 'redux/options/{opt_name}/reset'
 					 *
-					 * @param object $this ReduxFramework
+					 * @param object $this ReduxFrameworkLegacy
 					 */
 					do_action( "redux/options/{$this->parent->args['opt_name']}/reset", $this );
 
@@ -157,7 +157,7 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 					/**
 					 * action 'redux/options/{opt_name}/section/reset'
 					 *
-					 * @param object $this ReduxFramework
+					 * @param object $this ReduxFrameworkLegacy
 					 */
 					do_action( "redux/options/{$this->parent->args['opt_name']}/section/reset", $this );
 
@@ -300,8 +300,8 @@ if ( ! class_exists( 'reduxCorePanel' ) ) {
 				}
 
 				if ( $developer_theme_file ) {
-					$core_version      = Redux_Helpers::get_template_version( $this->original_path . $file );
-					$developer_version = Redux_Helpers::get_template_version( $developer_theme_file );
+					$core_version      = ReduxLegacy_Helpers::get_template_version( $this->original_path . $file );
+					$developer_version = ReduxLegacy_Helpers::get_template_version( $developer_theme_file );
 
 					if ( $core_version && $developer_version && version_compare( $developer_version, $core_version, '<' ) ) {
 						?>

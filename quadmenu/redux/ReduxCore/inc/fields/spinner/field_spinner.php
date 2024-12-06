@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
-	class ReduxFramework_spinner {
+if ( ! class_exists( 'ReduxFrameworkLegacy_spinner' ) ) {
+	class ReduxFrameworkLegacy_spinner {
 
 		public $parent;
 		public $field;
@@ -16,7 +16,7 @@ if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function render() {
 
@@ -108,13 +108,13 @@ if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function enqueue() {
 
 			wp_enqueue_script(
 				'redux-field-spinner-custom-js',
-				ReduxFramework::$_url . 'inc/fields/spinner/vendor/spinner_custom.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/spinner/vendor/spinner_custom.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true
@@ -122,7 +122,7 @@ if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-spinner-js',
-				ReduxFramework::$_url . 'inc/fields/spinner/field_spinner' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/spinner/field_spinner' . ReduxLegacy_Functions::isMin() . '.js',
 				array(
 					'jquery',
 					'redux-field-spinner-custom-js',
@@ -137,7 +137,7 @@ if ( ! class_exists( 'ReduxFramework_spinner' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-spinner-css',
-					ReduxFramework::$_url . 'inc/fields/spinner/field_spinner.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/spinner/field_spinner.css',
 					array(),
 					time(),
 					'all'

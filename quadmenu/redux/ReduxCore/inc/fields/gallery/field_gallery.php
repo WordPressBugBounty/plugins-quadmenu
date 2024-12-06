@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Gallery
  * @author      Abdullah Almesbahi (cadr-sa)
  * @version     3.0.0
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_gallery' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_gallery' ) ) {
 
 	/**
-	 * Main ReduxFramework_gallery class
+	 * Main ReduxFrameworkLegacy_gallery class
 	 *
 	 * @since       3.0.0
 	 */
-	class ReduxFramework_gallery {
+	class ReduxFrameworkLegacy_gallery {
 
 		/**
 		 * Field Constructor.
@@ -95,7 +95,7 @@ if ( ! class_exists( 'ReduxFramework_gallery' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-gallery-js',
-				ReduxFramework::$_url . 'inc/fields/gallery/field_gallery' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/gallery/field_gallery' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true

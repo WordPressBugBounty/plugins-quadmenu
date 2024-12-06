@@ -4,7 +4,7 @@
 	 * Override this template by specifying the path where it is stored (templates_path) in your Redux config.
 	 *
 	 * @author        Redux Framework
-	 * @package       ReduxFramework/Templates
+	 * @package       ReduxFrameworkLegacy/Templates
 	 * @version:      3.6.10
 	 */
 ?>

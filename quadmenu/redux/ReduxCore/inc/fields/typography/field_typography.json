@@ -13,11 +13,11 @@
      * - getSubsets()
      * - getVariants()
      * Classes list:
-     * - ReduxFramework_typography
+     * - ReduxFrameworkLegacy_typography
      */
 
-    if ( ! class_exists( 'ReduxFramework_typography' ) ) {
-        class ReduxFramework_typography {
+    if ( ! class_exists( 'ReduxFrameworkLegacy_typography' ) ) {
+        class ReduxFrameworkLegacy_typography {
 
             private $std_fonts = array(
                 "Arial, Helvetica, sans-serif"                         => "Arial, Helvetica, sans-serif",
@@ -45,7 +45,7 @@
              * Field Constructor.
              * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
              *
-             * @since ReduxFramework 1.0.0
+             * @since ReduxFrameworkLegacy 1.0.0
              */
             function __construct( $field = array(), $value = '', $parent ) {
                 $this->parent = $parent;
@@ -136,7 +136,7 @@
              * Field Render Function.
              * Takes the vars and outputs the HTML for the field in the settings
              *
-             * @since ReduxFramework 1.0.0
+             * @since ReduxFrameworkLegacy 1.0.0
              */
             function render() {
                 // Since fonts declared is CSS (@font-face) are not rendered in the preview,
@@ -531,7 +531,7 @@
              * Enqueue Function.
              * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
              *
-             * @since ReduxFramework 1.0.0
+             * @since ReduxFrameworkLegacy 1.0.0
              */
             function enqueue() {
                 if ( ! wp_style_is( 'select2-css' ) ) {
@@ -545,7 +545,7 @@
                 if ( ! wp_script_is( 'redux-field-typography-js' ) ) {
                     wp_enqueue_script(
                         'redux-field-typography-js',
-                        ReduxFramework::$_url . 'inc/fields/typography/field_typography' . Redux_Functions::isMin() . '.js',
+                        ReduxFrameworkLegacy::$_url . 'inc/fields/typography/field_typography' . ReduxLegacy_Functions::isMin() . '.js',
                         array( 'jquery', 'wp-color-picker', 'select2-js', 'redux-js' ),
                         time(),
                         true
@@ -566,7 +566,7 @@
                     if ( ! wp_style_is( 'redux-field-typography-css' ) ) {
                         wp_enqueue_style(
                             'redux-field-typography-css',
-                            ReduxFramework::$_url . 'inc/fields/typography/field_typography.css',
+                            ReduxFrameworkLegacy::$_url . 'inc/fields/typography/field_typography.css',
                             array(),
                             time(),
                             'all'
@@ -579,7 +579,7 @@
              * makeGoogleWebfontLink Function.
              * Creates the google fonts link.
              *
-             * @since ReduxFramework 3.0.0
+             * @since ReduxFrameworkLegacy 3.0.0
              */
             function makeGoogleWebfontLink( $fonts ) {
                 $link    = "";
@@ -621,7 +621,7 @@
              * makeGoogleWebfontString Function.
              * Creates the google fonts link.
              *
-             * @since ReduxFramework 3.1.8
+             * @since ReduxFrameworkLegacy 3.1.8
              */
             function makeGoogleWebfontString( $fonts ) {
                 $link    = "";
@@ -1008,7 +1008,7 @@
              * getSubsets Function.
              * Clean up the Google Webfonts subsets to be human readable
              *
-             * @since ReduxFramework 0.2.0
+             * @since ReduxFrameworkLegacy 0.2.0
              */
             private function getSubsets( $var ) {
                 $result = array();
@@ -1033,7 +1033,7 @@
              * getVariants Function.
              * Clean up the Google Webfonts variants to be human readable
              *
-             * @since ReduxFramework 0.2.0
+             * @since ReduxFrameworkLegacy 0.2.0
              */
             private function getVariants( $var ) {
                 $result = array();

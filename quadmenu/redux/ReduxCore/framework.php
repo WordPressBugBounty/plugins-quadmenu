@@ -20,19 +20,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFrameworkInstances' ) ) {
+if ( ! class_exists( 'ReduxFrameworkInstancesLegacy' ) ) {
 	// Instance Container
 	require_once __DIR__ . '/inc/class.redux_instances.php';
 	require_once __DIR__ . '/inc/lib.redux_instances.php';
 }
 
-if ( class_exists( 'ReduxFrameworkInstances' ) ) {
-	add_action( 'redux/init', 'ReduxFrameworkInstances::get_instance' );
+if ( class_exists( 'ReduxFrameworkInstancesLegacy' ) ) {
+	add_action( 'redux/init', 'ReduxFrameworkInstancesLegacy::get_instance' );
 }
 
-	// Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework' ) ) {
-
+// Don't duplicate me!
+if ( ! class_exists( 'ReduxFrameworkLegacy' ) ) {
 	// Redux CDN class
 	require_once __DIR__ . '/inc/class.redux_cdn.php';
 
@@ -59,12 +58,11 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 	require_once __DIR__ . '/inc/welcome/welcome.php';
 
 	/**
-	 * Main ReduxFramework class
+	 * Main ReduxFrameworkLegacy class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework {
-
+	class ReduxFrameworkLegacy {
 		// ATTENTION DEVS
 		// Please update the build number with each push, no matter how small.
 		// This will make for easier support when we ask users what version they are using.
@@ -87,14 +85,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		public $no_output;
 
 		public static function init() {
-			$dir = Redux_Helpers::cleanFilePath( __DIR__ );
+			$dir = ReduxLegacy_Helpers::cleanFilePath( __DIR__ );
 
 			// Windows-proof constants: replace backward by forward slashes. Thanks to: @peterbouwmeester
 			self::$_dir           = trailingslashit( $dir );
-			self::$wp_content_url = trailingslashit( Redux_Helpers::cleanFilePath( ( is_ssl() ? str_replace( 'http://', 'https://', WP_CONTENT_URL ) : WP_CONTENT_URL ) ) );
+			self::$wp_content_url = trailingslashit( ReduxLegacy_Helpers::cleanFilePath( ( is_ssl() ? str_replace( 'http://', 'https://', WP_CONTENT_URL ) : WP_CONTENT_URL ) ) );
 
 			// See if Redux is a plugin or not
-			if ( strpos( Redux_Helpers::cleanFilePath( __FILE__ ), Redux_Helpers::cleanFilePath( get_stylesheet_directory() ) ) !== false || strpos( Redux_Helpers::cleanFilePath( __FILE__ ), Redux_Helpers::cleanFilePath( get_template_directory_uri() ) ) !== false || strpos( Redux_Helpers::cleanFilePath( __FILE__ ), Redux_Helpers::cleanFilePath( WP_CONTENT_DIR . '/themes/' ) ) !== false ) {
+			if ( strpos( ReduxLegacy_Helpers::cleanFilePath( __FILE__ ), ReduxLegacy_Helpers::cleanFilePath( get_stylesheet_directory() ) ) !== false || strpos( ReduxLegacy_Helpers::cleanFilePath( __FILE__ ), ReduxLegacy_Helpers::cleanFilePath( get_template_directory_uri() ) ) !== false || strpos( ReduxLegacy_Helpers::cleanFilePath( __FILE__ ), ReduxLegacy_Helpers::cleanFilePath( WP_CONTENT_DIR . '/themes/' ) ) !== false ) {
 				self::$_is_plugin = false;
 			} else {
 				// Check if plugin is a symbolic link, see if it's a plugin. If embedded, we can't do a thing.
@@ -104,12 +102,15 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 					}
 
 					$is_plugin = false;
-					foreach ( get_plugins() as $key => $value ) {
-						if ( is_plugin_active( $key ) && strpos( $key, 'redux-framework.php' ) !== false ) {
-							self::$_dir = trailingslashit( Redux_Helpers::cleanFilePath( WP_CONTENT_DIR . '/plugins/' . plugin_dir_path( $key ) . 'ReduxCore/' ) );
-							$is_plugin  = true;
-						}
-					}
+
+					//QUADLAYERS DEVS NOTE: this change the path if the plugin version is installed in wordpress, breaking the options tab in dashboard
+
+					// foreach ( get_plugins() as $key => $value ) {
+					// 	if ( is_plugin_active( $key ) && strpos( $key, 'redux-framework.php' ) !== false ) {
+					// 		self::$_dir = trailingslashit( ReduxLegacy_Helpers::cleanFilePath( WP_CONTENT_DIR . '/plugins/' . plugin_dir_path( $key ) . 'ReduxCore/' ) );
+					// 		$is_plugin  = true;
+					// 	}
+					// }
 					if ( ! $is_plugin ) {
 						self::$_is_plugin = false;
 					}
@@ -118,14 +119,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 
 			if ( self::$_is_plugin == true || self::$_as_plugin == true ) {
 				self::$_url = plugin_dir_url( __FILE__ );
-			} elseif ( strpos( Redux_Helpers::cleanFilePath( __FILE__ ), Redux_Helpers::cleanFilePath( get_template_directory() ) ) !== false ) {
-					$relative_url = str_replace( Redux_Helpers::cleanFilePath( get_template_directory() ), '', self::$_dir );
+			} elseif ( strpos( ReduxLegacy_Helpers::cleanFilePath( __FILE__ ), ReduxLegacy_Helpers::cleanFilePath( get_template_directory() ) ) !== false ) {
+					$relative_url = str_replace( ReduxLegacy_Helpers::cleanFilePath( get_template_directory() ), '', self::$_dir );
 					self::$_url   = trailingslashit( get_template_directory_uri() . $relative_url );
-			} elseif ( strpos( Redux_Helpers::cleanFilePath( __FILE__ ), Redux_Helpers::cleanFilePath( get_stylesheet_directory() ) ) !== false ) {
-				$relative_url = str_replace( Redux_Helpers::cleanFilePath( get_stylesheet_directory() ), '', self::$_dir );
+			} elseif ( strpos( ReduxLegacy_Helpers::cleanFilePath( __FILE__ ), ReduxLegacy_Helpers::cleanFilePath( get_stylesheet_directory() ) ) !== false ) {
+				$relative_url = str_replace( ReduxLegacy_Helpers::cleanFilePath( get_stylesheet_directory() ), '', self::$_dir );
 				self::$_url   = trailingslashit( get_stylesheet_directory_uri() . $relative_url );
 			} else {
-				$wp_content_dir = trailingslashit( Redux_Helpers::cleanFilePath( WP_CONTENT_DIR ) );
+				$wp_content_dir = trailingslashit( ReduxLegacy_Helpers::cleanFilePath( WP_CONTENT_DIR ) );
 				$wp_content_dir = trailingslashit( str_replace( '//', '/', $wp_content_dir ) );
 				$relative_url   = str_replace( $wp_content_dir, '', self::$_dir );
 				self::$_url     = trailingslashit( self::$wp_content_url . $relative_url );
@@ -146,7 +147,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 
 		// ::init()
 
-		public $framework_url        = 'http://www.reduxframework.com/';
+		public $framework_url        = 'http://www.ReduxFrameworkLegacy.com/';
 		public static $instance      = null;
 		public $admin_notices        = array();
 		public $page                 = '';
@@ -203,7 +204,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		 * @param       array $args       Class constructor arguments.
 		 * @param       array $extra_tabs Extra panel tabs. // REMOVE
 		 *
-		 * @return \ReduxFramework
+		 * @return \ReduxFrameworkLegacy
 		 */
 		public function __construct( $sections = array(), $args = array(), $extra_tabs = array() ) {
 			// Disregard WP AJAX 'heartbeat'call.  Why waste resources?
@@ -219,8 +220,8 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			}
 
 			// Pass parent pointer to function helper.
-			Redux_Functions::$_parent = $this;
-			Redux_CDN::$_parent       = $this;
+			ReduxLegacy_Functions::$_parent = $this;
+			ReduxLegacy_CDN::$_parent       = $this;
 
 			// Set values
 			$this->set_default_args();
@@ -247,14 +248,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			/**
 			 * filter 'redux/args/{opt_name}'
 			 *
-			 * @param  array $args ReduxFramework configuration
+			 * @param  array $args ReduxFrameworkLegacy configuration
 			 */
 			$this->args = apply_filters( "redux/args/{$this->args['opt_name']}", $this->args );
 
 			/**
 			 * filter 'redux/options/{opt_name}/args'
 			 *
-			 * @param  array $args ReduxFramework configuration
+			 * @param  array $args ReduxFrameworkLegacy configuration
 			 */
 			$this->args = apply_filters( "redux/options/{$this->args['opt_name']}/args", $this->args );
 
@@ -338,7 +339,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 				 * Construct hook
 				 * action 'redux/construct'
 				 *
-				 * @param object $this ReduxFramework
+				 * @param object $this ReduxFrameworkLegacy
 				 */
 				do_action( 'redux/construct', $this );
 
@@ -348,7 +349,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 				// Internataionalization
 				$this->_internationalization();
 
-				$this->filesystem = Redux_Filesystem::get_instance( $this );
+				$this->filesystem = ReduxLegacy_Filesystem::get_instance( $this );
 
 				// set redux upload folder
 				$this->set_redux_content();
@@ -360,7 +361,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 				$this->get_options();
 
 				// Tracking
-				if ( isset( $this->args['allow_tracking'] ) && $this->args['allow_tracking'] && Redux_Helpers::isTheme( __FILE__ ) ) {
+				if ( isset( $this->args['allow_tracking'] ) && $this->args['allow_tracking'] && ReduxLegacy_Helpers::isTheme( __FILE__ ) ) {
 					$this->_tracking();
 				}
 
@@ -440,21 +441,21 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 				// Ajax saving!!!
 				add_action( 'wp_ajax_' . $this->args['opt_name'] . '_ajax_save', array( $this, 'ajax_save' ) );
 
-				if ( $this->args['dev_mode'] == true || Redux_Helpers::isLocalHost() == true ) {
+				if ( $this->args['dev_mode'] == true || ReduxLegacy_Helpers::isLocalHost() == true ) {
 					require_once 'core/dashboard.php';
-					new reduxDashboardWidget( $this );
+					new reduxLegacyDashboardWidget( $this );
 
 					if ( ! isset( $GLOBALS['redux_notice_check'] ) || $GLOBALS['redux_notice_check'] == 0 ) {
 						require_once 'core/newsflash.php';
 
 						$params = array(
 							'dir_name'    => 'notice',
-							'server_file' => 'http://reduxframework.com/wp-content/uploads/redux/redux_notice.json',
+							'server_file' => 'http://ReduxFrameworkLegacy.com/wp-content/uploads/redux/redux_notice.json',
 							'interval'    => 3,
 							'cookie_id'   => 'redux_blast',
 						);
 
-						new reduxNewsflash( $this, $params );
+						new reduxLegacyNewsflash( $this, $params );
 						$GLOBALS['redux_notice_check'] = 1;
 					}
 				}
@@ -464,7 +465,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			 * Loaded hook
 			 * action 'redux/loaded'
 			 *
-			 * @param  object $this ReduxFramework
+			 * @param  object $this ReduxFrameworkLegacy
 			 */
 			do_action( 'redux/loaded', $this );
 		}
@@ -598,7 +599,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 
 		// Fix conflicts with Visual Composer.
 		public function vc_fixes() {
-			if ( redux_helpers::isFieldInUse( $this, 'ace_editor' ) ) {
+			if ( reduxLegacy_helpers::isFieldInUse( $this, 'ace_editor' ) ) {
 				wp_dequeue_script( 'wpb_ace' );
 				wp_deregister_script( 'wpb_ace' );
 			}
@@ -639,17 +640,17 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		public function _update_check() {
 			// Only one notice per instance please
 			if ( ! isset( $GLOBALS['redux_update_check'] ) ) {
-				Redux_Functions::updateCheck( $this, self::$_version );
+				ReduxLegacy_Functions::updateCheck( $this, self::$_version );
 				$GLOBALS['redux_update_check'] = 1;
 			}
 		}
 
 		public function _admin_notices() {
-			Redux_Admin_Notices::adminNotices( $this, $this->admin_notices );
+			ReduxLegacy_Admin_Notices::adminNotices( $this, $this->admin_notices );
 		}
 
 		public function _dismiss_admin_notice() {
-			Redux_Admin_Notices::dismissAdminNotice();
+			ReduxLegacy_Admin_Notices::dismissAdminNotice();
 		}
 
 		/**
@@ -699,7 +700,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		// _internationalization()
 
 		/**
-		 * @return ReduxFramework
+		 * @return ReduxFrameworkLegacy
 		 */
 		public function get_instance() {
 			// self::$_instance = $this;
@@ -711,7 +712,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		private function _tracking() {
 			if ( file_exists( __DIR__ . '/inc/tracking.php' ) ) {
 				require_once __DIR__ . '/inc/tracking.php';
-				$tracking = Redux_Tracking::get_instance();
+				$tracking = ReduxLegacy_Tracking::get_instance();
 				$tracking->load( $this );
 			}
 		}
@@ -815,7 +816,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		/**
 		 * ->set_options(); This is used to set an arbitrary option in the options array
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 *
 		 * @param mixed $value the value of the option being added
 		 */
@@ -872,7 +873,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		/**
 		 * ->get_options(); This is used to get options from the database
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		public function get_options() {
 			$defaults = false;
@@ -919,7 +920,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		/**
 		 * ->get_wordpress_date() - Get WordPress specific data from the DB and return in a usable array
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		public function get_wordpress_data( $type = false, $args = array() ) {
 			$data = '';
@@ -1315,7 +1316,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			}
 
 			// Force dev_mode on WP_DEBUG = true and if it's a local server
-			if ( Redux_Helpers::isLocalHost() || ( Redux_Helpers::isWpDebug() ) ) {
+			if ( ReduxLegacy_Helpers::isLocalHost() || ( ReduxLegacy_Helpers::isWpDebug() ) ) {
 				if ( $this->args['dev_mode'] != true ) {
 					$this->args['update_notice'] = false;
 				}
@@ -1666,7 +1667,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 					/** @noinspection PhpUnusedLocalVariableInspection */
 					foreach ( $section['fields'] as $fieldk => $field ) {
 						if ( isset( $field['type'] ) && $field['type'] != 'callback' ) {
-							$field_class = "ReduxFramework_{$field['type']}";
+							$field_class = "ReduxFrameworkLegacy_{$field['type']}";
 							if ( ! class_exists( $field_class ) ) {
 
 								if ( ! isset( $field['compiler'] ) ) {
@@ -1714,7 +1715,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 
 			if ( ! empty( $this->typography ) && ! empty( $this->typography ) && filter_var( $this->args['output'], FILTER_VALIDATE_BOOLEAN ) ) {
 				$version    = ! empty( $this->transients['last_save'] ) ? $this->transients['last_save'] : '';
-				$typography = new ReduxFramework_typography( null, null, $this );
+				$typography = new ReduxFrameworkLegacy_typography( null, null, $this );
 
 				if ( $this->args['async_typography'] && ! empty( $this->typography ) ) {
 					$families = array();
@@ -1760,7 +1761,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		 */
 		public function _enqueue() {
 			require_once 'core/enqueue.php';
-			$enqueue = new reduxCoreEnqueue( $this );
+			$enqueue = new reduxLegacyCoreEnqueue( $this );
 			$enqueue->init();
 		}
 		// _enqueue()
@@ -1879,14 +1880,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			 *
 			 * @deprecated
 			 *
-			 * @param  object $this ReduxFramework
+			 * @param  object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux-admin-head-{$this->args['opt_name']}", $this ); // REMOVE
 
 			/**
 			 * action 'redux/page/{opt_name}/header'
 			 *
-			 * @param  object $this ReduxFramework
+			 * @param  object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux/page/{$this->args['opt_name']}/header", $this );
 		}
@@ -2496,14 +2497,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			/**
 			 * action 'redux/extensions/before'
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( 'redux/extensions/before', $this );
 
 			/**
 			 * action 'redux/extensions/{opt_name}/before'
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux/extensions/{$this->args['opt_name']}/before", $this );
 
@@ -2516,7 +2517,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 					continue;
 				}
 
-				$extension_class = 'ReduxFramework_Extension_' . $folder;
+				$extension_class = 'ReduxFrameworkLegacy_Extension_' . $folder;
 
 				/**
 				 * filter 'redux-extensionclass-load'
@@ -2551,14 +2552,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			 *
 			 * @deprecated
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux-register-extensions-{$this->args['opt_name']}", $this ); // REMOVE
 
 			/**
 			 * action 'redux/extensions/{opt_name}'
 			 *
-			 * @param object $this ReduxFramework
+			 * @param object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux/extensions/{$this->args['opt_name']}", $this );
 
@@ -2884,7 +2885,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 				die();
 			}
 
-			$redux = ReduxFrameworkInstances::get_instance( $_POST['opt_name'] );
+			$redux = ReduxFrameworkInstancesLegacy::get_instance( $_POST['opt_name'] );
 
 			if ( ! empty( $_POST['data'] ) && ! empty( $redux->args['opt_name'] ) ) {
 
@@ -2948,7 +2949,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						}
 
 						require_once 'core/enqueue.php';
-						$enqueue = new reduxCoreEnqueue( $redux );
+						$enqueue = new reduxLegacyCoreEnqueue( $redux );
 						$enqueue->get_warnings_and_errors_array();
 
 						$return_array = array(
@@ -3006,7 +3007,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 			if ( isset( $return_array ) ) {
 				if ( $return_array['status'] == 'success' ) {
 					require_once 'core/panel.php';
-					$panel = new reduxCorePanel( $redux );
+					$panel = new reduxLegacyCorePanel( $redux );
 					ob_start();
 					$panel->notification_bar();
 					$notification_bar = ob_get_contents();
@@ -3357,7 +3358,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		 */
 		public function generate_panel() {
 			require_once 'core/panel.php';
-			$panel = new reduxCorePanel( $this );
+			$panel = new reduxLegacyCorePanel( $this );
 			$panel->init();
 			$this->set_transients();
 		}
@@ -3493,7 +3494,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 					return;
 				}
 
-				$field_class = "ReduxFramework_{$field['type']}";
+				$field_class = "ReduxFrameworkLegacy_{$field['type']}";
 
 				if ( ! class_exists( $field_class ) ) {
 					// $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field ); // REMOVE
@@ -3827,11 +3828,11 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						foreach ( $parentValue as $idx => $val ) {
 							if ( is_array( $checkValue ) ) {
 								foreach ( $checkValue as $i => $v ) {
-									if ( Redux_Helpers::makeBoolStr( $val ) === Redux_Helpers::makeBoolStr( $v ) ) {
+									if ( ReduxLegacy_Helpers::makeBoolStr( $val ) === ReduxLegacy_Helpers::makeBoolStr( $v ) ) {
 										$return = true;
 									}
 								}
-							} elseif ( Redux_Helpers::makeBoolStr( $val ) === Redux_Helpers::makeBoolStr( $checkValue ) ) {
+							} elseif ( ReduxLegacy_Helpers::makeBoolStr( $val ) === ReduxLegacy_Helpers::makeBoolStr( $checkValue ) ) {
 									$return = true;
 							}
 						}
@@ -3839,11 +3840,11 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						// var_dump($checkValue);
 						if ( is_array( $checkValue ) ) {
 							foreach ( $checkValue as $i => $v ) {
-								if ( Redux_Helpers::makeBoolStr( $parentValue ) === Redux_Helpers::makeBoolStr( $v ) ) {
+								if ( ReduxLegacy_Helpers::makeBoolStr( $parentValue ) === ReduxLegacy_Helpers::makeBoolStr( $v ) ) {
 									$return = true;
 								}
 							}
-						} elseif ( Redux_Helpers::makeBoolStr( $parentValue ) === Redux_Helpers::makeBoolStr( $checkValue ) ) {
+						} elseif ( ReduxLegacy_Helpers::makeBoolStr( $parentValue ) === ReduxLegacy_Helpers::makeBoolStr( $checkValue ) ) {
 								$return = true;
 						}
 					}
@@ -3856,21 +3857,21 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						foreach ( $parentValue as $idx => $val ) {
 							if ( is_array( $checkValue ) ) {
 								foreach ( $checkValue as $i => $v ) {
-									if ( Redux_Helpers::makeBoolStr( $val ) !== Redux_Helpers::makeBoolStr( $v ) ) {
+									if ( ReduxLegacy_Helpers::makeBoolStr( $val ) !== ReduxLegacy_Helpers::makeBoolStr( $v ) ) {
 										$return = true;
 									}
 								}
-							} elseif ( Redux_Helpers::makeBoolStr( $val ) !== Redux_Helpers::makeBoolStr( $checkValue ) ) {
+							} elseif ( ReduxLegacy_Helpers::makeBoolStr( $val ) !== ReduxLegacy_Helpers::makeBoolStr( $checkValue ) ) {
 									$return = true;
 							}
 						}
 					} elseif ( is_array( $checkValue ) ) {
 						foreach ( $checkValue as $i => $v ) {
-							if ( Redux_Helpers::makeBoolStr( $parentValue ) !== Redux_Helpers::makeBoolStr( $v ) ) {
+							if ( ReduxLegacy_Helpers::makeBoolStr( $parentValue ) !== ReduxLegacy_Helpers::makeBoolStr( $v ) ) {
 								$return = true;
 							}
 						}
-					} elseif ( Redux_Helpers::makeBoolStr( $parentValue ) !== Redux_Helpers::makeBoolStr( $checkValue ) ) {
+					} elseif ( ReduxLegacy_Helpers::makeBoolStr( $parentValue ) !== ReduxLegacy_Helpers::makeBoolStr( $checkValue ) ) {
 							$return = true;
 					}
 
@@ -4088,7 +4089,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		}
 
 		private function change_demo_defaults() {
-			if ( $this->args['dev_mode'] == true || Redux_Helpers::isLocalHost() == true ) {
+			if ( $this->args['dev_mode'] == true || ReduxLegacy_Helpers::isLocalHost() == true ) {
 				if ( ! empty( $this->args['admin_bar_links'] ) ) {
 					foreach ( $this->args['admin_bar_links'] as $idx => $arr ) {
 						if ( is_array( $arr ) && ! empty( $arr ) ) {
@@ -4134,7 +4135,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						'dismiss' => true,
 					);
 
-					Redux_Admin_Notices::set_notice( $data );
+					ReduxLegacy_Admin_Notices::set_notice( $data );
 				}
 			}
 
@@ -4148,7 +4149,7 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 						'dismiss' => true,
 					);
 
-					Redux_Admin_Notices::set_notice( $data );
+					ReduxLegacy_Admin_Notices::set_notice( $data );
 				}
 			}
 		}
@@ -4345,14 +4346,14 @@ if ( ! class_exists( 'ReduxFramework' ) ) {
 		}
 	}
 
-	// ReduxFramework
+	// ReduxFrameworkLegacy
 
 	/**
 	 * action 'redux/init'
 	 *
 	 * @param null
 	 */
-	ReduxFramework::init();
+	ReduxFrameworkLegacy::init();
 	do_action( 'redux/init' );
 
-} // class_exists('ReduxFramework')
+} // class_exists('ReduxFrameworkLegacy')

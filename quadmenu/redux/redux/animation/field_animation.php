@@ -3,10 +3,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-if ( ! class_exists( 'ReduxFramework_animation' ) ) {
-
-	class ReduxFramework_animation {
+if ( ! class_exists( 'ReduxFrameworkLegacy_animation' ) ) {
+	class ReduxFrameworkLegacy_animation {
 
 		public $parent;
 		public $field;
@@ -127,7 +125,7 @@ if ( ! class_exists( 'ReduxFramework_animation' ) ) {
 
 			wp_enqueue_style(
 				'redux-field-animation-css',
-				$this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.css',
+				$this->_extension_url . 'field_animation' . ReduxLegacy_Functions::isMin() . '.css',
 				array(),
 				time(),
 				'all'
@@ -135,7 +133,7 @@ if ( ! class_exists( 'ReduxFramework_animation' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-animation-js',
-				$this->_extension_url . 'field_animation' . Redux_Functions::isMin() . '.js',
+				$this->_extension_url . 'field_animation' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'select2-js', 'redux-js' ),
 				time(),
 				true

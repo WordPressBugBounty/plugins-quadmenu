@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	// Don't duplicate me!
-if ( ! class_exists( 'Redux' ) ) {
+if ( ! class_exists( 'ReduxLegacy' ) ) {
 
 	/**
 	 * Redux API Class
@@ -23,7 +23,7 @@ if ( ! class_exists( 'Redux' ) ) {
 	 *
 	 * @since       1.0.0
 	 */
-	class Redux {
+	class ReduxLegacy {
 
 		public static $fields          = array();
 		public static $sections        = array();
@@ -44,33 +44,33 @@ if ( ! class_exists( 'Redux' ) ) {
 		}
 
 		public static function load() {
-			add_action( 'after_setup_theme', array( 'Redux', 'createRedux' ) );
-			add_action( 'init', array( 'Redux', 'createRedux' ) );
-			add_action( 'switch_theme', array( 'Redux', 'createRedux' ) );
+			add_action( 'after_setup_theme', array( 'ReduxLegacy', 'createRedux' ) );
+			add_action( 'init', array( 'ReduxLegacy', 'createRedux' ) );
+			add_action( 'switch_theme', array( 'ReduxLegacy', 'createRedux' ) );
 		}
 
 		public static function init( $opt_name = '' ) {
 			if ( ! empty( $opt_name ) ) {
 				self::loadRedux( $opt_name );
-				remove_action( 'setup_theme', array( 'Redux', 'createRedux' ) );
+				remove_action( 'setup_theme', array( 'ReduxLegacy', 'createRedux' ) );
 			}
 		}
 
-		public static function loadExtensions( $ReduxFramework ) {
-			if ( $instanceExtensions = self::getExtensions( $ReduxFramework->args['opt_name'], '' ) ) {
+		public static function loadExtensions( $ReduxFrameworkLegacy ) {
+			if ( $instanceExtensions = self::getExtensions( $ReduxFrameworkLegacy->args['opt_name'], '' ) ) {
 				foreach ( $instanceExtensions as $name => $extension ) {
 					if ( ! class_exists( $extension['class'] ) ) {
 						// In case you wanted override your override, hah.
-						$extension['path'] = apply_filters( 'redux/extension/' . $ReduxFramework->args['opt_name'] . '/' . $name, $extension['path'] );
+						$extension['path'] = apply_filters( 'redux/extension/' . $ReduxFrameworkLegacy->args['opt_name'] . '/' . $name, $extension['path'] );
 						if ( file_exists( $extension['path'] ) ) {
 							require_once $extension['path'];
 						}
 					}
-					if ( ! isset( $ReduxFramework->extensions[ $name ] ) ) {
+					if ( ! isset( $ReduxFrameworkLegacy->extensions[ $name ] ) ) {
 						if ( class_exists( $extension['class'] ) ) {
-							$ReduxFramework->extensions[ $name ] = new $extension['class']( $ReduxFramework );
-							// if (isset($ReduxFramework->extensions[ $name ]->min_redux_version)) {
-							// var_dump($ReduxFramework->extensions[ $name ]->min_redux_version);
+							$ReduxFrameworkLegacy->extensions[ $name ] = new $extension['class']( $ReduxFrameworkLegacy );
+							// if (isset($ReduxFrameworkLegacy->extensions[ $name ]->min_redux_version)) {
+							// var_dump($ReduxFrameworkLegacy->extensions[ $name ]->min_redux_version);
 							// }
 
 						} else {
@@ -100,7 +100,7 @@ if ( ! class_exists( 'Redux' ) ) {
 				return;
 			}
 
-			$check = ReduxFrameworkInstances::get_instance( $opt_name );
+			$check = ReduxFrameworkInstancesLegacy::get_instance( $opt_name );
 
 			if ( isset( $check->apiHasRun ) ) {
 				return;
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Redux' ) ) {
 
 			$args     = self::constructArgs( $opt_name );
 			$sections = self::constructSections( $opt_name );
-			if ( ! class_exists( 'ReduxFramework' ) ) {
+			if ( ! class_exists( 'ReduxFrameworkLegacy' ) ) {
 				echo '<div id="message" class="error"><p>Redux Framework is <strong>not installed</strong>. Please install it.</p></div>';
 
 				return;
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Redux' ) ) {
 				add_action( "redux/extensions/{$opt_name}/before", array( 'Redux', 'loadExtensions' ), 0 );
 			}
 
-			$redux                   = new ReduxFramework( $sections, $args );
+			$redux                   = new ReduxFrameworkLegacy( $sections, $args );
 			$redux->apiHasRun        = 1;
 			self::$init[ $opt_name ] = 1;
 			if ( isset( $redux->args['opt_name'] ) && $redux->args['opt_name'] != $opt_name ) {
@@ -524,7 +524,7 @@ if ( ! class_exists( 'Redux' ) ) {
 				}
 
 				self::$extensions[ $name ] = isset( self::$extensions[ $name ] ) ? self::$extensions[ $name ] : array();
-				$version                   = Redux_Helpers::get_template_version( $class_file );
+				$version                   = ReduxLegacy_Helpers::get_template_version( $class_file );
 				if ( empty( $version ) && ! empty( $instance ) ) {
 					if ( isset( $instance->version ) ) {
 						$version = $instance->version;
@@ -533,7 +533,7 @@ if ( ! class_exists( 'Redux' ) ) {
 				self::$extensions[ $name ][ $version ] = isset( self::$extensions[ $name ][ $version ] ) ? self::$extensions[ $name ][ $version ] : $class_file;
 
 				$api_check = str_replace( 'extension_' . $name, $name . '_api', $class_file );
-				if ( file_exists( $api_check ) && ! class_exists( 'Redux_' . ucfirst( $name ) ) ) {
+				if ( file_exists( $api_check ) && ! class_exists( 'ReduxLegacy_' . ucfirst( $name ) ) ) {
 					include_once $api_check;
 				}
 			}
@@ -572,8 +572,8 @@ if ( ! class_exists( 'Redux' ) ) {
 		 * Method to disables Redux demo mode popup.
 		 */
 		public static function disable_demo() {
-			add_action( 'ReduxFrameworkPlugin_admin_notice', 'Redux::remove_demo', 0 );
-			add_action( 'redux_framework_plugin_admin_notice', 'Redux::remove_demo', 0 );
+			add_action( 'ReduxFrameworkPlugin_admin_notice', 'ReduxLegacy::remove_demo', 0 );
+			add_action( 'redux_framework_plugin_admin_notice', 'ReduxLegacy::remove_demo', 0 );
 		}
 
 		/**
@@ -584,7 +584,7 @@ if ( ! class_exists( 'Redux' ) ) {
 		}
 
 		public static function getAllExtensions() {
-			$redux = ReduxFrameworkInstances::get_all_instances();
+			$redux = ReduxFrameworkInstancesLegacy::get_all_instances();
 			foreach ( $redux as $instance ) {
 				if ( ! empty( self::$uses_extensions[ $instance['args']['opt_name'] ] ) ) {
 					continue;
@@ -601,14 +601,14 @@ if ( ! class_exists( 'Redux' ) ) {
 				return;
 			}
 			if ( empty( $instance ) ) {
-				$instance = ReduxFrameworkInstances::get_instance( $opt_name );
+				$instance = ReduxFrameworkInstancesLegacy::get_instance( $opt_name );
 			}
 			if ( empty( $instance ) || empty( $instance->extensions ) ) {
 				return;
 			}
 			foreach ( $instance->extensions as $name => $extension ) {
 				if ( $name == 'widget_areas' ) {
-					$new = new Redux_Widget_Areas( $instance );
+					$new = new ReduxLegacy_Widget_Areas( $instance );
 				}
 				if ( isset( self::$uses_extensions[ $opt_name ][ $name ] ) ) {
 					continue;
@@ -643,11 +643,11 @@ if ( ! class_exists( 'Redux' ) ) {
 				foreach ( self::$uses_extensions[ $opt_name ] as $extension ) {
 					$class_file                       = end( self::$extensions[ $extension ] );
 					$name                             = str_replace( '.php', '', basename( $extension ) );
-					$extension_class                  = 'ReduxFramework_Extension_' . $name;
+					$extension_class                  = 'ReduxFrameworkLegacy_Extension_' . $name;
 					$instanceExtensions[ $extension ] = array(
 						'path'    => $class_file,
 						'class'   => $extension_class,
-						'version' => Redux_Helpers::get_template_version( $class_file ),
+						'version' => ReduxLegacy_Helpers::get_template_version( $class_file ),
 					);
 				}
 
@@ -658,5 +658,5 @@ if ( ! class_exists( 'Redux' ) ) {
 		}
 	}
 
-	Redux::load();
+	ReduxLegacy::load();
 }

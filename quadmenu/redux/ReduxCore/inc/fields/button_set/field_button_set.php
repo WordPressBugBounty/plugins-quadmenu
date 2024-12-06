@@ -26,14 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_button_set' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_button_set' ) ) {
 
 	/**
-	 * Main ReduxFramework_button_set class
+	 * Main ReduxFrameworkLegacy_button_set class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_button_set {
+	class ReduxFrameworkLegacy_button_set {
 
 		public $parent;
 		public $field;
@@ -168,7 +168,7 @@ if ( ! class_exists( 'ReduxFramework_button_set' ) ) {
 			if ( ! wp_script_is( 'redux-field-button-set-js' ) ) {
 				wp_enqueue_script(
 					'redux-field-button-set-js',
-					ReduxFramework::$_url . 'inc/fields/button_set/field_button_set' . Redux_Functions::isMin() . '.js',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/button_set/field_button_set' . ReduxLegacy_Functions::isMin() . '.js',
 					array( 'jquery', 'jquery-ui-core', 'redux-js' ),
 					time(),
 					true

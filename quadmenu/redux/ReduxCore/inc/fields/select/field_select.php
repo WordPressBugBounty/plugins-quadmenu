@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_select' ) ) {
-	class ReduxFramework_select {
+if ( ! class_exists( 'ReduxFrameworkLegacy_select' ) ) {
+	class ReduxFrameworkLegacy_select {
 
 		public $parent;
 		public $field;
@@ -15,7 +15,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		public function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -27,7 +27,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		public function render() {
 			$sortable = ( isset( $this->field['sortable'] ) && $this->field['sortable'] ) ? ' select2-sortable"' : '';
@@ -42,7 +42,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 				}
 
 				if ( $this->field['data'] == 'elusive-icons' || $this->field['data'] == 'elusive-icon' || $this->field['data'] == 'elusive' ) {
-					$icons_file = ReduxFramework::$_dir . 'inc/fields/select/elusive-icons.php';
+					$icons_file = ReduxFrameworkLegacy::$_dir . 'inc/fields/select/elusive-icons.php';
 					/**
 					 * filter 'redux-font-icons-file}'
 					 *
@@ -152,7 +152,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		public function enqueue() {
 			wp_enqueue_style( 'select2-css' );
@@ -163,7 +163,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-select-js',
-				ReduxFramework::$_url . 'inc/fields/select/field_select' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/select/field_select' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'select2-js', 'redux-js' ),
 				time(),
 				true
@@ -172,7 +172,7 @@ if ( ! class_exists( 'ReduxFramework_select' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-select-css',
-					ReduxFramework::$_url . 'inc/fields/select/field_select.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/select/field_select.css',
 					array(),
 					time(),
 					'all'

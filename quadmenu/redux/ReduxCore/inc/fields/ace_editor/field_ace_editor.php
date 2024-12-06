@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
-	class ReduxFramework_ace_editor {
+if ( ! class_exists( 'ReduxFrameworkLegacy_ace_editor' ) ) {
+	class ReduxFrameworkLegacy_ace_editor {
 
 		public $parent;
 		public $field;
@@ -33,7 +33,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -56,7 +56,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 
@@ -78,7 +78,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 
 			?>
 				<div class="ace-wrapper">
-					<input type="hidden" 
+					<input type="hidden"
 						class="localize_data"
 						value="<?php echo htmlspecialchars( json_encode( $params ) ); ?>"
 					/>
@@ -101,7 +101,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 				if ( ! wp_style_is( 'redux-field-ace-editor-css' ) ) {
 					wp_enqueue_style(
 						'redux-field-ace-editor-css',
-						ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor.css',
+						ReduxFrameworkLegacy::$_url . 'inc/fields/ace_editor/field_ace_editor.css',
 						array(),
 						time(),
 						'all'
@@ -110,7 +110,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 			}
 
 			if ( ! wp_script_is( 'ace-editor-js' ) ) {
-				Redux_CDN::enqueue_script(
+				ReduxLegacy_CDN::enqueue_script(
 					'ace-editor-js',
 					'//cdn.jsdelivr.net/ace/1.1.9/min/ace.js',
 					array( 'jquery' ),
@@ -122,7 +122,7 @@ if ( ! class_exists( 'ReduxFramework_ace_editor' ) ) {
 			if ( ! wp_script_is( 'redux-field-ace-editor-js' ) ) {
 				wp_enqueue_script(
 					'redux-field-ace-editor-js',
-					ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor' . Redux_Functions::isMin() . '.js',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/ace_editor/field_ace_editor' . ReduxLegacy_Functions::isMin() . '.js',
 					array( 'jquery', 'ace-editor-js', 'redux-js' ),
 					time(),
 					true

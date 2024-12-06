@@ -11,7 +11,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @author      Dovy Paukstys
 	 * @version     3.1.5
 	 */
@@ -22,14 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_import_export' ) ) {
 
 	/**
-	 * Main ReduxFramework_import_export class
+	 * Main ReduxFrameworkLegacy_import_export class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_import_export extends ReduxFramework {
+	class ReduxFrameworkLegacy_import_export extends ReduxFrameworkLegacy {
 		public $parent;
 		public $field;
 		public $value;
@@ -52,8 +52,8 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 			$this->value    = $value;
 			$this->is_field = $this->parent->extensions['import_export']->is_field;
 
-			$this->extension_dir = ReduxFramework::$_dir . 'inc/extensions/import_export/';
-			$this->extension_url = ReduxFramework::$_url . 'inc/extensions/import_export/';
+			$this->extension_dir = ReduxFrameworkLegacy::$_dir . 'inc/extensions/import_export/';
+			$this->extension_url = ReduxFrameworkLegacy::$_url . 'inc/extensions/import_export/';
 
 			// Set default args for this field to avoid bad indexes. Change this to anything you use.
 			$defaults    = array(
@@ -76,7 +76,7 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 		 */
 		public function render() {
 
-			$secret = md5( md5( Redux_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] );
+			$secret = md5( md5( ReduxLegacy_Helpers::get_auth_key_secret_key() ) . '-' . $this->parent->args['opt_name'] );
 
 			// No errors please
 			$defaults = array(
@@ -88,17 +88,17 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 
 			$bDoClose = false;
 
-			// $this->parent->args['opt_name'] & $this->field['id'] are sanitized in the ReduxFramework class, no need to re-sanitize it.
+			// $this->parent->args['opt_name'] & $this->field['id'] are sanitized in the ReduxFrameworkLegacy class, no need to re-sanitize it.
 			$id = $this->parent->args['opt_name'] . '-' . $this->field['id'];
 
-			// $this->field['type'] && $this->field['id'] is sanitized in the ReduxFramework class, no need to re-sanitize it.
+			// $this->field['type'] && $this->field['id'] is sanitized in the ReduxFrameworkLegacy class, no need to re-sanitize it.
 			?>
 					<h4><?php esc_html_e( 'Import Options', 'redux-framework' ); ?></h4>
 
 					<p>
 						<a href="javascript:void(0);" id="redux-import-code-button" class="button-secondary">
 						<?php esc_html_e( 'Import from File', 'redux-framework' ); ?>
-						</a> 
+						</a>
 						<a href="javascript:void(0);" id="redux-import-link-button" class="button-secondary">
 						<?php esc_html_e( 'Import from URL', 'redux-framework' ); ?>
 						</a>
@@ -108,13 +108,13 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 						<p class="description" id="import-code-description">
 						<?php echo esc_html( apply_filters( 'redux-import-file-description', __( 'Input your backup file below and hit Import to restore your sites options from a backup.', 'redux-framework' ) ) ); ?>
 						</p>
-					<?php // $this->parent->args['opt_name'] is sanitized in the ReduxFramework class, no need to re-sanitize it. ?>
+					<?php // $this->parent->args['opt_name'] is sanitized in the ReduxFrameworkLegacy class, no need to re-sanitize it. ?>
 						<textarea id="import-code-value" name="<?php echo $this->parent->args['opt_name']; ?>[import_code]" class="large-text noUpdate" rows="2"></textarea>
 					</div>
 
 					<div id="redux-import-link-wrapper">
 						<p class="description" id="import-link-description"><?php echo esc_html( apply_filters( 'redux-import-link-description', __( 'Input the URL to another sites options set and hit Import to load the options from that site.', 'redux-framework' ) ) ); ?></p>
-					<?php // $this->parent->args['opt_name'] is sanitized in the ReduxFramework class, no need to re-sanitize it. ?>
+					<?php // $this->parent->args['opt_name'] is sanitized in the ReduxFrameworkLegacy class, no need to re-sanitize it. ?>
 						<textarea class="large-text noUpdate" id="import-link-value" name="<?php echo $this->parent->args['opt_name']; ?>[import_link]" rows="2"></textarea>
 					</div>
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 						</p>
 					</div>
 				<?php
-				// $this->parent->args['opt_name'] is sanitized in the ReduxFramework class, no need to re-sanitize it.
+				// $this->parent->args['opt_name'] is sanitized in the ReduxFrameworkLegacy class, no need to re-sanitize it.
 				$link = esc_url( admin_url( 'admin-ajax.php?action=redux_download_options-' . $this->parent->args['opt_name'] . '&secret=' . $secret ) );
 				?>
 					<p>
@@ -158,9 +158,9 @@ if ( ! class_exists( 'ReduxFramework_import_export' ) ) {
 
 			wp_enqueue_script(
 				'redux-import-export',
-				$this->extension_url . 'import_export/field_import_export' . Redux_Functions::isMin() . '.js',
+				$this->extension_url . 'import_export/field_import_export' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery' ),
-				ReduxFramework_extension_import_export::$version,
+				ReduxFrameworkLegacy_extension_import_export::$version,
 				true
 			);
 

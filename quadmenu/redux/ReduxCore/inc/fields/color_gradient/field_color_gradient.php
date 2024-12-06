@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Color_Gradient
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_color_gradient' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_color_gradient' ) ) {
 
 	/**
-	 * Main ReduxFramework_color_gradient class
+	 * Main ReduxFrameworkLegacy_color_gradient class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_color_gradient {
+	class ReduxFrameworkLegacy_color_gradient {
 
 		/**
 		 * Field Constructor.
@@ -106,7 +106,7 @@ if ( ! class_exists( 'ReduxFramework_color_gradient' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-color-gradient-js',
-				ReduxFramework::$_url . 'inc/fields/color_gradient/field_color_gradient' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/color_gradient/field_color_gradient' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'wp-color-picker', 'redux-js' ),
 				time(),
 				'all'
@@ -117,7 +117,7 @@ if ( ! class_exists( 'ReduxFramework_color_gradient' ) ) {
 
 				wp_enqueue_style(
 					'redux-field-color_gradient-css',
-					ReduxFramework::$_url . 'inc/fields/color_gradient/field_color_gradient.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/color_gradient/field_color_gradient.css',
 					array(),
 					time(),
 					'all'

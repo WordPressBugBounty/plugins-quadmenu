@@ -4,7 +4,7 @@
 	 * Override this template by specifying the path where it is stored (templates_path) in your Redux config.
 	 *
 	 * @author      Redux Framework
-	 * @package     ReduxFramework/Templates
+	 * @package     ReduxFrameworkLegacy/Templates
 	 * @version:    3.5.4.18
 	 */
 ?>
@@ -82,14 +82,14 @@
 	 *
 	 * @deprecated
 	 *
-	 * @param object $this ReduxFramework
+	 * @param object $this ReduxFrameworkLegacy
 	 */
 	do_action( "redux/page-after-sections-{$this->parent->args['opt_name']}", $this ); // REMOVE LATER
 
 	/**
 	 * action 'redux/page/{opt_name}/sections/after'
 	 *
-	 * @param object $this ReduxFramework
+	 * @param object $this ReduxFrameworkLegacy
 	 */
 	do_action( "redux/page/{$this->parent->args['opt_name']}/sections/after", $this );
 	?>

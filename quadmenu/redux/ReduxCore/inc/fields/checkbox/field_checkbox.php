@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Checkbox
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_checkbox' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_checkbox' ) ) {
 
 	/**
-	 * Main ReduxFramework_checkbox class
+	 * Main ReduxFrameworkLegacy_checkbox class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_checkbox {
+	class ReduxFrameworkLegacy_checkbox {
 
 		/**
 		 * Field Constructor.
@@ -153,7 +153,7 @@ if ( ! class_exists( 'ReduxFramework_checkbox' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-checkbox-css',
-					ReduxFramework::$_url . 'inc/fields/checkbox/field_checkbox.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/checkbox/field_checkbox.css',
 					array(),
 					time(),
 					'all'
@@ -162,7 +162,7 @@ if ( ! class_exists( 'ReduxFramework_checkbox' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-checkbox-js',
-				ReduxFramework::$_url . 'inc/fields/checkbox/field_checkbox' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/checkbox/field_checkbox' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				time(),
 				true

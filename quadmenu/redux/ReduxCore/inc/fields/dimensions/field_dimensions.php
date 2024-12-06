@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
-	class ReduxFramework_dimensions {
+if ( ! class_exists( 'ReduxFrameworkLegacy_dimensions' ) ) {
+	class ReduxFrameworkLegacy_dimensions {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -49,7 +49,7 @@ if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function render() {
 
@@ -59,7 +59,7 @@ if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
 			 */
 
 			// If units field has a value but is not an acceptable value, unset the variable
-			if ( isset( $this->field['units'] ) && ! Redux_Helpers::array_in_array(
+			if ( isset( $this->field['units'] ) && ! ReduxLegacy_Helpers::array_in_array(
 				$this->field['units'],
 				array(
 					'',
@@ -81,7 +81,7 @@ if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
 			}
 
 			// if there is a default unit value  but is not an accepted value, unset the variable
-			if ( isset( $this->value['units'] ) && ! Redux_Helpers::array_in_array(
+			if ( isset( $this->value['units'] ) && ! ReduxLegacy_Helpers::array_in_array(
 				$this->value['units'],
 				array(
 					'',
@@ -214,14 +214,14 @@ if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
 		 * Enqueue Function.
 		 * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
 		 *
-		 * @since ReduxFramework 1.0.0
+		 * @since ReduxFrameworkLegacy 1.0.0
 		 */
 		function enqueue() {
 			wp_enqueue_style( 'select2-css' );
 
 			wp_enqueue_script(
 				'redux-field-dimensions-js',
-				ReduxFramework::$_url . 'inc/fields/dimensions/field_dimensions' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/dimensions/field_dimensions' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'select2-js', 'redux-js' ),
 				time(),
 				true
@@ -230,7 +230,7 @@ if ( ! class_exists( 'ReduxFramework_dimensions' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-dimensions-css',
-					ReduxFramework::$_url . 'inc/fields/dimensions/field_dimensions.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/dimensions/field_dimensions.css',
 					array(),
 					time(),
 					'all'

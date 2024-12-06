@@ -11,7 +11,7 @@
 	 * You should have received a copy of the GNU General Public License
 	 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 	 *
-	 * @package     ReduxFramework
+	 * @package     ReduxFrameworkLegacy
 	 * @subpackage  Field_Section
 	 * @author      Tobias Karnetze (athoss.de)
 	 * @version     1.0.0
@@ -23,14 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_section' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_section' ) ) {
 
 	/**
-	 * Main ReduxFramework_heading class
+	 * Main ReduxFrameworkLegacy_heading class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_section {
+	class ReduxFrameworkLegacy_section {
 
 		public $parent;
 		public $field;
@@ -122,7 +122,7 @@ if ( ! class_exists( 'ReduxFramework_section' ) ) {
 			if ( $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-field-section-css',
-					ReduxFramework::$_url . 'inc/fields/section/field_section.css',
+					ReduxFrameworkLegacy::$_url . 'inc/fields/section/field_section.css',
 					array(),
 					time(),
 					'all'

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'Redux_Helpers' ) ) {
+if ( ! class_exists( 'ReduxLegacy_Helpers' ) ) {
 
 	/**
 	 * Redux Helpers Class
@@ -14,7 +14,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 	 *
 	 * @since       1.0.0
 	 */
-	class Redux_Helpers {
+	class ReduxLegacy_Helpers {
 
 		public static function tabFromField( $parent, $field ) {
 			foreach ( $parent->sections as $k => $section ) {
@@ -182,8 +182,8 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				'options'   => apply_filters( 'redux/tracking/options', array() ),
 				'theme'     => $theme,
 				'redux'     => array(
-					'mode'      => ReduxFramework::$_is_plugin ? 'plugin' : 'theme',
-					'version'   => ReduxFramework::$_version,
+					'mode'      => ReduxFrameworkLegacy::$_is_plugin ? 'plugin' : 'theme',
+					'version'   => ReduxFrameworkLegacy::$_version,
 					'demo_mode' => get_option( 'ReduxFrameworkPlugin' ),
 				),
 				'developer' => apply_filters( 'redux/tracking/developer', array() ),
@@ -270,7 +270,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		private static function reduxAsPlugin() {
-			return ReduxFramework::$_as_plugin;
+			return ReduxFrameworkLegacy::$_as_plugin;
 		}
 
 		public static function isTheme( $file ) {
@@ -356,7 +356,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		 * Field Render Function.
 		 * Takes the color hex value and converts to a rgba.
 		 *
-		 * @since ReduxFramework 3.0.4
+		 * @since ReduxFrameworkLegacy 3.0.4
 		 */
 		public static function hex2rgba( $hex, $alpha = '' ) {
 			$hex = str_replace( '#', '', $hex );
@@ -391,7 +391,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		public static function localize( $localize ) {
-			$redux            = ReduxFrameworkInstances::get_instance( $localize['args']['opt_name'] );
+			$redux            = ReduxFrameworkInstancesLegacy::get_instance( $localize['args']['opt_name'] );
 			$nonce            = wp_create_nonce( 'redux-ads-nonce' );
 			$base             = admin_url( 'admin-ajax.php' ) . '?action=redux_p&nonce=' . $nonce . '&url=';
 			$localize['rAds'] = self::rURL_fix( $base, $redux->args['opt_name'] );
@@ -406,12 +406,12 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 
 			$sysinfo['home_url']       = home_url();
 			$sysinfo['site_url']       = site_url();
-			$sysinfo['redux_ver']      = esc_html( ReduxFramework::$_version );
-			$sysinfo['redux_data_dir'] = ReduxFramework::$_upload_dir;
+			$sysinfo['redux_ver']      = esc_html( ReduxFrameworkLegacy::$_version );
+			$sysinfo['redux_data_dir'] = ReduxFrameworkLegacy::$_upload_dir;
 			$f                         = 'fo' . 'pen';
 
 			$res = true;
-			if ( $f( ReduxFramework::$_upload_dir . 'test-log.log', 'a' ) === false ) {
+			if ( $f( ReduxFrameworkLegacy::$_upload_dir . 'test-log.log', 'a' ) === false ) {
 				$res = false;
 			}
 
@@ -451,7 +451,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 			$sysinfo['wp_lang'] = get_locale();
 
 			if ( ! class_exists( 'Browser' ) ) {
-				require_once ReduxFramework::$_dir . 'inc/browser.php';
+				require_once ReduxFrameworkLegacy::$_dir . 'inc/browser.php';
 			}
 
 			$browser = new Browser();
@@ -514,7 +514,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 					array(
 						'sslverify'  => false,
 						'timeout'    => 60,
-						'user-agent' => 'ReduxFramework/' . ReduxFramework::$_version,
+						'user-agent' => 'ReduxFrameworkLegacy/' . ReduxFrameworkLegacy::$_version,
 						'body'       => array(
 							'cmd' => '_notify-validate',
 						),
@@ -532,7 +532,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				}
 
 				$response = @wp_remote_get(
-					'http://reduxframework.com/wp-admin/admin-ajax.php?action=get_redux_extensions'
+					'http://ReduxFrameworkLegacy.com/wp-admin/admin-ajax.php?action=get_redux_extensions'
 				);
 
 				if ( ! is_wp_error(
@@ -566,13 +566,13 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				}
 			}
 
-			$redux = ReduxFrameworkInstances::get_all_instances();
+			$redux = ReduxFrameworkInstancesLegacy::get_all_instances();
 
 			$sysinfo['redux_instances'] = array();
 
 			if ( ! empty( $redux ) && is_array( $redux ) ) {
 				foreach ( $redux as $inst => $data ) {
-					Redux::init( $inst );
+					Redux_Legacy::init( $inst );
 
 					$sysinfo['redux_instances'][ $inst ]['args']     = $data->args;
 					$sysinfo['redux_instances'][ $inst ]['sections'] = $data->sections;
@@ -591,7 +591,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 						}
 					}
 
-					$sysinfo['redux_instances'][ $inst ]['extensions'] = Redux::getExtensions( $inst );
+					$sysinfo['redux_instances'][ $inst ]['extensions'] = Redux_Legacy::getExtensions( $inst );
 
 					if ( isset( $data->extensions['metaboxes'] ) ) {
 						$data->extensions['metaboxes']->init();
@@ -632,7 +632,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		private static function getReduxTemplates( $custom_template_path ) {
-			$template_paths     = array( 'ReduxFramework' => ReduxFramework::$_dir . 'templates/panel' );
+			$template_paths     = array( 'ReduxFrameworkLegacy' => ReduxFrameworkLegacy::$_dir . 'templates/panel' );
 			$scanned_files      = array();
 			$found_files        = array();
 			$outdated_templates = false;
@@ -651,7 +651,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 
 					if ( $theme_file ) {
 						$core_version  = self::get_template_version(
-							ReduxFramework::$_dir . 'templates/panel/' . $file
+							ReduxFrameworkLegacy::$_dir . 'templates/panel/' . $file
 						);
 						$theme_version = self::get_template_version( $theme_file );
 
@@ -695,7 +695,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 				$base
 			) . '';
 
-			return Redux_Functions::tru( $url, $opt_name );
+			return ReduxLegacy_Functions::tru( $url, $opt_name );
 		}
 
 		private static function scan_template_files( $template_path ) {
@@ -721,7 +721,7 @@ if ( ! class_exists( 'Redux_Helpers' ) ) {
 		}
 
 		public static function get_template_version( $file ) {
-			$filesystem = Redux_Filesystem::get_instance();
+			$filesystem = ReduxLegacy_Filesystem::get_instance();
 
 			// Avoid notices if file does not exist
 			if ( ! file_exists( $file ) ) {

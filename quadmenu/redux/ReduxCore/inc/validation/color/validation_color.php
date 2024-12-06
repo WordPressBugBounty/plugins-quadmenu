@@ -1,13 +1,13 @@
 <?php
 
-if ( ! class_exists( 'Redux_Validation_color' ) ) {
-	class Redux_Validation_color {
+if ( ! class_exists( 'ReduxLegacy_Validation_color' ) ) {
+	class ReduxLegacy_Validation_color {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function __construct( $parent, $field, $value, $current ) {
 			$this->parent       = $parent;
@@ -23,7 +23,7 @@ if ( ! class_exists( 'Redux_Validation_color' ) ) {
 		 * Validate Color
 		 * Takes the user's input color value and returns it only if it's a valid color.
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function validate_color( $color ) {
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Redux_Validation_color' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 3.0.0
+		 * @since ReduxFrameworkLegacy 3.0.0
 		 */
 		function validate() {
 

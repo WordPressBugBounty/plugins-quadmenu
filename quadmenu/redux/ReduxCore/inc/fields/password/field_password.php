@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Class ReduxFramework_password
+	 * Class ReduxFrameworkLegacy_password
 	 */
 
 // Exit if accessed directly
@@ -9,14 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ReduxFramework_password' ) ) {
-	class ReduxFramework_password {
+if ( ! class_exists( 'ReduxFrameworkLegacy_password' ) ) {
+	class ReduxFrameworkLegacy_password {
 
 		/**
 		 * Field Constructor.
 		 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 		 *
-		 * @since ReduxFramework 1.0.1
+		 * @since ReduxFrameworkLegacy 1.0.1
 		 */
 		function __construct( $field = array(), $value = '', $parent = null ) {
 			$this->parent = $parent;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'ReduxFramework_password' ) ) {
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
-		 * @since ReduxFramework 1.0.1
+		 * @since ReduxFrameworkLegacy 1.0.1
 		 */
 		function render() {
 			if ( ! empty( $this->field['username'] ) && $this->field['username'] === true ) {
@@ -41,7 +41,7 @@ if ( ! class_exists( 'ReduxFramework_password' ) ) {
 		/**
 		 * This will render a combined User/Password field
 		 *
-		 * @since ReduxFramework 3.0.9
+		 * @since ReduxFrameworkLegacy 3.0.9
 		 * @example
 		 *        <code>
 		 *        array(
@@ -89,7 +89,7 @@ if ( ! class_exists( 'ReduxFramework_password' ) ) {
 		/**
 		 * This will render a single Password field
 		 *
-		 * @since ReduxFramework 3.0.9
+		 * @since ReduxFrameworkLegacy 3.0.9
 		 * @example
 		 *        <code>
 		 *        array(

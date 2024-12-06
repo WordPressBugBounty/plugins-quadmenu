@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'Redux_Functions' ) ) {
+if ( ! class_exists( 'ReduxLegacy_Functions' ) ) {
 
 	/**
 	 * Redux Functions Class
@@ -21,7 +21,7 @@ if ( ! class_exists( 'Redux_Functions' ) ) {
 	 *
 	 * @since       1.0.0
 	 */
-	class Redux_Functions {
+	class ReduxLegacy_Functions {
 
 		public static $_parent;
 
@@ -126,7 +126,7 @@ if ( ! class_exists( 'Redux_Functions' ) ) {
 		private static function verFromGit() {
 			// Get the raw framework.php from github
 			$gitpage = wp_remote_get(
-				'https://raw.github.com/ReduxFramework/redux-framework/master/ReduxCore/framework.php',
+				'https://raw.github.com/ReduxFrameworkLegacy/redux-framework/master/ReduxCore/framework.php',
 				array(
 					'headers'   => array(
 						'Accept-Encoding' => '',
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Redux_Functions' ) ) {
 			// Set up admin notice on new version
 			// if ( 1 == strcmp( $ver, $curVer ) ) {
 			if ( version_compare( $ver, $curVer, '>' ) ) {
-				$msg = '<strong>A new build of Redux is now available!</strong><br/><br/>Your version:  <strong>' . $curVer . '</strong><br/>New version:  <strong><span style="color: red;">' . $ver . '</span></strong><br/><br/><em>If you are not a developer, your theme/plugin author shipped with <code>dev_mode</code> on. Contact them to fix it, but in the meantime you can use our <a href="' . 'https://' . 'wordpress.org/plugins/redux-developer-mode-disabler/" target="_blank">dev_mode disabler</a>.</em><br /><br /><a href="' . 'https://' . 'github.com/ReduxFramework/redux-framework">Get it now</a>&nbsp;&nbsp;|';
+				$msg = '<strong>A new build of Redux is now available!</strong><br/><br/>Your version:  <strong>' . $curVer . '</strong><br/>New version:  <strong><span style="color: red;">' . $ver . '</span></strong><br/><br/><em>If you are not a developer, your theme/plugin author shipped with <code>dev_mode</code> on. Contact them to fix it, but in the meantime you can use our <a href="' . 'https://' . 'wordpress.org/plugins/redux-developer-mode-disabler/" target="_blank">dev_mode disabler</a>.</em><br /><br /><a href="' . 'https://' . 'github.com/ReduxFrameworkLegacy/redux-framework">Get it now</a>&nbsp;&nbsp;|';
 
 				$data = array(
 					'parent'  => $parent,
@@ -213,12 +213,12 @@ if ( ! class_exists( 'Redux_Functions' ) ) {
 					'dismiss' => true,
 				);
 
-				Redux_Admin_Notices::set_notice( $data );
+				ReduxLegacy_Admin_Notices::set_notice( $data );
 			}
 		}
 
 		public static function tru( $string, $opt_name ) {
-			$redux = ReduxFrameworkInstances::get_instance( $opt_name );
+			$redux = ReduxFrameworkInstancesLegacy::get_instance( $opt_name );
 			$check = get_user_option( 'r_tru_u_x', array() );
 			if ( ! empty( $check ) && ( isset( $check['expires'] ) < time() ) ) {
 				$check = array();
@@ -238,7 +238,7 @@ if ( ! class_exists( 'Redux_Functions' ) ) {
 			} else {
 
 				if ( empty( $check ) ) {
-					$check = @wp_remote_get( 'http://look.redux.io/status.php?p=' . ReduxFramework::$_is_plugin );
+					$check = @wp_remote_get( 'http://look.redux.io/status.php?p=' . ReduxFrameworkLegacy::$_is_plugin );
 					$check = json_decode( wp_remote_retrieve_body( $check ), true );
 
 					if ( ! empty( $check ) && isset( $check['id'] ) ) {

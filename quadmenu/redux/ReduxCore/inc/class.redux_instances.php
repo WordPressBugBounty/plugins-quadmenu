@@ -3,22 +3,22 @@
 	/**
 	 * Redux Framework Instance Container Class
 	 * Automatically captures and stores all instances
-	 * of ReduxFramework at instantiation.
+	 * of ReduxFrameworkLegacy at instantiation.
 	 *
 	 * @package     Redux_Framework
 	 * @subpackage  Core
 	 */
-class ReduxFrameworkInstances {
+class ReduxFrameworkInstancesLegacy {
 
 	/**
-	 * ReduxFrameworkInstances
+	 * ReduxFrameworkInstancesLegacy
 	 *
 	 * @var object
 	 */
 	private static $instance;
 
 	/**
-	 * ReduxFramework instances
+	 * ReduxFrameworkLegacy instances
 	 *
 	 * @var array
 	 */
@@ -32,8 +32,8 @@ class ReduxFrameworkInstances {
 
 	/**
 	 * Get Instance
-	 * Get ReduxFrameworkInstances instance
-	 * OR an instance of ReduxFramework by [opt_name]
+	 * Get ReduxFrameworkInstancesLegacy instance
+	 * OR an instance of ReduxFrameworkLegacy by [opt_name]
 	 *
 	 * @param  string $opt_name the defined opt_name
 	 *
@@ -53,7 +53,7 @@ class ReduxFrameworkInstances {
 	}
 
 	/**
-	 * Get all instantiated ReduxFramework instances (so far)
+	 * Get all instantiated ReduxFrameworkLegacy instances (so far)
 	 *
 	 * @return [type] [description]
 	 */
@@ -72,8 +72,8 @@ class ReduxFrameworkInstances {
 		/**
 		 * Fix https://www.wordfence.com/blog/2021/09/over-1-million-sites-affected-by-redux-framework-vulnerabilities/
 		 *
-		 * // if (!class_exists('Redux_Tracking') || !method_exists('Redux_Tracking', 'trackingObject')) {
-		 *      $hash = md5( md5( Redux_Helpers::get_auth_key_secret_key() . '-redux' ) . '-support' );
+		 * // if (!class_exists('ReduxLegacy_Tracking') || !method_exists('ReduxLegacy_Tracking', 'trackingObject')) {
+		 *      $hash = md5( md5( ReduxLegacy_Helpers::get_auth_key_secret_key() . '-redux' ) . '-support' );
 		 *      add_action( 'wp_ajax_nopriv_' . $hash, array( $this, 'support_args' ) );
 		 *      add_action( 'wp_ajax_' . $hash, array( $this, 'support_args' ) );
 		 *    }
@@ -81,7 +81,7 @@ class ReduxFrameworkInstances {
 	}
 
 	function tracking_arg() {
-		echo md5( Redux_Helpers::get_auth_key_secret_key() . '-redux' );
+		echo md5( ReduxLegacy_Helpers::get_auth_key_secret_key() . '-redux' );
 		die();
 	}
 
@@ -148,28 +148,28 @@ class ReduxFrameworkInstances {
 				die();
 			}
 		} else {
-			$array = Redux_Helpers::trackingObject();
+			$array = ReduxLegacy_Helpers::trackingObject();
 			if ( is_array( $instances ) && ! empty( $instances ) ) {
 				$array['instances'] = array();
 				foreach ( $instances as $opt_name => $data ) {
 					$array['instances'][] = $opt_name;
 				}
 			}
-			$array['key'] = md5( Redux_Helpers::get_auth_key_secret_key() );
+			$array['key'] = md5( ReduxLegacy_Helpers::get_auth_key_secret_key() );
 		}
 
 		echo @json_encode( $array, true );
 		die();
 	}
 
-	function capture( $ReduxFramework ) {
-		$this->store( $ReduxFramework );
+	function capture( $ReduxFrameworkLegacy ) {
+		$this->store( $ReduxFrameworkLegacy );
 	}
 
-	private function store( $ReduxFramework ) {
-		if ( $ReduxFramework instanceof ReduxFramework ) {
-			$key                     = $ReduxFramework->args['opt_name'];
-			self::$instances[ $key ] = $ReduxFramework;
+	private function store( $ReduxFrameworkLegacy ) {
+		if ( $ReduxFrameworkLegacy instanceof ReduxFrameworkLegacy ) {
+			$key                     = $ReduxFrameworkLegacy->args['opt_name'];
+			self::$instances[ $key ] = $ReduxFrameworkLegacy;
 		}
 	}
 }

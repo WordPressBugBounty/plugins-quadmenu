@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
+ * @package     ReduxFrameworkLegacy
  * @subpackage  Field_Color
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
@@ -25,14 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_color' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_color' ) ) {
 
 	/**
-	 * Main ReduxFramework_color class
+	 * Main ReduxFrameworkLegacy_color class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_color {
+	class ReduxFrameworkLegacy_color {
 
 		public $parent;
 		public $field;
@@ -95,7 +95,7 @@ if ( ! class_exists( 'ReduxFramework_color' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-color-js',
-				ReduxFramework::$_url . 'inc/fields/color/field_color' . Redux_Functions::isMin() . '.js',
+				ReduxFrameworkLegacy::$_url . 'inc/fields/color/field_color' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'wp-color-picker', 'redux-js' ),
 				time(),
 				true
@@ -111,12 +111,12 @@ if ( ! class_exists( 'ReduxFramework_color' ) ) {
 				$style .= $mode . ':' . $this->value . ';';
 
 				if ( ! empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
-					$css                      = Redux_Functions::parseCSS( $this->field['output'], $style, $this->value );
+					$css                      = ReduxLegacy_Functions::parseCSS( $this->field['output'], $style, $this->value );
 					$this->parent->outputCSS .= $css;
 				}
 
 				if ( ! empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
-					$css                        = Redux_Functions::parseCSS( $this->field['compiler'], $style, $this->value );
+					$css                        = ReduxLegacy_Functions::parseCSS( $this->field['compiler'], $style, $this->value );
 					$this->parent->compilerCSS .= $css;
 
 				}

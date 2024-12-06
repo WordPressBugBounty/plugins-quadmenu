@@ -13,7 +13,7 @@
 		 * You should have received a copy of the GNU General Public License
 		 * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
 		 *
-		 * @package     ReduxFramework
+		 * @package     ReduxFrameworkLegacy
 		 * @author      Dovy Paukstys (dovy)
 		 * @version     0.1.0
 		 */
@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 		// Don't duplicate me!
-if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
+if ( ! class_exists( 'ReduxFrameworkLegacy_extension_customizer' ) ) {
 
 	/**
-	 * Main ReduxFramework customizer extension class
+	 * Main ReduxFrameworkLegacy customizer extension class
 	 *
 	 * @since       1.0.0
 	 */
-	class ReduxFramework_extension_customizer {
+	class ReduxFrameworkLegacy_extension_customizer {
 
 		// Protected vars
 		protected $redux;
@@ -59,7 +59,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 			$this->parent = $parent;
 
-			$this->upload_dir = ReduxFramework::$_upload_dir . 'advanced-customizer/';
+			$this->upload_dir = ReduxFrameworkLegacy::$_upload_dir . 'advanced-customizer/';
 
 			// add_action('wp_head', array( $this, '_enqueue_new' ));
 			if ( $parent->args['customizer'] == false ) {
@@ -143,15 +143,15 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 		function enqueue_controls_css() {
 
-			require_once ReduxFramework::$_dir . 'core/enqueue.php';
-			$enqueue = new reduxCoreEnqueue( $this->parent );
+			require_once ReduxFrameworkLegacy::$_dir . 'core/enqueue.php';
+			$enqueue = new reduxLegacyCoreEnqueue( $this->parent );
 			$enqueue->get_warnings_and_errors_array();
 			$enqueue->init();
 			wp_enqueue_style( 'redux-extension-advanced-customizer', $this->_extension_url . 'extension_customizer.css', '', time() );
 
 			wp_enqueue_script(
 				'redux-extension-customizer',
-				$this->_extension_url . 'extension_customizer' . Redux_Functions::isMin() . '.js',
+				$this->_extension_url . 'extension_customizer' . ReduxLegacy_Functions::isMin() . '.js',
 				array( 'jquery', 'redux-js' ),
 				self::$version,
 				true
@@ -262,19 +262,19 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		// All sections, settings, and controls will be added here
 		public function _register_customizer_controls( $wp_customize ) {
 
-			if ( ! class_exists( 'Redux_Customizer_Section' ) ) {
+			if ( ! class_exists( 'ReduxLegacy_Customizer_Section' ) ) {
 				require_once __DIR__ . '/inc/customizer_section.php';
 				if ( method_exists( $wp_customize, 'register_section_type' ) ) {
-					$wp_customize->register_section_type( 'Redux_Customizer_Section' );
+					$wp_customize->register_section_type( 'ReduxLegacy_Customizer_Section' );
 				}
 			}
-			if ( ! class_exists( 'Redux_Customizer_Panel' ) ) {
+			if ( ! class_exists( 'ReduxLegacy_Customizer_Panel' ) ) {
 				require_once __DIR__ . '/inc/customizer_panel.php';
 				if ( method_exists( $wp_customize, 'register_panel_type' ) ) {
-					$wp_customize->register_panel_type( 'Redux_Customizer_Panel' );
+					$wp_customize->register_panel_type( 'ReduxLegacy_Customizer_Panel' );
 				}
 			}
-			if ( ! class_exists( 'Redux_Customizer_Control' ) ) {
+			if ( ! class_exists( 'ReduxLegacy_Customizer_Control' ) ) {
 				require_once __DIR__ . '/inc/customizer_control.php';
 			}
 
@@ -284,14 +284,14 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			do_action( 'redux/extension/customizer/control/includes' );
 
 			// if ($this->parent->args['dev_mode']) {
-			// $section = new Redux_Customizer_rAds( $wp_customize, 'redux_rAds', array(
+			// $section = new ReduxLegacy_Customizer_rAds( $wp_customize, 'redux_rAds', array(
 			// 'priority'    => 0,
 			// ) );
 			// $wp_customize->add_section( $section, array(
 			// 'priority'    => 0,
 			// ) );
 			//
-			// $wp_customize->add_control( new Redux_Customizer_Control_rAds( $wp_customize, 'reduxAdsDisplay', array(
+			// $wp_customize->add_control( new ReduxLegacy_Customizer_Control_rAds( $wp_customize, 'reduxAdsDisplay', array(
 			// 'section'        => 'redux_rAds',
 			// 'settings'       => 'redux_rAds_field',
 			// 'type'           => 'redux-rAds',
@@ -305,7 +305,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				// $args = array(
 				// 'priority'    => 0,
 				// );
-				// $section = new Redux_Customizer_Section( $wp_customize, 'redux_rAds', $args );
+				// $section = new ReduxLegacy_Customizer_Section( $wp_customize, 'redux_rAds', $args );
 				// $wp_customize->add_section( $section, $args );
 				// $this->add_section( 'redux_rAds', array(
 				// 'title'       => '',
@@ -322,14 +322,14 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				// 'settings'   => 'redux_rAds_display',
 				// )
 				// ));
-				// $wp_customize->add_control( new Redux_Customizer_Control_rAds( $wp_customize, 'reduxAdsDisplay', array(
+				// $wp_customize->add_control( new ReduxLegacy_Customizer_Control_rAds( $wp_customize, 'reduxAdsDisplay', array(
 				// 'section'        => 'redux_rAds',
 				// 'settings'       => 'redux_rAds_field',
 				// 'type'           => 'redux-rAds',
 				// ) ) );
 				// start copyright settings
 
-				// $section = new Redux_Customizer_section_rAds( $wp_customize, 'redux_rAds', array(
+				// $section = new ReduxLegacy_Customizer_section_rAds( $wp_customize, 'redux_rAds', array(
 				// 'priority'    => -999,
 				// ) );
 				// $wp_customize->add_section( $section, array(
@@ -339,7 +339,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				// 'redux_rAds_empty'
 				// );
 				// $wp_customize->add_control(
-				// new Redux_Customizer_Control_rAds(
+				// new ReduxLegacy_Customizer_Control_rAds(
 				// $wp_customize,
 				// 'redux_rAds_empty',
 				// array(
@@ -544,7 +544,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 						}
 
 						if ( $option['data'] == 'elusive-icons' || $option['data'] == 'elusive-icon' || $option['data'] == 'elusive' ) {
-							$icons_file = ReduxFramework::$_dir . 'inc/fields/select/elusive-icons.php';
+							$icons_file = ReduxFrameworkLegacy::$_dir . 'inc/fields/select/elusive-icons.php';
 							$icons_file = apply_filters( 'redux-font-icons-file', $icons_file );
 
 							if ( file_exists( $icons_file ) ) {
@@ -554,7 +554,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 						$option['options'] = $this->parent->get_wordpress_data( $option['data'], $option['args'] );
 					}
 
-					$class_name = 'Redux_Customizer_Control_' . $option['type'];
+					$class_name = 'ReduxLegacy_Customizer_Control_' . $option['type'];
 
 					do_action( 'redux/extension/customizer/control_init', $option );
 
@@ -572,9 +572,9 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 								'settings'        => $option['id'],
 								'type'            => 'redux-' . $option['type'],
 								'field'           => $option,
-								'ReduxFramework'  => $this->parent,
-								'active_callback' => ( isset( $option['required'] ) && class_exists( 'Redux_Customizer_Active_Callback' ) ) ? array(
-									'Redux_Customizer_Active_Callback',
+								'ReduxFrameworkLegacy'  => $this->parent,
+								'active_callback' => ( isset( $option['required'] ) && class_exists( 'ReduxLegacy_Customizer_Active_Callback' ) ) ? array(
+									'ReduxLegacy_Customizer_Active_Callback',
 									'evaluate',
 								) : '__return_true',
 								'priority'        => $option['priority'],
@@ -608,7 +608,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				$section = $id;
 			} else {
 
-				$section_class = apply_filters( 'redux/customizer/section/class_name', 'Redux_Customizer_Section' );
+				$section_class = apply_filters( 'redux/customizer/section/class_name', 'ReduxLegacy_Customizer_Section' );
 				$section       = new $section_class( $wp_customize, $id, $args );
 			}
 
@@ -628,7 +628,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			if ( is_a( $id, 'WP_Customize_Panel' ) ) {
 				$panel = $id;
 			} else {
-				$panel_class = apply_filters( 'redux/customizer/panel/class_name', 'Redux_Customizer_Panel' );
+				$panel_class = apply_filters( 'redux/customizer/panel/class_name', 'ReduxLegacy_Customizer_Panel' );
 				$panel       = new $panel_class( $wp_customize, $id, $args );
 			}
 
@@ -763,7 +763,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 				if ( isset( $section['fields'] ) ) {
 					foreach ( $section['fields'] as $field ) {
 						if ( isset( $field['type'] ) ) {
-							$field_class = 'ReduxFramework_' . $field['type'];
+							$field_class = 'ReduxFrameworkLegacy_' . $field['type'];
 
 							if ( ! class_exists( $field_class ) ) {
 								$class_file = apply_filters( 'redux-typeclass-load', $this->path . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class );

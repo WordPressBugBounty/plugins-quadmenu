@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
-	class reduxCoreEnqueue {
+if ( ! class_exists( 'reduxLegacyCoreEnqueue' ) ) {
+	class reduxLegacyCoreEnqueue {
 		public $parent = null;
 
 		private $min       = '';
@@ -14,13 +14,13 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 		public function __construct( $parent ) {
 			$this->parent = $parent;
 
-			Redux_Functions::$_parent = $parent;
+			ReduxLegacy_Functions::$_parent = $parent;
 		}
 
 		public function init() {
-			$this->min = Redux_Functions::isMin();
+			$this->min = ReduxLegacy_Functions::isMin();
 
-			$this->timestamp = ReduxFramework::$_version;
+			$this->timestamp = ReduxFrameworkLegacy::$_version;
 			if ( $this->parent->args['dev_mode'] ) {
 				$this->timestamp .= '.' . time();
 			}
@@ -32,7 +32,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 
 			$this->enqueue_fields();
 
-			add_filter( "redux/{$this->parent->args['opt_name']}/localize", array( 'Redux_Helpers', 'localize' ) );
+			add_filter( "redux/{$this->parent->args['opt_name']}/localize", array( 'ReduxLegacy_Helpers', 'localize' ) );
 
 			$this->set_localized_data();
 
@@ -41,7 +41,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			 *
 			 * @deprecated
 			 *
-			 * @param  object $this ReduxFramework
+			 * @param  object $this ReduxFrameworkLegacy
 			 */
 			do_action( "redux-enqueue-{$this->parent->args['opt_name']}", $this->parent ); // REMOVE
 
@@ -58,7 +58,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_enqueue_style(
 				'redux-admin-css',
-				ReduxFramework::$_url . 'assets/css/redux-admin.css',
+				ReduxFrameworkLegacy::$_url . 'assets/css/redux-admin.css',
 				array(),
 				$this->timestamp,
 				'all'
@@ -70,7 +70,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			if ( ! $this->parent->args['dev_mode'] ) {
 				wp_enqueue_style(
 					'redux-fields-css',
-					ReduxFramework::$_url . 'assets/css/redux-fields.css',
+					ReduxFrameworkLegacy::$_url . 'assets/css/redux-fields.css',
 					array(),
 					$this->timestamp,
 					'all'
@@ -80,7 +80,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			// Select2 CSS
 			// *****************************************************************
-			Redux_CDN::register_style(
+			ReduxLegacy_CDN::register_style(
 				'select2-css',
 				'//cdn.jsdelivr.net/select2/3.5.2/select2.css',
 				array(),
@@ -98,7 +98,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 
 			wp_register_style(
 				'redux-spectrum-css',
-				ReduxFramework::$_url . 'assets/css/vendor/spectrum/' . $css_file,
+				ReduxFrameworkLegacy::$_url . 'assets/css/vendor/spectrum/' . $css_file,
 				array(),
 				'1.3.3',
 				'all'
@@ -109,7 +109,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_enqueue_style(
 				'redux-elusive-icon',
-				ReduxFramework::$_url . 'assets/css/vendor/elusive-icons/elusive-icons.css',
+				ReduxFrameworkLegacy::$_url . 'assets/css/vendor/elusive-icons/elusive-icons.css',
 				array(),
 				$this->timestamp,
 				'all'
@@ -125,7 +125,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 
 			wp_enqueue_style(
 				'qtip-css',
-				ReduxFramework::$_url . 'assets/css/vendor/qtip/' . $css_file,
+				ReduxFrameworkLegacy::$_url . 'assets/css/vendor/qtip/' . $css_file,
 				array(),
 				'2.2.0',
 				'all'
@@ -136,7 +136,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_enqueue_style(
 				'jquery-ui-css',
-				apply_filters( "redux/page/{$this->parent->args['opt_name']}/enqueue/jquery-ui-css", ReduxFramework::$_url . 'assets/css/vendor/jquery-ui-bootstrap/jquery-ui-1.10.0.custom.css' ),
+				apply_filters( "redux/page/{$this->parent->args['opt_name']}/enqueue/jquery-ui-css", ReduxFrameworkLegacy::$_url . 'assets/css/vendor/jquery-ui-bootstrap/jquery-ui-1.10.0.custom.css' ),
 				array(),
 				$this->timestamp,
 				'all'
@@ -154,7 +154,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 				// *****************************************************************
 				wp_register_style(
 					'redux-color-picker-css',
-					ReduxFramework::$_url . 'assets/css/color-picker/color-picker.css',
+					ReduxFrameworkLegacy::$_url . 'assets/css/color-picker/color-picker.css',
 					array( 'wp-color-picker' ),
 					$this->timestamp,
 					'all'
@@ -165,7 +165,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 				// *****************************************************************
 				wp_enqueue_style(
 					'redux-field-media-css',
-					ReduxFramework::$_url . 'assets/css/media/media.css',
+					ReduxFrameworkLegacy::$_url . 'assets/css/media/media.css',
 					array(),
 					time(),
 					'all'
@@ -178,7 +178,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			if ( is_rtl() ) {
 				wp_enqueue_style(
 					'redux-rtl-css',
-					ReduxFramework::$_url . 'assets/css/rtl.css',
+					ReduxFrameworkLegacy::$_url . 'assets/css/rtl.css',
 					array( 'redux-admin-css' ),
 					$this->timestamp,
 					'all'
@@ -199,7 +199,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_register_script(
 				'redux-select2-sortable-js',
-				ReduxFramework::$_url . 'assets/js/vendor/redux.select2.sortable' . $this->min . '.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/vendor/redux.select2.sortable' . $this->min . '.js',
 				array( 'jquery', 'jquery-ui-sortable' ),
 				$this->timestamp,
 				true
@@ -216,7 +216,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 				wp_dequeue_style( 'jquerySelect2Style' );
 			}
 
-			Redux_CDN::register_script(
+			ReduxLegacy_CDN::register_script(
 				'select2-js',
 				'//cdn.jsdelivr.net/select2/3.5.2/select2' . $this->min . '.js',
 				array( 'jquery', 'redux-select2-sortable-js' ),
@@ -234,7 +234,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 
 			wp_enqueue_script(
 				'qtip-js',
-				ReduxFramework::$_url . 'assets/js/vendor/qtip/' . $js_file,
+				ReduxFrameworkLegacy::$_url . 'assets/js/vendor/qtip/' . $js_file,
 				array( 'jquery' ),
 				'2.2.0',
 				true
@@ -250,7 +250,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 
 			wp_register_script(
 				'redux-spectrum-js',
-				ReduxFramework::$_url . 'assets/js/vendor/spectrum/' . $js_file,
+				ReduxFrameworkLegacy::$_url . 'assets/js/vendor/spectrum/' . $js_file,
 				array( 'jquery' ),
 				'1.3.3',
 				true
@@ -263,7 +263,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_register_script(
 				'redux-vendor',
-				ReduxFramework::$_url . 'assets/js/vendor.min.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/vendor.min.js',
 				array( 'jquery' ),
 				$this->timestamp,
 				true
@@ -276,7 +276,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// *****************************************************************
 			wp_register_script(
 				'redux-js',
-				ReduxFramework::$_url . 'assets/js/redux' . $this->min . '.js',
+				ReduxFrameworkLegacy::$_url . 'assets/js/redux' . $this->min . '.js',
 				$depArray,
 				$this->timestamp,
 				true
@@ -296,7 +296,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 			// if( isset( $field['type'] ) && $field['type'] != 'callback' ) {
 			if ( isset( $field['type'] ) && $field['type'] != 'callback' ) {
 
-				$field_class = 'ReduxFramework_' . $field['type'];
+				$field_class = 'ReduxFrameworkLegacy_' . $field['type'];
 
 				/**
 				 * Field class file
@@ -305,7 +305,7 @@ if ( ! class_exists( 'reduxCoreEnqueue' ) ) {
 				 * @param       string        field class file path
 				 * @param array $field        field config data
 				 */
-				$class_file = apply_filters( "redux/{$this->parent->args['opt_name']}/field/class/{$field['type']}", ReduxFramework::$_dir . "inc/fields/{$field['type']}/field_{$field['type']}.php", $field );
+				$class_file = apply_filters( "redux/{$this->parent->args['opt_name']}/field/class/{$field['type']}", ReduxFrameworkLegacy::$_dir . "inc/fields/{$field['type']}/field_{$field['type']}.php", $field );
 				if ( $class_file ) {
 					if ( ! class_exists( $field_class ) ) {
 						if ( file_exists( $class_file ) ) {
