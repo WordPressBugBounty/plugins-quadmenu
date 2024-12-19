@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class QuadMenu_Walker extends \Walker_Nav_Menu {
 
-	var $item_stack = array();
-	var $current_umitem;
-	var $auto_child = '';
+	public $item_stack = array();
+	public $current_umitem;
+	public $auto_child = '';
 
 	function __construct() {
 	}

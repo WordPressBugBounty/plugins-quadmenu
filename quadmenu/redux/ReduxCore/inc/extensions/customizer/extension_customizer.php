@@ -567,17 +567,17 @@ if ( ! class_exists( 'ReduxFrameworkLegacy_extension_customizer' ) ) {
 							$wp_customize,
 							$option['id'],
 							array(
-								'label'           => $option['title'],
-								'section'         => $section['id'],
-								'settings'        => $option['id'],
-								'type'            => 'redux-' . $option['type'],
-								'field'           => $option,
-								'ReduxFrameworkLegacy'  => $this->parent,
-								'active_callback' => ( isset( $option['required'] ) && class_exists( 'ReduxLegacy_Customizer_Active_Callback' ) ) ? array(
+								'label'                => $option['title'],
+								'section'              => $section['id'],
+								'settings'             => $option['id'],
+								'type'                 => 'redux-' . $option['type'],
+								'field'                => $option,
+								'ReduxFrameworkLegacy' => $this->parent,
+								'active_callback'      => ( isset( $option['required'] ) && class_exists( 'ReduxLegacy_Customizer_Active_Callback' ) ) ? array(
 									'ReduxLegacy_Customizer_Active_Callback',
 									'evaluate',
 								) : '__return_true',
-								'priority'        => $option['priority'],
+								'priority'             => $option['priority'],
 							)
 						)
 					);

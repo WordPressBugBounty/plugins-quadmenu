@@ -28,9 +28,9 @@ if ( ! class_exists( 'reduxLegacyCorePanel' ) ) {
 		 * @param $parent
 		 */
 		public function __construct( $parent ) {
-			$this->parent             = $parent;
+			$this->parent                   = $parent;
 			ReduxLegacy_Functions::$_parent = $parent;
-			$this->template_path      = $this->original_path = ReduxFrameworkLegacy::$_dir . 'templates/panel/';
+			$this->template_path            = $this->original_path = ReduxFrameworkLegacy::$_dir . 'templates/panel/';
 			if ( ! empty( $this->parent->args['templates_path'] ) ) {
 				$this->template_path = trailingslashit( $this->parent->args['templates_path'] );
 			}

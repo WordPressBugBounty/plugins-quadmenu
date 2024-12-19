@@ -14,7 +14,7 @@ class Welcome extends Panel {
 
 	private static $instance;
 
-	static $status = array();
+	public static $status = array();
 
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_menu' ), 5 );

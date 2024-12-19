@@ -103,13 +103,13 @@ if ( ! class_exists( 'ReduxFrameworkLegacy' ) ) {
 
 					$is_plugin = false;
 
-					//QUADLAYERS DEVS NOTE: this change the path if the plugin version is installed in wordpress, breaking the options tab in dashboard
+					// QUADLAYERS DEVS NOTE: this change the path if the plugin version is installed in WordPress, breaking the options tab in dashboard
 
 					// foreach ( get_plugins() as $key => $value ) {
-					// 	if ( is_plugin_active( $key ) && strpos( $key, 'redux-framework.php' ) !== false ) {
-					// 		self::$_dir = trailingslashit( ReduxLegacy_Helpers::cleanFilePath( WP_CONTENT_DIR . '/plugins/' . plugin_dir_path( $key ) . 'ReduxCore/' ) );
-					// 		$is_plugin  = true;
-					// 	}
+					// if ( is_plugin_active( $key ) && strpos( $key, 'redux-framework.php' ) !== false ) {
+					// self::$_dir = trailingslashit( ReduxLegacy_Helpers::cleanFilePath( WP_CONTENT_DIR . '/plugins/' . plugin_dir_path( $key ) . 'ReduxCore/' ) );
+					// $is_plugin  = true;
+					// }
 					// }
 					if ( ! $is_plugin ) {
 						self::$_is_plugin = false;

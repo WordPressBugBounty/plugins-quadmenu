@@ -591,7 +591,7 @@ class Options {
 						'transport'  => 'selective',
 						'id'         => $key . '_layout_current',
 						'type'       => 'switch',
-						'title'      => esc_html__( 'Open', 'quadmenu' ),
+						'title'      => esc_html__( 'Open Test', 'quadmenu' ),
 						'subtitle'   => esc_html__( 'Open dropdown if is current page.', 'quadmenu' ),
 						'compiler'   => false,
 						'default'    => (bool) $this->defaults[ $key . '_layout_current' ],
@@ -601,7 +601,7 @@ class Options {
 						'transport'  => 'selective',
 						'id'         => $key . '_layout_divider',
 						'type'       => 'button_set',
-						'title'      => esc_html__( 'Divider', 'quadmenu' ),
+						'title'      => esc_html__( 'Divider Test', 'quadmenu' ),
 						'subtitle'   => esc_html__( 'Show a small divider bar between each menu item.', 'quadmenu' ),
 						'options'    => array(
 							'show' => esc_html__( 'Show', 'quadmenu' ),

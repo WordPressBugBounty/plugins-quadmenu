@@ -12,7 +12,7 @@ class Panel {
 
 	private static $instance;
 
-	static $panel_slug = 'quadmenu_welcome';
+	public static $panel_slug = 'quadmenu_welcome';
 
 	function __construct() {
 

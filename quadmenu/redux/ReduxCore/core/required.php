@@ -9,7 +9,7 @@ if ( ! class_exists( 'reduxLegacyCoreRequired' ) ) {
 		public $parent = null;
 
 		public function __construct( $parent ) {
-			$this->parent             = $parent;
+			$this->parent                   = $parent;
 			ReduxLegacy_Functions::$_parent = $parent;
 
 			/**

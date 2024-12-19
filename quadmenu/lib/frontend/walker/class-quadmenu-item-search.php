@@ -11,8 +11,9 @@ use QuadLayers\QuadMenu\Frontend\Walker\QuadMenu_Item;
  */
 class QuadMenu_Item_Search extends QuadMenu_Item {
 
-	protected $type = 'search';
-	var $instance   = 0;
+	protected $type            = 'search';
+	public $instance           = 0;
+	protected $has_placeholder = false;
 
 	function init() {
 		$this->item->url       = '';
@@ -62,23 +63,21 @@ class QuadMenu_Item_Search extends QuadMenu_Item {
 
 		ob_start();
 		?>
-
-	<form role="search" method="get" id="searchform_<?php echo esc_attr( $this->instance ); ?>" action="<?php echo esc_url( quadmenu_get_translated_home_url( '/' ) ); ?>">
-		<span class="quadmenu-item-content">
-		<?php echo $this->get_icon(); ?>
-		<input type="text" id="s_<?php echo esc_attr( $this->instance ); ?>" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="<?php echo esc_html( $this->item->placeholder ); ?>" />
-		<?php
-		foreach ( (array) $this->item->search as $search ) :
-			if ( $search != '' ) :
-				?>
-			<input type="hidden" name="post_type" value="<?php echo esc_attr( $search ); ?>">
+		<form role="search" method="get" id="searchform_<?php echo esc_attr( $this->instance ); ?>" action="<?php echo esc_url( quadmenu_get_translated_home_url( '/' ) ); ?>">
+			<span class="quadmenu-item-content">
+			<?php echo $this->get_icon(); ?>
+			<input type="text" id="s_<?php echo esc_attr( $this->instance ); ?>" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="<?php echo esc_html( $this->item->placeholder ); ?>" />
 			<?php
-			endif;
-			endforeach;
-		?>
+			foreach ( (array) $this->item->search as $search ) :
+				if ( $search != '' ) :
+					?>
+				<input type="hidden" name="post_type" value="<?php echo esc_attr( $search ); ?>">
+				<?php
+				endif;
+				endforeach;
+			?>
 		</form>
 		<?php
 		return ob_get_clean();
 	}
 }
-

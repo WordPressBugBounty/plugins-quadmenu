@@ -47,7 +47,7 @@ if ( ! class_exists( 'ReduxFrameworkLegacy_button_set' ) ) {
 		 *
 		 * @return Object A new editor object.
 		 * */
-		static $_properties = array(
+		public static $_properties = array(
 			'id' => 'Identifier',
 		);
 
