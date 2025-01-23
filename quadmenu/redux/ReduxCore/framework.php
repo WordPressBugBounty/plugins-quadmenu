@@ -83,6 +83,7 @@ if ( ! class_exists( 'ReduxFrameworkLegacy' ) ) {
 		public $googleArray;
 		public $validation_ran;
 		public $no_output;
+		public $no_panel_section;
 
 		public static function init() {
 			$dir = ReduxLegacy_Helpers::cleanFilePath( __DIR__ );

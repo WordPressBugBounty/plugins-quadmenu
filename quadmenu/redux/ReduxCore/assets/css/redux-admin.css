@@ -3427,3 +3427,23 @@ pre {
 .redux-qtip {
     z-index: 999999 !important;
 }
+
+.wp-customizer  .accordion-section-title button.accordion-trigger,
+.wp-customizer .redux-panel .accordion-section-title button.accordion-trigger {
+	all: unset;
+	padding: 10px 0px 11px 4px;
+	width: 100% !important;
+    height: 100% !important;
+	display: inline;
+}
+
+.wp-customizer  .accordion-section-title i,
+.wp-customizer .redux-field .accordion-field-title i,
+.wp-customizer .redux-panel .accordion-section-title i {
+	margin-right: 5px;
+	margin-left: 12px;
+}
+
+#customize-theme-controls h3.accordion-section-title {
+	overflow: hidden;
+}
