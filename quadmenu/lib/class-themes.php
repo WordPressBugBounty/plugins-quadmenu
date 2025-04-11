@@ -30,7 +30,6 @@ class Themes {
 
 		add_action( 'redux/options/' . QUADMENU_DB_OPTIONS . '/settings/change', array( $this, 'title' ), 10, 2 );
 
-		// add_action('redux/' . QUADMENU_DB_OPTIONS . '/localize/reset', array($this, 'message'));
 		add_action( 'wp_ajax_' . QUADMENU_DB_OPTIONS . '_ajax_save', array( $this, 'themes_delete' ) );
 	}
 
@@ -195,10 +194,6 @@ class Themes {
 				Redux_Legacy::add_notification( 'blue', esc_html__( 'Theme name changed.', 'quadmenu' ) );
 			}
 		}
-	}
-
-	function message() {
-		return esc_html__( 'Are you sure? Resetting will lose all custom values and themes.', 'quadmenu' );
 	}
 
 	public static function instance() {

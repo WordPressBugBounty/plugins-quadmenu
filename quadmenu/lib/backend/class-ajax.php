@@ -22,7 +22,6 @@ class Ajax extends Settings {
 
 		// Ajax
 		// -----------------------------------------------------------------
-		// add_action('wp_ajax_quadmenu_change_nav_menu_theme', array($this, 'ajax_change_nav_menu_theme'));
 
 		add_action( 'wp_ajax_quadmenu_add_nav_menu_item', array( $this, 'ajax_add_nav_menu_item' ) );
 
@@ -185,34 +184,6 @@ class Ajax extends Settings {
 		<?php
 		endif;
 	}
-
-	/*
-	public function ajax_change_nav_menu_theme() {
-
-		if (!check_ajax_referer('quadmenu', 'nonce', false)) {
-		Plugin::send_json_error(esc_html__('Please reload the page.', 'quadmenu'));
-		}
-
-		$menu_id = absint($_REQUEST['menu_id']);
-
-		$key = sanitize_text_field($_REQUEST['current_theme']);
-
-		if ($menu_id > 0 && is_nav_menu($menu_id)) {
-
-		$saved_themes = get_term_meta($menu_id, QUADMENU_DB_THEME);
-
-		Plugin::send_json_error(json_encode($saved_themes));
-
-		if (add_term_meta($menu_id, QUADMENU_DB_THEME, array_merge((array) $saved_themes, (array) $_REQUEST['quadmenu_themes']), true)) {
-		Plugin::send_json_success();
-		} else {
-		Plugin::send_json_error(sprintf(esc_html__('Failed to add theme', 'quadmenu')));
-		}
-		}
-
-		wp_die();
-		}
-	*/
 
 	public function ajax_add_nav_menu_item() {
 

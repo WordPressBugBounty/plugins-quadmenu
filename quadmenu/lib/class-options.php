@@ -19,7 +19,6 @@ class Options {
 
 	public function __construct() {
 
-		// include options that the user can't change
 		add_filter( 'redux/options/' . QUADMENU_DB_OPTIONS . '/options', array( $this, 'developer' ) );
 		add_filter( 'redux/options/' . QUADMENU_DB_OPTIONS . '/global_variable', array( $this, 'developer' ) );
 		add_filter( 'redux/options/' . QUADMENU_DB_OPTIONS . '/global_variable', array( $this, 'compatibility' ) );

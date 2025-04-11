@@ -16,8 +16,6 @@ class Admin {
 
 	public function __construct() {
 
-		add_action( 'wp_ajax_quadmenu_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
-
 		add_action( 'admin_enqueue_scripts', array( $this, 'register' ), -1 );
 
 		add_action( 'admin_notices', array( $this, 'notices' ) );
@@ -96,18 +94,6 @@ class Admin {
 		);
 
 		update_option( 'quadmenu_admin_notices', $notices );
-	}
-
-	function ajax_dismiss_notice() {
-
-		if ( $notice_id = ( isset( $_POST['notice_id'] ) ) ? sanitize_key( $_POST['notice_id'] ) : '' ) {
-
-			update_user_meta( get_current_user_id(), $notice_id, true );
-
-			wp_send_json( $notice_id );
-		}
-
-		wp_die();
 	}
 
 	public static function instance() {
