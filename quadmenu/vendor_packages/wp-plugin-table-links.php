@@ -12,6 +12,8 @@ if ( class_exists( 'QuadLayers\\WP_Plugin_Table_Links\\Load' ) ) {
 			array(
 				'text' => esc_html__( 'Premium', 'quadmenu' ),
 				'url'  => QUADMENU_PURCHASE_URL,
+				'target' => '_blank',
+				'color' => 'green',
 			),
 			array(
 				'place' => 'row_meta',
