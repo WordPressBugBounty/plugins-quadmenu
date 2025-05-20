@@ -4,7 +4,7 @@
  * Plugin Name:             QuadMenu
  * Plugin URI:              https://quadmenu.com
  * Description:             The best drag & drop WordPress Mega Menu plugin which allow you to create Tabs Menus & Carousel Menus.
- * Version:                 3.2.2
+ * Version:                 3.2.3
  * Text Domain:             quadmenu
  * Author:                  QuadLayers
  * Author URI:              https://quadlayers.com
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'QUADMENU_PLUGIN_NAME', 'QuadMenu' );
-define( 'QUADMENU_PLUGIN_VERSION', '3.2.2' );
+define( 'QUADMENU_PLUGIN_VERSION', '3.2.3' );
 define( 'QUADMENU_PLUGIN_FILE', __FILE__ );
 define( 'QUADMENU_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
 define( 'QUADMENU_PLUGIN_URL', plugin_dir_url( QUADMENU_PLUGIN_FILE ) );
@@ -48,7 +48,6 @@ define( 'QUADMENU_PREMIUM_SELL_URL', 'https://quadmenu.com/?utm_source=quadmenu_
 
 define( 'QUADMENU_CROSS_INSTALL_SLUG', 'wp-whatsapp-chat' );
 define( 'QUADMENU_CROSS_INSTALL_NAME', 'Whatsapp Chat' );
-define( 'QUADMENU_CROSS_INSTALL_DESCRIPTION', esc_html__( 'WhatsApp Chat allows your customers to click a button and open a conversation from your website directly to your “WhatsApp” or “WhatsApp Business” phone number.', 'quadmenu' ) );
 define( 'QUADMENU_CROSS_INSTALL_URL', 'https://quadlayers.com/portfolio/whatsapp-chat/?utm_source=quadmenu_admin' );
 
 /**
