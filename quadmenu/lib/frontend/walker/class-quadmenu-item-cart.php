@@ -88,8 +88,6 @@ class QuadMenu_Item_Cart extends QuadMenu_Item {
 
 		$this->item_atts['data-cart-url'] = wc_get_cart_url();
 
-		$this->item_atts['data-cart-price'] = wc_price( 0 );
-
 		$this->item_atts['data-cart-qty'] = esc_attr( $this->count );
 
 		if ( ! empty( $this->args->navbar_animation_cart ) ) {

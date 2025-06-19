@@ -20,6 +20,7 @@ return array(
     'Automattic\\Jetpack\\Status' => $baseDir . '/jetpack_vendor/automattic/jetpack-status/src/class-status.php',
     'Automattic\\Jetpack\\Status\\Cache' => $baseDir . '/jetpack_vendor/automattic/jetpack-status/src/class-cache.php',
     'Automattic\\Jetpack\\Status\\Host' => $baseDir . '/jetpack_vendor/automattic/jetpack-status/src/class-host.php',
+    'Automattic\\Jetpack\\Status\\Request' => $baseDir . '/jetpack_vendor/automattic/jetpack-status/src/class-request.php',
     'Automattic\\Jetpack\\Status\\Visitor' => $baseDir . '/jetpack_vendor/automattic/jetpack-status/src/class-visitor.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'ET_Builder_Module_QuadMenu' => $baseDir . '/lib/integrations/divi/modules/QuadMenu/QuadMenu.php',

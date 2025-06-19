@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('jquery', 'jquery-ui-sortable'), 'version' => '23d2eaa8bd5e52c80a89');
+<?php return array('dependencies' => array('jquery', 'jquery-ui-sortable'), 'version' => '5537ac13c6e336d98dd4');
