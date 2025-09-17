@@ -5,9 +5,9 @@
 	<p class="about-text"><?php printf( esc_html__( 'Hello we\'re QuadLayers! We will do our absolute best to support you and fix all the issues.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?></p>
 
 	<p class="about-text">
-	<?php printf( '<a href="%s" target="_blank">%s</a>', QUADMENU_PURCHASE_URL, esc_html__( 'Purchase', 'quadmenu' ) ); ?></a> | 
-	<?php printf( '<a href="%s" target="_blank">%s</a>', QUADMENU_DEMO_URL, esc_html__( 'Demo', 'quadmenu' ) ); ?></a> | 
-	<?php printf( '<a href="%s" target="_blank">%s</a>', QUADMENU_DOCUMENTATION_URL, esc_html__( 'Documentation', 'quadmenu' ) ); ?></a>
+	<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_header&utm_campaign=premium_upgrade&utm_content=premium_link', esc_html__( 'Purchase', 'quadmenu' ) ); ?></a> | 
+	<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_header&utm_campaign=demo&utm_content=demo_link', esc_html__( 'Demo', 'quadmenu' ) ); ?></a> | 
+	<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadmenu.com/documentation/?utm_source=quadmenu_plugin&utm_medium=admin_header&utm_campaign=documentation&utm_content=documentation_link', esc_html__( 'Documentation', 'quadmenu' ) ); ?></a>
 	</p>
 
 	<?php
@@ -26,7 +26,7 @@
 				display: inline-block;
 				width: 140px;
 				" class="wp-badge">%s</div></a>',
-		'https://quadlayers.com/?utm_source=quadmenu_admin',
+		'https://quadlayers.com/?utm_source=quadmenu_plugin&utm_medium=admin_header&utm_campaign=branding&utm_content=header_logo',
 		plugins_url( '/assets/backend/img/quadlayers.jpg', QUADMENU_PLUGIN_FILE ),
 		esc_html__( 'QuadLayers', 'quadmenu' )
 	);

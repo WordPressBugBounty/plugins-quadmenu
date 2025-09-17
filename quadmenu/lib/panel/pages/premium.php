@@ -31,7 +31,7 @@
 			<div class="feature-section" style="margin: 15px 0;">
 			<h3><?php esc_html_e( 'Tabs', 'quadmenu' ); ?></h3>
 			<p>
-				<?php printf( __( 'With the tabs, you can <a href="%s">create a tab mega menu</a> where you can include widgets or any kind of content available in your menu dashboard.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/tabs/?utm_source=quadmenu_admin' ); ?>
+				<?php printf( __( 'With the tabs, you can <a href="%s">create a tab mega menu</a> where you can include widgets or any kind of content available in your menu dashboard.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/tabs/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_tab_button' ); ?>
 			</p>
 			<p>
 				<?php esc_html_e( 'This element is allows you to set a custom background for the whole dropdown and handle the title, icons, badges and subtitles on each tab.', 'quadmenu' ); ?>
@@ -45,10 +45,10 @@
 			<div class="feature-section" style="margin: 15px 0;">
 				<h3><?php esc_html_e( 'Carousel', 'quadmenu' ); ?></h3>
 				<p>
-					<?php printf( __( 'Our carousel element allows you to create a <a href="%s">carousel mega menu</a> where you can include widgets or any kind of content available in your menu dashboard.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/carousel/?utm_source=quadmenu_admin' ); ?>
+					<?php printf( __( 'Our carousel element allows you to create a <a href="%s">carousel mega menu</a> where you can include widgets or any kind of content available in your menu dashboard.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/carousel/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_carousel_button' ); ?>
 				</p>
 				<p>
-					<?php printf( __( 'This element is also available for <a href="%s">categories and archives items</a> and lets you create a carousel of the latest\'s post, products, pages and any post type available in your site.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/archives/?utm_source=quadmenu_admin' ); ?>
+					<?php printf( __( 'This element is also available for <a href="%s">categories and archives items</a> and lets you create a carousel of the latest\'s post, products, pages and any post type available in your site.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/archives/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_archives_button' ); ?>
 				</p>
 			</div>
 		</div>
@@ -65,7 +65,7 @@
 			<div class="feature-section" style="margin: 15px 0;">
 				<h3><?php esc_html_e( 'Login', 'quadmenu' ); ?></h3>
 				<p>
-					<?php printf( __( 'The user login element provides your menu with a <a href="%s">login and register form</a> that is displayed in a drop-down. Recently we\'ve improved this feature to include a drop-down menu for logged in users where you can display any link and a quick access to the user account.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/login/?utm_source=quadmenu_admin' ); ?>
+					<?php printf( __( 'The user login element provides your menu with a <a href="%s">login and register form</a> that is displayed in a drop-down. Recently we\'ve improved this feature to include a drop-down menu for logged in users where you can display any link and a quick access to the user account.', 'quadmenu' ), 'https://quadmenu.com/documentation/content/login/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_login_button' ); ?>
 				</p>
 			</div>
 		</div>
@@ -90,21 +90,21 @@
 	<p>
 		<?php printf( __( 'The personal license offers annual or lifetime options. It allows you to activate %s on one site with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
 	</p>
-	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+	<a class="button button-primary" href="<?php echo 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=premium_upgrade&utm_content=purchase_button'; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
 </div>
 <div class="quadmenu-admin-box-text quadmenu-admin-box-three">
 	<h3><?php esc_html_e( 'Agency', 'quadmenu' ); ?></h3>
 	<p>
 		<?php printf( __( 'The agency license offers annual or lifetime options. It allows you to activate %s on up to five sites with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
 	</p>
-	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+	<a class="button button-primary" href="<?php echo 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=premium_upgrade&utm_content=purchase_button'; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
 </div>
 <div class="quadmenu-admin-box-text quadmenu-admin-box-three quadmenu-admin-box-last">
 	<h3><?php esc_html_e( 'Developer', 'quadmenu' ); ?></h3>
 	<p>
 		<?php printf( __( 'The developer license offers annual or lifetime options. It allows you to activate %s on unlimited sites with premium support and automatic updates for the selected period.', 'quadmenu' ), QUADMENU_PLUGIN_NAME ); ?>
 	</p>
-	<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
+	<a class="button button-primary" href="<?php echo 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=premium_upgrade&utm_content=purchase_button'; ?>" target="_blank"><?php esc_html_e( 'Purchase Now', 'quadmenu' ); ?></a>
 </div>
 
 </div>

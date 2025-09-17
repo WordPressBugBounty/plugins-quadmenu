@@ -12,19 +12,19 @@ if ( class_exists( 'QuadLayers\\WP_Plugin_Table_Links\\Load' ) ) {
 				),
 				array(
 					'text' => esc_html__( 'Premium', 'quadmenu' ),
-					'url'  => QUADMENU_PURCHASE_URL,
+					'url'  => 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=plugin_table&utm_campaign=premium_upgrade&utm_content=premium_link',
 					'target' => '_blank',
 					'color' => 'green',
 				),
 				array(
 					'place' => 'row_meta',
 					'text'  => esc_html__( 'Support', 'quadmenu' ),
-					'url'   => QUADMENU_SUPPORT_URL,
+					'url'   => 'https://quadmenu.com/account/support/?utm_source=quadmenu_plugin&utm_medium=plugin_table&utm_campaign=support&utm_content=support_link',
 				),
 				array(
 					'place' => 'row_meta',
 					'text'  => esc_html__( 'Documentation', 'quadmenu' ),
-					'url'   => QUADMENU_DOCUMENTATION_URL,
+					'url'   => 'https://quadmenu.com/documentation/?utm_source=quadmenu_plugin&utm_medium=plugin_table&utm_campaign=documentation&utm_content=documentation_link',
 				),
 			)
 		);

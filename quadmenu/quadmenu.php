@@ -28,10 +28,6 @@ define( 'QUADMENU_PLUGIN_BASENAME', plugin_basename( QUADMENU_PLUGIN_FILE ) );
 define( 'QUADMENU_PREFIX', 'quadmenu' );
 define( 'QUADMENU_WORDPRESS_URL', 'https://wordpress.org/plugins/quadmenu/' );
 define( 'QUADMENU_REVIEW_URL', 'https://wordpress.org/support/plugin/quadmenu/reviews/?filter=5#new-post' );
-define( 'QUADMENU_DEMO_URL', 'https://quadmenu.com/?utm_source=quadmenu_admin' );
-define( 'QUADMENU_PURCHASE_URL', QUADMENU_DEMO_URL );
-define( 'QUADMENU_SUPPORT_URL', 'https://quadmenu.com/account/support/?utm_source=quadmenu_admin' );
-define( 'QUADMENU_DOCUMENTATION_URL', 'https://quadmenu.com/documentation/?utm_source=quadmenu_admin' );
 define( 'QUADMENU_GROUP_URL', 'https://www.facebook.com/groups/quadlayers' );
 define( 'QUADMENU_DB_THEME', '_quadmenu_theme' );
 define( 'QUADMENU_DB_ITEM', '_menu_item_quadmenu' );
@@ -40,15 +36,7 @@ define( 'QUADMENU_COMPILE', true );
 // Pro compatibility
 define( 'QUADMENU_DOMAIN', 'quadmenu' );
 define( 'QUADMENU_PATH', QUADMENU_PLUGIN_DIR );
-define( 'QUADMENU_DEMO', QUADMENU_DEMO_URL );
-
-define( 'QUADMENU_PREMIUM_SELL_SLUG', 'quadmenu-pro' );
-define( 'QUADMENU_PREMIUM_SELL_NAME', 'QuadMenu' );
-define( 'QUADMENU_PREMIUM_SELL_URL', 'https://quadmenu.com/?utm_source=quadmenu_admin' );
-
-define( 'QUADMENU_CROSS_INSTALL_SLUG', 'wp-whatsapp-chat' );
-define( 'QUADMENU_CROSS_INSTALL_NAME', 'Whatsapp Chat' );
-define( 'QUADMENU_CROSS_INSTALL_URL', 'https://quadlayers.com/portfolio/whatsapp-chat/?utm_source=quadmenu_admin' );
+define( 'QUADMENU_DEMO', 'https://quadmenu.com/demo-corporate/' );
 
 /**
  * Load composer autoload

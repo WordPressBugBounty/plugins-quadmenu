@@ -5,14 +5,14 @@ Tags: menu, megamenu, mega menu, responsive menu, mobile menu
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 3.2.7
+Stable tag: 3.2.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Responsive mega menu plugin for WordPress with customizable layouts and an intuitive drag-and-drop builder.
 
 == Presentation==
-[Premium](https://quadmenu.com/) | [Demo](https://quadmenu.com/demo/) | [Documentation](https://quadmenu.com/documentation/) | [Developers](https://quadmenu.com/documentation/developers/) | [Community](https://www.facebook.com/groups/quadlayers/)
+[Premium](https://quadmenu.com/) | [Demo](https://quadmenu.com/demo-corporate/) | [Documentation](https://quadmenu.com/documentation/) | [Developers](https://quadmenu.com/documentation/developers/) | [Community](https://www.facebook.com/groups/quadlayers/)
 
 QuadMenu is a WordPress Mega Menu that will allows you easily integrate the menu in your theme's project. This plugin allows you to create mega menus, tabs menus and carrousel menus in a simple and native way converting your existing menu into a powerful tool. 
 
@@ -112,6 +112,9 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [https://quadmenu.com/documentation/installation/](https://quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+3.2.8
+* Fix update dependencies
 
 3.2.7
 * Fix update dependencies

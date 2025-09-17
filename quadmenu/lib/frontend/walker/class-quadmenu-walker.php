@@ -130,14 +130,14 @@ class QuadMenu_Walker extends \Walker_Nav_Menu {
 		</a>
 	</li>
 	<li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
-		<a title="<?php esc_html_e( 'Documentation', 'quadmenu' ); ?>" href="<?php echo esc_url( QUADMENU_DOCUMENTATION_URL ); ?>">
+		<a title="<?php esc_html_e( 'Documentation', 'quadmenu' ); ?>" href="<?php echo esc_url( 'https://quadmenu.com/documentation/?utm_source=quadmenu_plugin&utm_medium=admin_frontend&utm_campaign=documentation&utm_content=documentation_link' ); ?>">
 		<span class="quadmenu-item-content">
 			<span class="quadmenu-text"><?php esc_html_e( 'Documentation', 'quadmenu' ); ?></span>
 		</span>
 		</a>
 	</li>
 	<li class="quadmenu-item quadmenu-item-object-custom quadmenu-item-level-0 quadmenu-item-type-default quadmenu-has-title quadmenu-has-icon quadmenu-has-link">
-		<a title="<?php esc_html_e( 'Demo', 'quadmenu' ); ?>" href="<?php echo esc_url( QUADMENU_DEMO_URL ); ?>">
+		<a title="<?php esc_html_e( 'Demo', 'quadmenu' ); ?>" href="<?php echo esc_url( 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_frontend&utm_campaign=demo&utm_content=demo_link' ); ?>">
 		<span class="quadmenu-item-content">
 			<span class="quadmenu-text"><?php esc_html_e( 'Demo', 'quadmenu' ); ?></span>
 		</span>

@@ -31,21 +31,21 @@
 			<p>
 				<?php esc_html_e( 'Our online documentation will give you important information about the plugin. This is an exceptional resource to start discovering the plugin’s true potential.', 'quadmenu' ); ?>
 			</p>
-			<a class="button button-primary" href="<?php echo QUADMENU_DOCUMENTATION_URL; ?>" target="_blank"><?php esc_html_e( 'Open documentation', 'quadmenu' ); ?></a>
+			<a class="button button-primary" href="<?php echo 'https://quadmenu.com/documentation/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=documentation&utm_content=documentation_button'; ?>" target="_blank"><?php esc_html_e( 'Open documentation', 'quadmenu' ); ?></a>
 		</div>
 		<div class="quadmenu-admin-box-text quadmenu-admin-box-three">
 			<h3><?php esc_html_e( 'Demo', 'quadmenu' ); ?></h3>
 			<p>
 				<?php esc_html_e( 'Thank you for choosing our mega menu plugin! Here you can see our demo content and some layout examples to explore the QuadMenu features.', 'quadmenu' ); ?>
 			</p>
-			<a class="button button-primary" href="<?php echo QUADMENU_DEMO_URL; ?>" target="_blank"><?php esc_html_e( 'View demo', 'quadmenu' ); ?></a>
+			<a class="button button-primary" href="<?php echo 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=demo&utm_content=demo_button'; ?>" target="_blank"><?php esc_html_e( 'View demo', 'quadmenu' ); ?></a>
 		</div>
 		<div class="quadmenu-admin-box-text quadmenu-admin-box-three quadmenu-admin-box-last">
 			<h3><?php esc_html_e( 'Support', 'quadmenu' ); ?></h3>
 			<p>
-				<?php printf( __( 'We offer personalized support to all <a href="%s" target="_blank">QuadMenu PRO</a> users. To get support first you need to create an account and open a ticket in your account.', 'quadmenu' ), QUADMENU_DEMO ); ?>
+				<?php printf( __( 'We offer personalized support to all <a href="%s" target="_blank">QuadMenu PRO</a> users. To get support first you need to create an account and open a ticket in your account.', 'quadmenu' ), 'https://quadmenu.com/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=premium_upgrade&utm_content=premium_link' ); ?>
 			</p>
-			<a class="button button-primary" href="<?php echo QUADMENU_SUPPORT_URL; ?>" target="_blank"><?php esc_html_e( 'Submit ticket', 'quadmenu' ); ?></a>
+			<a class="button button-primary" href="<?php echo 'https://quadmenu.com/account/support/?utm_source=quadmenu_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_button'; ?>" target="_blank"><?php esc_html_e( 'Submit ticket', 'quadmenu' ); ?></a>
 			<a class="button button-secondary" href="<?php echo QUADMENU_GROUP_URL; ?>" target="_blank"><?php esc_html_e( 'Join Community', 'quadmenu' ); ?></a>
 		</div>
 	</div>
