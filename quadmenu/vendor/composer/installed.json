@@ -2,26 +2,26 @@
     "packages": [
         {
             "name": "automattic/jetpack-assets",
-            "version": "v4.3.2",
-            "version_normalized": "4.3.2.0",
+            "version": "v4.3.13",
+            "version_normalized": "4.3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-assets.git",
-                "reference": "91dde3cc7f9abb900d6a902b4fb58e4d8a25d7d1"
+                "reference": "7403da3dfea8d33825ed995b64df4bbcbb3c38bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/91dde3cc7f9abb900d6a902b4fb58e4d8a25d7d1",
-                "reference": "91dde3cc7f9abb900d6a902b4fb58e4d8a25d7d1",
+                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/7403da3dfea8d33825ed995b64df4bbcbb3c38bb",
+                "reference": "7403da3dfea8d33825ed995b64df4bbcbb3c38bb",
                 "shasum": ""
             },
             "require": {
                 "automattic/jetpack-constants": "^3.0.8",
-                "automattic/jetpack-status": "^6.0.1",
+                "automattic/jetpack-status": "^6.1.1",
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.5",
+                "automattic/jetpack-changelogger": "^6.0.9",
                 "automattic/phpunit-select-config": "^1.0.3",
                 "brain/monkey": "^2.6.2",
                 "wikimedia/testing-access-wrapper": "^1.0 || ^2.0 || ^3.0",
@@ -30,7 +30,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-08-04T15:37:04+00:00",
+            "time": "2025-11-17T21:23:58+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -58,7 +58,7 @@
             ],
             "description": "Asset management utilities for Jetpack ecosystem packages",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-assets/tree/v4.3.2"
+                "source": "https://github.com/Automattic/jetpack-assets/tree/v4.3.13"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-assets"
         },
@@ -180,17 +180,17 @@
         },
         {
             "name": "automattic/jetpack-status",
-            "version": "v6.0.2",
-            "version_normalized": "6.0.2.0",
+            "version": "v6.1.1",
+            "version_normalized": "6.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-status.git",
-                "reference": "14c28fb7345f7fb61f130b2ef9a596990a989041"
+                "reference": "100acd2ad87f05b0782deac3905d52f9765725ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-status/zipball/14c28fb7345f7fb61f130b2ef9a596990a989041",
-                "reference": "14c28fb7345f7fb61f130b2ef9a596990a989041",
+                "url": "https://api.github.com/repos/Automattic/jetpack-status/zipball/100acd2ad87f05b0782deac3905d52f9765725ce",
+                "reference": "100acd2ad87f05b0782deac3905d52f9765725ce",
                 "shasum": ""
             },
             "require": {
@@ -198,9 +198,9 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.5",
+                "automattic/jetpack-changelogger": "^6.0.7",
                 "automattic/jetpack-connection": "@dev",
-                "automattic/jetpack-ip": "^0.4.9",
+                "automattic/jetpack-ip": "^0.4.10",
                 "automattic/jetpack-plans": "@dev",
                 "automattic/phpunit-select-config": "^1.0.3",
                 "brain/monkey": "^2.6.2",
@@ -209,13 +209,13 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-08-06T18:01:54+00:00",
+            "time": "2025-11-03T08:47:38+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
                 "mirror-repo": "Automattic/jetpack-status",
                 "branch-alias": {
-                    "dev-trunk": "6.0.x-dev"
+                    "dev-trunk": "6.1.x-dev"
                 },
                 "changelogger": {
                     "link-template": "https://github.com/Automattic/jetpack-status/compare/v${old}...v${new}"
@@ -239,9 +239,110 @@
             ],
             "description": "Used to retrieve information about the current status of Jetpack and the site overall.",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-status/tree/v6.0.2"
+                "source": "https://github.com/Automattic/jetpack-status/tree/v6.1.1"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-status"
+        },
+        {
+            "name": "franmastromarino/wp-orm",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/franmastromarino/wp-options-orm.git",
+                "reference": "9adc495228f2e8a761e0e1cee724423570821310"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/franmastromarino/wp-options-orm/zipball/9adc495228f2e8a761e0e1cee724423570821310",
+                "reference": "9adc495228f2e8a761e0e1cee724423570821310",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "10up/wp_mock": "^0.5.0",
+                "brain/monkey": "^2.6",
+                "composer/composer": "^2.1",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "mockery/mockery": "^1.5",
+                "phpcompatibility/phpcompatibility-wp": "^2.1.0",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "*",
+                "wp-coding-standards/wpcs": "^2.3.0"
+            },
+            "time": "2025-07-23T09:44:58+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/V2/helpers.php"
+                ],
+                "psr-4": {
+                    "QuadLayers\\WP_Orm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "QuadLayers",
+                    "email": "noreply@quadlayers.com"
+                }
+            ],
+            "description": "A package to help developers create custom WordPress entities in their own plugins.",
+            "homepage": "https://quadlayers.com/",
+            "keywords": [
+                "autoload",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/franmastromarino/wp-options-orm/issues",
+                "source": "https://github.com/franmastromarino/wp-options-orm/tree/main"
+            },
+            "install-path": "../franmastromarino/wp-orm"
+        },
+        {
+            "name": "franmastromarino/wp-plugin-feedback",
+            "version": "dev-php7.2",
+            "version_normalized": "dev-php7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/franmastromarino/wp-plugin-feedback.git",
+                "reference": "118f28eb1e0bcd141bb2005106375ec168dd273f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/franmastromarino/wp-plugin-feedback/zipball/118f28eb1e0bcd141bb2005106375ec168dd273f",
+                "reference": "118f28eb1e0bcd141bb2005106375ec168dd273f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "time": "2025-09-01T19:07:29+00:00",
+            "type": "project",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "QuadLayers\\PluginFeedback\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Process plugin feedback client.",
+            "support": {
+                "issues": "https://github.com/franmastromarino/wp-plugin-feedback/issues",
+                "source": "https://github.com/franmastromarino/wp-plugin-feedback/tree/php7.2"
+            },
+            "install-path": "../franmastromarino/wp-plugin-feedback"
         },
         {
             "name": "quadlayers/wp-dashboard-widget-news",
@@ -302,17 +403,17 @@
         },
         {
             "name": "quadlayers/wp-notice-plugin-promote",
-            "version": "1.1.7",
-            "version_normalized": "1.1.7.0",
+            "version": "1.1.8",
+            "version_normalized": "1.1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/franmastromarino/wp-notice-plugin-promote.git",
-                "reference": "e947d41c606f1ab679518d87f2b51230a9d74c92"
+                "reference": "21c4a760a999cddd7896eba5034b7c8163dba133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/franmastromarino/wp-notice-plugin-promote/zipball/e947d41c606f1ab679518d87f2b51230a9d74c92",
-                "reference": "e947d41c606f1ab679518d87f2b51230a9d74c92",
+                "url": "https://api.github.com/repos/franmastromarino/wp-notice-plugin-promote/zipball/21c4a760a999cddd7896eba5034b7c8163dba133",
+                "reference": "21c4a760a999cddd7896eba5034b7c8163dba133",
                 "shasum": ""
             },
             "require": {
@@ -323,7 +424,7 @@
                 "phpcompatibility/phpcompatibility-wp": "^2.1.0",
                 "wp-coding-standards/wpcs": "^2.3.0"
             },
-            "time": "2024-11-27T20:38:40+00:00",
+            "time": "2025-11-27T20:59:29+00:00",
             "type": "jetpack-library",
             "extra": {
                 "textdomain": "wp-notice-plugin-promote"
@@ -353,7 +454,7 @@
             ],
             "support": {
                 "issues": "https://github.com/franmastromarino/wp-notice-plugin-promote/issues",
-                "source": "https://github.com/franmastromarino/wp-notice-plugin-promote/tree/1.1.7"
+                "source": "https://github.com/franmastromarino/wp-notice-plugin-promote/tree/1.1.8"
             },
             "install-path": "../../jetpack_vendor/quadlayers/wp-notice-plugin-promote"
         },

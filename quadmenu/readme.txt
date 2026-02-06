@@ -5,7 +5,7 @@ Tags: menu, megamenu, mega menu, responsive menu, mobile menu
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 3.2.8
+Stable tag: 3.3.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,15 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [https://quadmenu.com/documentation/installation/](https://quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+3.3.2
+* Fix update dependencies
+
+3.3.1
+* Fix update dependencies
+
+3.3.0
+* Revert php 7.2 changes
 
 3.2.8
 * Fix update dependencies
