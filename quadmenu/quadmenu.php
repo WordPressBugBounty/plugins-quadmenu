@@ -4,15 +4,17 @@
  * Plugin Name:             QuadMenu
  * Plugin URI:              https://quadmenu.com
  * Description:             The best drag & drop WordPress Mega Menu plugin which allow you to create Tabs Menus & Carousel Menus.
- * Version:                 3.3.2
+ * Version:                 3.3.4
  * Text Domain:             quadmenu
  * Author:                  QuadLayers
  * Author URI:              https://quadlayers.com
  * License:                 GPLv3
  * Domain Path:             /languages
  * Request at least:        4.7.0
- * Tested up to:            6.8
+ * Tested up to:            6.9
  * Requires PHP:            5.6
+ * WC requires at least:    4.0
+ * WC tested up to:         10.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'QUADMENU_PLUGIN_NAME', 'QuadMenu' );
-define( 'QUADMENU_PLUGIN_VERSION', '3.3.2' );
+define( 'QUADMENU_PLUGIN_VERSION', '3.3.4' );
 define( 'QUADMENU_PLUGIN_FILE', __FILE__ );
 define( 'QUADMENU_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
 define( 'QUADMENU_PLUGIN_URL', plugin_dir_url( QUADMENU_PLUGIN_FILE ) );
@@ -62,3 +64,15 @@ require_once __DIR__ . '/vendor_packages/wp-plugin-feedback.php';
 require_once __DIR__ . '/lib/class-plugin.php';
 
 register_activation_hook( __FILE__, array( 'QuadLayers\\QuadMenu\\Activation', 'activation' ) );
+
+/**
+ * Declarate compatibility with WooCommerce Custom Order Tables
+ */
+add_action(
+	'before_woocommerce_init',
+	function () {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
+);
