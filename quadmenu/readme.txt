@@ -4,10 +4,10 @@ Donate link: https://quadmenu.com/
 Tags: menu, megamenu, mega menu, responsive menu, mobile menu
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 6.9
-Stable tag: 3.3.4
+Tested up to: 7.0
+Stable tag: 3.3.6
 WC requires at least: 4.0
-WC tested up to: 10.7
+WC tested up to: 10.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -114,6 +114,12 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [https://quadmenu.com/documentation/installation/](https://quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+= 3.3.6 =
+* fix: WooCommerce compatibility
+
+= 3.3.5 =
+* WordPress 7.0 compatibility
 
 3.3.4
 * Fix WordPress compatibility
