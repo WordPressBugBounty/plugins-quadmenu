@@ -5,7 +5,7 @@ Tags: menu, megamenu, mega menu, responsive menu, mobile menu
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 7.1
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 WC requires at least: 4.0
 WC tested up to: 11.1
 License: GPLv3
@@ -114,6 +114,10 @@ QuadMenu has been designed by developers for developers. For them, we have inclu
 [https://quadmenu.com/documentation/installation/](https://quadmenu.com/documentation/installation/)
 
 == Changelog ==
+
+= 3.3.9 =
+* fix: mobile dropdowns taller than 2000px were clipped
+* fix: stretch dropdown caused horizontal scroll
 
 = 3.3.8 =
 * WooCommerce 11.1 compatibility
