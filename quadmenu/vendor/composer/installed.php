@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/quadmenu',
-        'pretty_version' => 'v3.3.9',
-        'version' => '3.3.9.0',
-        'reference' => '18afa138c664f20423913033dc943fe737eb8e94',
+        'pretty_version' => 'v3.3.10',
+        'version' => '3.3.10.0',
+        'reference' => '1c176c095ed1fa3faa3d7a52d7a2a3aa491fbe26',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -76,9 +76,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/quadmenu' => array(
-            'pretty_version' => 'v3.3.9',
-            'version' => '3.3.9.0',
-            'reference' => '18afa138c664f20423913033dc943fe737eb8e94',
+            'pretty_version' => 'v3.3.10',
+            'version' => '3.3.10.0',
+            'reference' => '1c176c095ed1fa3faa3d7a52d7a2a3aa491fbe26',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
